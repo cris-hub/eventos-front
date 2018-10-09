@@ -1,0 +1,22 @@
+<div class="row divHotel">
+
+    <!-- CARRUSEL DE IMAGENES DE LOS HOTELES -->
+    <div class="col-md-3 col-sm-4 col-xs-12">
+        <div class="galleryHotel">
+            <carousel-gallery [images]="experience.images"></carousel-gallery>
+        </div>
+    </div>
+
+    <!-- DESCRIPCION DEL HOTEL -->
+    <div class="col-md-6 col-sm-5 col-xs-12 infoHotel">
+        <h4>{{experience.name}}</h4>
+        <p>{{experience.description}}</p>
+    </div>
+
+    <!-- ENLACE PARA VER HABITACIONES -->
+    <div class="col-md-3 col-sm-3 col-xs-12 showRooms">
+        <button class="btn" type="button" data-toggle="collapse" aria-expanded="false" [attr.data-target]="'#tabHotels' + j" [attr.aria-controls]="'tabHotels' + j">
+            Ver habitaciones
+        </button>
+    </div>
+</div>

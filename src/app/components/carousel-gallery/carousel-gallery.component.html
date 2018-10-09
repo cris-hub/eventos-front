@@ -1,0 +1,5 @@
+<carousel>
+    <slide *ngFor="let image of images">
+        <img [src]="image.src" alt="{{image.alt}}" (click)="openDialog(image.src)" />
+    </slide>
+</carousel>
