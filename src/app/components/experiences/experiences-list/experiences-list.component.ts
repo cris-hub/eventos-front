@@ -1,13 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ExperienceModel } from '../../../model/experience-model';
 import { experencesFakes } from '../../../test/fakes/experences.fake';
+import { EventosService } from '../../../services/eventos.service';
 
 @Component({
   selector: 'app-experiences-list',
   template: `
-  <div *ngFor="let experience of experiences">
-  <app-experiences-details [experience] =experience>
+  <div class="container" >
+
+  <div class="row" >
+  <div class="col-md-12 " >
+  <div  *ngFor="let experience of experiences"  class="col-md-3 " >
+
+  <app-experiences-details 
+ 
+  [experience] =experience>
   </app-experiences-details>
+
+  </div>
+  </div>
+  </div>
+
   </div>
   `,
   styleUrls: ['./experiences-list.component.css'],
@@ -16,10 +29,12 @@ import { experencesFakes } from '../../../test/fakes/experences.fake';
 export class ExperiencesListComponent implements OnInit {
  public experiences : [ExperienceModel]
    
-  constructor() { }
+  constructor(private eventosService : EventosService) { }
 
   ngOnInit() {
-    this.experiences = experencesFakes;
+    this.eventosService.getExperiencia().subscribe(res => {
+      this.experiences = res;
+    });
   }
 
 }

@@ -18,7 +18,7 @@ export class CarouselGalleryComponent {
     openDialog(img:string): void {
         const dialogConfig = new MatDialogConfig();
         dialogConfig.autoFocus = true;
-        dialogConfig.height = '90%';
+        dialogConfig.height = 'auto';
         dialogConfig.width = 'auto';
         dialogConfig.data = {
             img: img

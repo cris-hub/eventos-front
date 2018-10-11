@@ -17,6 +17,7 @@ import { ExperiencesDetailsComponent } from './components/experiences/experience
 import { CarouselGalleryComponent, CourseDialogComponent } from './components/carousel-gallery/carousel-gallery.component';
 
 import {CarouselModule} from 'ngx-bootstrap/carousel';
+import { EventosService } from './services/eventos.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import {CarouselModule} from 'ngx-bootstrap/carousel';
 
     
   ],
-  providers: [],
+  providers: [EventosService],
   bootstrap: [AppComponent],
   entryComponents : [CourseDialogComponent]
 

@@ -3,7 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <router-outlet></router-outlet>
+  <div class="container-fluid">
+  <router-outlet></router-outlet>
+  </div>
   `,
   styles: []
 })
