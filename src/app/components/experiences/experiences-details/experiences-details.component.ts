@@ -10,7 +10,7 @@ import { ImageModel } from '../../../model/image-model';
 })
 export class ExperiencesDetailsComponent implements OnInit {
 
-   @Input() public experience: ExperienceModel = new ExperienceModel({});
+   @Input() public experience: ExperienceModel = new ExperienceModel();
   constructor() { }
 
   ngOnInit() {

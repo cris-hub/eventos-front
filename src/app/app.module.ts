@@ -18,6 +18,11 @@ import { CarouselGalleryComponent, CourseDialogComponent } from './components/ca
 
 import {CarouselModule} from 'ngx-bootstrap/carousel';
 import { EventosService } from './services/eventos.service';
+import { FiltroSedeComponent } from './components/filtro-sede/filtro-sede.component';
+import { DatosEventoComponent } from './components/datos-evento/datos-evento.component';
+import { HeadquarterListComponent } from './components/headquarter/headquarter-list/headquarter-list.component';
+import { HeadquarteDetailsComponent } from './components/headquarter/headquarte-details/headquarte-details.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,11 @@ import { EventosService } from './services/eventos.service';
     ExperiencesListComponent,
     ExperiencesDetailsComponent,
     CarouselGalleryComponent,
-    CourseDialogComponent
+    CourseDialogComponent,
+    FiltroSedeComponent,
+    DatosEventoComponent,
+    HeadquarteDetailsComponent,
+    HeadquarterListComponent,
 
   ],
   imports: [
@@ -38,7 +47,8 @@ import { EventosService } from './services/eventos.service';
     MatCardModule,
     MatIconModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
 
     
   ],

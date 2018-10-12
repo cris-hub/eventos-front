@@ -1,13 +1,12 @@
+.img-contet {
+    padding-left: 0%;
+}
 .divHotel{
     background: #FFFFFF;
     box-shadow: 3px 3px 7px 0px #d3d3d3;
     border-radius: 5px;    
-    padding: 0%;
-    width:100%;
 }
-.divHotel > div{
-    padding: 0;    
-}
+
 .divHotel div.infoHotel{
     padding: 20px; 
     box-sizing: border-box;

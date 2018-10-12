@@ -1,0 +1,23 @@
+<div class="divHotel">
+
+
+<!-- CARRUSEL DE IMAGENES DE LOS HOTELES -->
+<div class="col-md-3 img-contet">
+    <div class="galleryHotel">
+        <carousel-gallery [images]="headquarter.images"></carousel-gallery>
+    </div>
+</div>
+
+<!-- DESCRIPCION DEL HOTEL -->
+<div class="col-md-6">
+    <h4>{{headquarter.name}}</h4>
+    <p>{{headquarter.description}}</p>
+</div>
+
+<!-- ENLACE PARA VER HABITACIONES -->
+<div class="col-md-3 showRooms">
+    <button class="btn" type="button" data-toggle="collapse" aria-expanded="false" [attr.data-target]="'#tabHotels' + j" [attr.aria-controls]="'tabHotels' + j">
+        Ver habitaciones
+    </button>
+</div>
+</div>

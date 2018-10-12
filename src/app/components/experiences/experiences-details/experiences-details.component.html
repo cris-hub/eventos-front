@@ -2,9 +2,9 @@
 
     <!-- CARRUSEL DE IMAGENES DE LOS HOTELES -->
     <div class="galleryHotel">
-        <carousel-gallery [images]="experience.images"></carousel-gallery>
+            <img [src]="experience.imagen.src" alt="{{experience.imagen.alt}}"  style="width: 100%;"  />
     </div>
-    <div class="">
+    <div class="text-center">
         <h4>{{experience.name}}</h4>
     </div>
 

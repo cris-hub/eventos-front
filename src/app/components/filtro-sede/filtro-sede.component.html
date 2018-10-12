@@ -1,0 +1,93 @@
+<div class="container">
+    <div class="row experiences-header ">
+        <div class="col-md-12">
+            <blockquote class="blockquote text-center">
+                <h3 class="mb-0">{{experiencia.name}}</h3>
+                <footer class="blockquote-footer">{{experiencia.description}}</footer>
+            </blockquote>
+        </div>
+    </div>
+    <div class="row experiences-content">
+        <div class="col-md-6 col-md-offset-3">
+            <form [formGroup]="formulario" (ngSubmit)="submit()" class="form-horizontal">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label class="control-label" for="">Tipo evento</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select id="selectbasic" name="selectbasic"  [value]="experiencia.eventTypeId" class="form-control">
+                                <option [value]="">Seleccione</option>
+                                <option *ngFor="let eventType of eventsTypes" [value]="eventType.id">{{eventType.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label class="control-label" for="">Numero asistentes</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="number" class="form-control">
+                            <span class="help-block">niños</span>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="number" class="form-control">
+                            <span class="help-block">adultos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label class="control-label" for="">Fecha y hora inicio</label>
+                        </div>
+                        <div class="col-md-8 ">
+                            <div class="input-group">
+                                <input type="datetime-local" class="form-control">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label class="control-label" for="">Fecha y hora fin</label>
+                        </div>
+                        <div class="col-md-8 ">
+                            <div class="input-group">
+                                <input type="datetime-local" class="form-control">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-8 col-md-offset-4">
+                            <div class="btn-group btn-group-justified">
+                                <div class="btn-group" role="group">
+                                    <button routerLink="/experiencias" type="button" class="btn btn-default-colsubsidio">Atras</button>
+                                </div>
+                                <div class="btn-group" role="group">
+                                    <button type="submit" class="btn btn-primary-colsubsidio"
+                                    
+                                    >Buscar Sedes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+
+        </div>
+    </div>
+</div>

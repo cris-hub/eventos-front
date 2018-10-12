@@ -1,10 +1,15 @@
 import { ImageModel } from "./image-model";
+import { EventTypeModel } from "./event-type-model";
 
 export class ExperienceModel {
-  images: Array<ImageModel>;
+  id : number
+  imagen:ImageModel;
   name: string;
   description: string;
-  constructor(any: any) {
+  
+  eventTypeId:number
+  eventType:EventTypeModel
+  constructor() {
 
   }
 }
