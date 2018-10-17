@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgModule } from '@angular/core';
 import {
@@ -16,14 +16,21 @@ import { ExperiencesListComponent } from './components/experiences/experiences-l
 import { ExperiencesDetailsComponent } from './components/experiences/experiences-details/experiences-details.component';
 import { CarouselGalleryComponent, CourseDialogComponent } from './components/carousel-gallery/carousel-gallery.component';
 
-import {CarouselModule} from 'ngx-bootstrap/carousel';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { EventosService } from './services/eventos.service';
 import { FiltroSedeComponent } from './components/filtro-sede/filtro-sede.component';
 import { DatosEventoComponent } from './components/datos-evento/datos-evento.component';
 import { HeadquarterListComponent } from './components/headquarter/headquarter-list/headquarter-list.component';
 import { HeadquarteDetailsComponent } from './components/headquarter/headquarte-details/headquarte-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { LoungeCarouselComponent } from './components/lounge-carousel/lounge-carousel.component';
+import { LoungeTabInfoComponent } from './components/lounge-tab-info/lounge-tab-info.component';
+import { NgxGalleryModule } from 'ngx-gallery';
+import { ReservationComponent } from './components/reservation/reservation-data-event/reservation.component';
+import { ReservationDataCompanyComponent } from './components/reservation/reservation-data-company/reservation-data-company.component';
+import { ReservationSummaryComponent } from './components/reservation/reservation-summary/reservation-summary.component';
+import { SharedModule } from './shared/shared.module';
+import { ConfirmationReservationComponent } from './components/confirmation/confirmation-reservation/confirmation-reservation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,12 +42,18 @@ import { ReactiveFormsModule } from '@angular/forms';
     DatosEventoComponent,
     HeadquarteDetailsComponent,
     HeadquarterListComponent,
+    LoungeCarouselComponent,
+    LoungeTabInfoComponent,
+    ReservationComponent,
+    ReservationDataCompanyComponent,
+    ReservationSummaryComponent,
+    ConfirmationReservationComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CarouselModule, 
+    CarouselModule,
     MatButtonModule,
     MatCheckboxModule,
     MatTabsModule,
@@ -48,13 +61,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     MatDialogModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxGalleryModule,
+    SharedModule.forRoot()
 
-    
+
   ],
   providers: [EventosService],
   bootstrap: [AppComponent],
-  entryComponents : [CourseDialogComponent]
+  entryComponents: [CourseDialogComponent]
 
 })
 export class AppModule { }

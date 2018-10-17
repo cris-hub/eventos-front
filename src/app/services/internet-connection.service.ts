@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { ConnectionService } from '../../../node_modules/ng-connection-service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,18 +12,20 @@ export class InternetConnectionService {
   public isConnected = true;
 
   constructor(
+    private connectionService: ConnectionService
   ) {
-    this.estadoConexion();
+    this.haveInternetConnetion();
 
   }
-  private estadoConexion() {
-      this.isConnected = true;
+  private haveInternetConnetion() {
+    this.connectionService.monitor().subscribe(isConnected => {
+      this.isConnected = isConnected;
       if (this.isConnected) {
         this.status = "ONLINE";
       }
       else {
         this.status = "OFFLINE";
       }
-    
+    })
   }
 }

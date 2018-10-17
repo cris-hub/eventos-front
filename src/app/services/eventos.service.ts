@@ -6,25 +6,26 @@ import { EventTypeModel } from '../model/event-type-model';
 import { EVENTTYPEFAKES } from '../test/fakes/event-type.fake';
 import { HeadquarteModel } from '../model/headquarte-model';
 import { HEADQUEARTERFAKE } from '../test/fakes/headquarter.fake';
+import { InternetConnectionService } from './internet-connection.service';
 @Injectable({
   providedIn: 'root'
 })
 export class EventosService {
 
-  public status = 'ONLINE';
-  public isConnected = true;
+  public experience: ExperienceModel = new ExperienceModel();
+
 
   constructor(
+    private internetConnectionService: InternetConnectionService
   ) {
     this.getTiposEventos();
-    this.estadoConexion();
   }
 
 
   public getExperienciaPorId(id: number): Observable<ExperienceModel> {
     let data = null
-    console.log(this.isConnected)
-    if (!this.isConnected) {
+    console.log(this.internetConnectionService.isConnected)
+    if (!this.internetConnectionService.isConnected) {
       data = new Observable((observe) => {
         observe.next(EXPERENCESFAKES.find(experiencia => experiencia.id === id))
         observe.complete();
@@ -41,8 +42,8 @@ export class EventosService {
   }
   public getExperiencias(): Observable<ExperienceModel[]> {
     let data = null
-    console.log(this.isConnected)
-    if (!this.isConnected) {
+    console.log(this.internetConnectionService.isConnected)
+    if (!this.internetConnectionService.isConnected) {
       data = new Observable((observe) => {
         observe.next(EXPERENCESFAKES)
         observe.complete();
@@ -56,10 +57,10 @@ export class EventosService {
     return data
   }
 
-  public getTiposEventos():Observable<EventTypeModel[]> {
+  public getTiposEventos(): Observable<EventTypeModel[]> {
     let data = null
-    console.log(this.isConnected)
-    if (!this.isConnected) {
+    console.log(this.internetConnectionService.isConnected)
+    if (!this.internetConnectionService.isConnected) {
       data = new Observable((observe) => {
         observe.next(EVENTTYPEFAKES)
         observe.complete();
@@ -72,10 +73,10 @@ export class EventosService {
     });
     return data
   }
-  public getHeadquarterByExperence():Observable<HeadquarteModel[]>{
+  public getHeadquarterByExperence(): Observable<HeadquarteModel[]> {
     let data = null
-    console.log(this.isConnected)
-    if (!this.isConnected) {
+    console.log(this.internetConnectionService.isConnected)
+    if (!this.internetConnectionService.isConnected) {
       data = new Observable((observe) => {
         observe.next(HEADQUEARTERFAKE)
         observe.complete();
@@ -88,14 +89,5 @@ export class EventosService {
     });
     return data
 
-  }
-  private estadoConexion() {
-    this.isConnected = true;
-    if (this.isConnected) {
-      this.status = "ONLINE";
-    }
-    else {
-      this.status = "OFFLINE";
-    }
   }
 }

@@ -1,0 +1,27 @@
+<mat-tab-group class="tab-group">
+    <mat-tab label="Información">
+        <div class="tab-content">
+            {{lounge.description}}
+        </div>
+    </mat-tab>
+    <mat-tab label="Imágenes">
+        <div class="tab-content">
+            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+        </div>
+    </mat-tab>
+</mat-tab-group>
+
+<div class="row">
+
+    <div class="col-md-12">
+        <button class="btn btn-default-colsubsidio col-md-offset-4 col-md-2">
+            atras
+        </button>
+        <button (click)="reservar()" class="btn  btn-default-colsubsidio col-md-2">
+            confirmar
+        </button>
+
+    </div>
+</div>
+<br>
+<br>

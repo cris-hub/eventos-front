@@ -2,13 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `
-  <div class="container-fluid">
-  <router-outlet></router-outlet>
-  </div>
-  `,
+  template: `<router-outlet></router-outlet>`,
   styles: []
 })
 export class AppComponent {
-  title = 'app';
+  title = 'gp works!';
 }

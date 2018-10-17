@@ -1,22 +1,8 @@
-<div class="container">
-    <div class="row experiences-header ">
-        <div class="col-md-12">
-            <blockquote class="blockquote text-center">
-                <h3 class="mb-0">Experiencias</h3>
-                <footer class="blockquote-footer">Someone famous in
-                    <cite title="Source Title">Source Title</cite>
-                </footer>
-            </blockquote>
-        </div>
-    </div>
-    <div class="row experiences-content">
-        <div class="col-md-10 col-md-offset-1">  
+<div class="col-md-10 col-md-offset-1">
 
-            <div *ngFor="let headquarter of headquarters" class="row divHotel">
-                <app-headquarte-details [headquarter]="headquarter">
-                </app-headquarte-details>
-            </div>
-
-        </div>
+    <div *ngFor="let headquarter of headquarters" class="row divHotel">
+        <app-headquarte-details [headquarter]="headquarter">
+        </app-headquarte-details>
     </div>
+
 </div>

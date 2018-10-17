@@ -1,0 +1,184 @@
+<div class="col-md-10 col-md-offset-1">
+    <form [formGroup]="formulario" (ngSubmit)="submit()" class="form-horizontal">
+        <div class="row">
+            <div class="col-md-4 border-right">
+                <app-lounge-carousel [images]="lounge.images" [lounge]="lounge"></app-lounge-carousel>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="row">
+                            <h3>Confirmar datos</h3>
+
+                            <div class="col-md-12">
+                                <h4>Datos evento</h4>
+                            </div>
+                        </div>
+                        <form [formGroup]="formulario" (ngSubmit)="submit()" class="form-horizontal">
+
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-5">
+                                        <label for="">Nombre evento</label>
+                                    </div>
+                                    <div class="col-md-7 ">
+                                        <p class="text-muted">Feria el gran salvador</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-5">
+                                        <label for="">Tipo evento</label>
+                                    </div>
+                                    <div class="col-md-7 ">
+                                        <p class="text-muted">...</p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-5">
+                                        <label for="">Numero de asistentes</label>
+                                    </div>
+                                    <div class="col-md-7 ">
+                                        <p class="text-muted">...</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-5">
+                                        <label for="">Fecha y hora inicio</label>
+                                    </div>
+                                    <div class="col-md-7 ">
+                                        <p class="text-muted">...</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-5">
+                                        <label for="">Fecha y hora Fin</label>
+                                    </div>
+                                    <div class="col-md-7 ">
+                                        <p class="text-muted">...</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-5">
+                                        <label for="">Sede</label>
+                                    </div>
+                                    <div class="col-md-7 ">
+                                        <p class="text-muted">...</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-5">
+                                        <label for="">Salon</label>
+                                    </div>
+                                    <div class="col-md-7 ">
+                                        <p class="text-muted">...</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>ƒ
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>Datos empresa</h4>
+                            </div>
+                        </div>
+                        <form [formGroup]="formulario" (ngSubmit)="submit()" class="form-horizontal">
+
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-5">
+                                        <label for="">Nombre empresa</label>
+                                    </div>
+                                    <div class="col-md-7 ">
+                                        <p class="text-muted">Feria el gran salvador</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-5">
+                                        <label for="">NIT</label>
+                                    </div>
+                                    <div class="col-md-7 ">
+                                        <p class="text-muted">...</p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-5">
+                                        <label for="">Responsable</label>
+                                    </div>
+                                    <div class="col-md-7 ">
+                                        <p class="text-muted">...</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-5">
+                                        <label for="">Telefono movil</label>
+                                    </div>
+                                    <div class="col-md-7 ">
+                                        <p class="text-muted">...</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-5">
+                                        <label for="">Correo</label>
+                                    </div>
+                                    <div class="col-md-7 ">
+                                        <p class="text-muted">...</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-md-9 col-md-offset-3">
+            <button (click)="goBack()" class="btn btn-default-colsubsidio col-md-offset-4 col-md-2">
+                Atras
+            </button>
+            <button (click)="reservar()" class="btn  btn-default-colsubsidio col-md-2">
+                Siguiente
+            </button>
+
+        </div>
+    </div>
+</div>

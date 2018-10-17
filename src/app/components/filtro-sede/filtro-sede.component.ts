@@ -11,7 +11,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: [`./filtro-sede.component.css`]
 })
 export class FiltroSedeComponent implements OnInit {
-  public experiencia: ExperienceModel = new ExperienceModel();
   public eventsTypes: EventTypeModel[] = []
   public formulario: FormGroup;
   constructor(
@@ -26,19 +25,23 @@ export class FiltroSedeComponent implements OnInit {
     this.initFormulario();
     this.obtenerParamtrosRuta();
     this.consulterTiposEventos();
-    this.consultarExperienciaSeleccionada(this.experiencia.id);
+    this.consultarExperienciaSeleccionada(this.eventosService.experience.id);
   }
   initFormulario() {
     this.formulario = this.formBuilder.group({
-      eventTypeId: []
+      eventTypeId: [this.eventosService.experience.eventTypeId],
+      cantidadAsistentesNiños: [],
+      cantidadAsistentesAdultos: [],
+      fechaInicio: [],
+      fechaFin: [],
     });
   }
   obtenerParamtrosRuta() {
-    this.experiencia.id = parseInt(this.activeRoute.snapshot.paramMap.get('experiencia'))
+    this.eventosService.experience.id = parseInt(this.activeRoute.snapshot.paramMap.get('experiencia'))
   }
   consultarExperienciaSeleccionada(id: number) {
     this.eventosService.getExperienciaPorId(id).subscribe(response => {
-      Object.assign(this.experiencia, response);
+      Object.assign(this.eventosService.experience, response);
     })
   }
   consulterTiposEventos() {
@@ -48,7 +51,7 @@ export class FiltroSedeComponent implements OnInit {
     })
   }
   filtrarSedesPorCamposFormulario() {
-    alert('hola')
+  
   }
 
   submit() {
