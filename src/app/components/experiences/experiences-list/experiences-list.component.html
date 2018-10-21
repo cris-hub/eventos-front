@@ -1,0 +1,10 @@
+<div class="col-md-10 col-md-offset-1">
+
+    <div *ngFor="let experience of experiences" class="col-md-3 ">
+        <app-experiences-details (click)="selectExperience(experience)" [routerLink]="[
+                    '/experiencia', experience.id
+                    ]" [experience]=experience>
+        </app-experiences-details>
+    </div>
+
+</div>

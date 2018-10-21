@@ -1,0 +1,10 @@
+<div class="col-md-10 col-md-offset-1">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+        <div *ngFor="let headquarter of headquarters" class=" row divHotel">
+            <div AppHeadquarteHetails  (click)="selectHeadquarter(headquarter)" [headquarter]="headquarter">
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+<div class="col-md-6 col-md-offset-3">
+    <form [formGroup]="formulario" (ngSubmit)="submit()" class="form-horizontal">
+            <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label class="control-label" for="">Nombre Evento</label>
+                        </div>
+                        <div class="col-md-8 ">
+                                <input formControlName="nameEvent" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+        
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label class="control-label" for="">Tipo evento</label>
+                </div>
+                <div class="col-md-8">
+                    <select validacion [validaciones]="['requerido']" formControlName="eventTypeId"  (ngModelChange)="selectTypeEvent($event)" class="form-control">
+                        <option [value]="null">Seleccione</option>
+                        <option *ngFor="let eventType of eventsTypes" [value]="eventType.id">{{eventType.name}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label class="control-label" for="">Numero asistentes</label>
+                </div>
+                <div class="col-md-4">
+                    <input validacion [validaciones]="['requerido']" formControlName="amountAttendingEventChildren" type="number" class="form-control">
+                    <span class="help-block">niños</span>
+                </div>
+                <div class="col-md-4">
+                    <input validacion [validaciones]="['requerido']" formControlName="amountAttendingEventAdults" type="number" class="form-control">
+                    <span class="help-block">adultos</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label class="control-label" for="">Ciudad</label>
+                </div>
+                <div class="col-md-8">
+                    <select formControlName="cityId" class="form-control">
+                        <option [value]="null">Seleccione</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label class="control-label" for="">Fecha y hora inicio</label>
+                </div>
+                <div class="col-md-8 ">
+                    <div class="input-group">
+                        <input placeholder="03/26/1998, 1:56 PM" formControlName="dateStart" [owlDateTimeFilter]="myFilter" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2"
+                            class="form-control">
+                        <owl-date-time   #dt2></owl-date-time>
+                        <span [owlDateTimeTrigger]="dt2" class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label class="control-label" for="">Fecha y hora fin</label>
+                </div>
+                <div class="col-md-8 ">
+                    <div class="input-group">
+                        <input formControlName="dateFinish" type="datetime-local" class="form-control">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-8 col-md-offset-4">
+                    <div class="btn-group btn-group-justified">
+                        <div class="btn-group" role="group">
+                            <button routerLink="/experiencias" type="button" class="btn btn-default-colsubsidio">Atras</button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-primary-colsubsidio">Buscar Sedes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,18 @@
+.container{
+    background: #fff
+}
+.experiences-header {
+    background: #fafafa
+}
+.experiences-content {
+    padding-top: 20px;
+    justify-content: center;
+}
+.btn-default-colsubsidio {
+    color: #1C3B91;
+    border-color:#ccc;
+}
+.btn-primary-colsubsidio {
+    background-color: #FBEE32;
+    color: #1C3B91;
+}

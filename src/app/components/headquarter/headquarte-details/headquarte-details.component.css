@@ -1,0 +1,56 @@
+.img-contet {
+    padding-left: 0%;
+}
+.divHotel{
+    background: #FFFFFF;
+    box-shadow: 3px 3px 7px 0px #d3d3d3;
+    border-radius: 5px;    
+    
+}
+.divHotel div.infoHotel{
+    padding: 20px; 
+    box-sizing: border-box;
+    font-size: 12px;
+    height: 190px;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.divHotel div.showRooms{
+    text-align: center;
+    line-height: 190px;
+    height: 190px;
+}
+.divHotel div.showRooms button{
+    vertical-align: middle;
+    background: #FEED01 none no-repeat scroll 0 0;
+    color: #011F5B;
+    padding: 10px 30px;
+    font-weight: bold;
+}
+.divHotel div.infoHotel .direccion{
+    font-size: 11px;
+    color: #757575;
+}
+.divHotel div.tabHotels{
+    margin-top: 30px;    
+}
+.divHotel div.tabHotels > div{
+    padding: 0 20px;
+}
+
+@media (max-width: 640px) {
+    .divHotel div.infoHotel{
+        height: auto;
+    }
+    .divHotel div.showRooms{
+        border-left: none;
+        height:auto;
+        line-height: 0;
+    }
+    .divHotel div.showRooms button{
+        margin: 20px 0;
+    }
+    .divHotel div.tabHotels{
+        float: left;
+    }
+}

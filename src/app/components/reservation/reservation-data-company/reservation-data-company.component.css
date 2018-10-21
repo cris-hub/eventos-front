@@ -1,0 +1,25 @@
+.container{
+    background: #fff
+}
+.experiences-header {
+    background: #fafafa
+}
+.experiences-content {
+    padding-top: 20px;
+    justify-content: center;
+}
+.btn-default-colsubsidio {
+    vertical-align: middle;
+    background: #FEED01 none no-repeat scroll 0 0;
+    color: #011F5B;
+    padding: 10px 30px;
+    font-weight: bold;
+}
+.border-right {
+    border-right: 1px solid #d3d3d3;
+
+}
+.no-margin-no-padding {
+    margin: 0%;
+    padding: 0%;
+}

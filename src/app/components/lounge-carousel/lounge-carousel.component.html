@@ -1,0 +1,19 @@
+<div class="divHotel">
+    <carousel>
+        <slide *ngFor="let image of images">
+            <img [src]="image.src" alt="{{image.alt}}" style="width: 100%; height: auto; " />
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h5>
+                        {{lounge.name}}
+                    </h5>
+                </div>
+                <div class="col-md-12 text-justify">
+                    <p class="col-md-12"> 
+                        {{lounge.description}}
+                    </p>
+                </div>
+            </div>
+        </slide>
+    </carousel>
+</div>

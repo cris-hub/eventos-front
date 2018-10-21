@@ -1,0 +1,56 @@
+<div class="divHotel">
+
+
+    <!-- CARRUSEL DE IMAGENES DE LOS HOTELES -->
+    <div class="col-md-3 img-contet">
+        <div class="galleryHotel">
+            <carousel-gallery [images]="headquarter.images"></carousel-gallery>
+        </div>
+    </div>
+
+    <!-- DESCRIPCION DEL HOTEL -->
+    <div class="col-md-6">
+        <h4>{{headquarter.name}}</h4>
+        <p>{{headquarter.description}}</p>
+    </div>
+
+    <!-- ENLACE PARA VER HABITACIONES -->
+    <div class="accordion" id="tab" role="tablist" aria-multiselectable="true">
+
+        <div class="col-md-3 showRooms" role="tab" id="headingOne">
+            <button class="btn" type="button" data-toggle="collapse" aria-expanded="false" [attr.data-target]="'#lounge'+headquarter.id"
+                [attr.aria-controls]="'lounge'+headquarter.id">
+                Ver Salones
+            </button>
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+<div class="col-md-12 collapse tabHotels" aria-labelledby="headingOne" role="tabpanel" [attr.id]="'lounge'+headquarter.id"
+    [attr.data-parent]="'#tab'">
+    <div *ngIf="lounge.length>0">
+        <hr>
+        <div class="row">
+            <h4>Salones</h4>
+            <div *ngFor="let room of lounge;let i = index">
+                <div class="col-md-3">
+                    <app-lounge-carousel data-toggle="collapse" aria-expanded="false" [attr.data-target]="'#room'+room.id+'-'+headquarter.id+'-'+i"
+                        [images]="room.images" [lounge]="room" [attr.aria-controls]="'room'+room.id+'-'+headquarter.id+'-'+i"></app-lounge-carousel>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngFor="let room of lounge;let i = index">
+        <app-lounge-tab-info class="collapse tabHotels" role="tabpanel" [attr.data-parent]="'#lounge'+headquarter.id" [attr.id]="'room'+room.id+'-'+headquarter.id+'-'+i"
+            [lounge]="room">
+
+        </app-lounge-tab-info>
+
+
+    </div>
+</div>
