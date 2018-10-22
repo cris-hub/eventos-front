@@ -4,10 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoungeModel } from '../../../model/lounge-model';
 import { LOUNGEFAKE } from '../../../test/fakes/lounges.fake';
 import { Location } from '@angular/common';
-<<<<<<< HEAD
 import { EventosService } from '../../../services/eventos.service';
-=======
->>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
 
 @Component({
   selector: 'app-reservation',
@@ -15,40 +12,27 @@ import { EventosService } from '../../../services/eventos.service';
   styleUrls: ['reservation.component.css']
 })
 export class ReservationComponent implements OnInit {
-<<<<<<< HEAD
   private lounge: LoungeModel = LOUNGEFAKE[0]
-=======
-  private lounge : LoungeModel = LOUNGEFAKE[0]
->>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
   public formulario: FormGroup;
 
   constructor(
     private activeRoute: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
-<<<<<<< HEAD
     private location: Location,
     private eventosService : EventosService
-=======
-    private location: Location
->>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
   ) { }
 
   ngOnInit() {
     this.initFormulario();
 
   }
-<<<<<<< HEAD
   goBack() {
-=======
-  goBack(){
->>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
     this.location.back();
   }
 
   initFormulario() {
     this.formulario = this.formBuilder.group({
-<<<<<<< HEAD
       hasBreakfast: [this.eventosService.reservation.hasBreakfast],
       hasLunch: [this.eventosService.reservation.hasLunch],
       hasRefreshmentAM: [this.eventosService.reservation.hasRefreshmentAM],
@@ -71,8 +55,5 @@ export class ReservationComponent implements OnInit {
       console.log(val)
       this.formulario.get('Others').setValue('');
     })
-=======
-    });
->>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
   }
 }

@@ -3,13 +3,9 @@ import { ExperienceModel } from '../../model/experience-model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventosService } from '../../services/eventos.service';
 import { EventTypeModel } from '../../model/event-type-model';
-<<<<<<< HEAD
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HeadquarterFilterModel } from '../../model/headquarter-filter-model';
 import { HeaderService } from '../../services/header.service';
-=======
-import { FormBuilder, FormGroup } from '@angular/forms';
->>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
 
 @Component({
   selector: 'app-filtro-sede',
@@ -19,7 +15,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class FiltroSedeComponent implements OnInit {
   public eventsTypes: EventTypeModel[] = []
   public formulario: FormGroup;
-<<<<<<< HEAD
 
   public invalidDateTime2 : any = ''
   constructor(
@@ -48,29 +43,6 @@ export class FiltroSedeComponent implements OnInit {
       dateStart: [this.eventosService.headquearterFilter.dateStart],
       dateFinish: [this.eventosService.headquearterFilter.dateFinish],
       cityId: [this.eventosService.headquearterFilter.cityId],
-=======
-  constructor(
-    private activeRoute: ActivatedRoute,
-    private eventosService: EventosService,
-    private router: Router,
-    private formBuilder: FormBuilder
-  ) { }
-
-  ngOnInit() {
-    console.log(this.activeRoute.snapshot.paramMap.get('experiencia'))
-    this.initFormulario();
-    this.obtenerParamtrosRuta();
-    this.consulterTiposEventos();
-    this.consultarExperienciaSeleccionada(this.eventosService.experience.id);
-  }
-  initFormulario() {
-    this.formulario = this.formBuilder.group({
-      eventTypeId: [this.eventosService.experience.eventTypeId],
-      cantidadAsistentesNiños: [],
-      cantidadAsistentesAdultos: [],
-      fechaInicio: [],
-      fechaFin: [],
->>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
     });
   }
   obtenerParamtrosRuta() {
@@ -79,11 +51,8 @@ export class FiltroSedeComponent implements OnInit {
   consultarExperienciaSeleccionada(id: number) {
     this.eventosService.getExperienciaPorId(id).subscribe(response => {
       Object.assign(this.eventosService.experience, response);
-<<<<<<< HEAD
       this.eventosService.headquearterFilter.eventType = this.eventosService.experience.eventTypeId
       console.log(this.eventosService.experience,this.eventosService.headquearterFilter.eventType)
-=======
->>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
     })
   }
   consulterTiposEventos() {
@@ -93,7 +62,6 @@ export class FiltroSedeComponent implements OnInit {
     })
   }
   filtrarSedesPorCamposFormulario() {
-<<<<<<< HEAD
     this.eventosService.getHeadquarterByExperence(this.eventosService.experience.eventTypeId, 1)
   }
 
@@ -111,12 +79,5 @@ export class FiltroSedeComponent implements OnInit {
     Object.assign(this.eventosService.headquearterFilter,this.formulario.value)
 
     this.router.navigate([`/experiencia/${this.eventosService.experience.id}/sedes`])
-=======
-  
-  }
-
-  submit() {
-    this.router.navigate(['/experiencia/1/sedes'])
->>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
   }
 }
