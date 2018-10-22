@@ -46,6 +46,11 @@ export class LoungeTabInfoComponent implements OnInit {
         console.log('experiencia/' + this.experiencia.id + '/sede/' + this.lounge.headquarterId + '/' + this.lounge.id);
         this.router.navigate([`/experiencia/${this.experiencia.id}/sede/${this.lounge.headquarterId}/${this.lounge.id}/reserva`])
     }
+
+    clearSeleccion() {
+        this.eventosService.reservation.lounge = new LoungeModel()
+
+    }
     setGallery() {
         this.galleryOptions = [
             { "image": false, "thumbnailsRemainingCount": true, "height": "190px", "width": "100%" },

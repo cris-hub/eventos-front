@@ -115,3 +115,9 @@ body{
         box-shadow: none !important;
     }
 }
+
+
+owl-date-time-container {
+    font-size :large !important ;
+
+}

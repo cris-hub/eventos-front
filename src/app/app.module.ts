@@ -34,6 +34,7 @@ import { ConfirmationReservationComponent } from './components/confirmation/conf
 import { HeaderService } from './services/header.service';
 import { ValidacionDirective } from './directivas/validacion/validacion.directive';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { CalendarPicker } from './shared/calendar-picker';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
     ReservationDataCompanyComponent,
     ReservationSummaryComponent,
     ConfirmationReservationComponent,
-    ValidacionDirective
+    ValidacionDirective,
 
   ],
   imports: [

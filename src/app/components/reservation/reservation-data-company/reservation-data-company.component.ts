@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 import { ExperienceModel } from '../../../model/experience-model';
 import { EventosService } from '../../../services/eventos.service';
 import { EXPERENCESFAKES } from 'src/app/test/fakes/experences.fake';
+import { HeaderService } from 'src/app/services/header.service';
 
 @Component({
   selector: 'app-reservation-data-company',
@@ -22,9 +23,12 @@ export class ReservationDataCompanyComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private location: Location,
-    private eventosService: EventosService
+    private eventosService: EventosService,
+    private headerService : HeaderService
+  ) {
+    this.headerService.title = 'Reservar'
 
-  ) { }
+   }
 
   ngOnInit() {
     this.initFormulario();

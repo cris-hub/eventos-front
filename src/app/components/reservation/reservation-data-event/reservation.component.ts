@@ -5,6 +5,7 @@ import { LoungeModel } from '../../../model/lounge-model';
 import { LOUNGEFAKE } from '../../../test/fakes/lounges.fake';
 import { Location } from '@angular/common';
 import { EventosService } from '../../../services/eventos.service';
+import { HeaderService } from 'src/app/services/header.service';
 
 @Component({
   selector: 'app-reservation',
@@ -20,8 +21,12 @@ export class ReservationComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private location: Location,
-    private eventosService : EventosService
-  ) { }
+    private eventosService : EventosService,
+    private headerService : HeaderService
+
+  ) { 
+    this.headerService.title = 'Reservar'
+  }
 
   ngOnInit() {
     this.initFormulario();

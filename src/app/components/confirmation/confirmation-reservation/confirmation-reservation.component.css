@@ -13,7 +13,11 @@
     border-right: 1px solid #d3d3d3;
 
 }
+.ok {
+    font-size: 120px;
+    color:#00D330;
 
+}
 
 .btn-default-colsubsidio {
     color: #1C3B91;

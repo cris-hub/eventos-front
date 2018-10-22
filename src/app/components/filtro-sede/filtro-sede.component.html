@@ -1,23 +1,24 @@
 <div class="col-md-6 col-md-offset-3">
     <form [formGroup]="formulario" (ngSubmit)="submit()" class="form-horizontal">
-            <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-4">
-                            <label class="control-label" for="">Nombre Evento</label>
-                        </div>
-                        <div class="col-md-8 ">
-                                <input formControlName="nameEvent" type="text" class="form-control">
-                        </div>
-                    </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label class="control-label" for="">Nombre Evento</label>
                 </div>
-        
+                <div class="col-md-8 ">
+                    <input formControlName="nameEvent" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="form-group">
                 <div class="col-md-4">
                     <label class="control-label" for="">Tipo evento</label>
                 </div>
                 <div class="col-md-8">
-                    <select validacion [validaciones]="['requerido']" formControlName="eventTypeId"  (ngModelChange)="selectTypeEvent($event)" class="form-control">
+                    <select validacion [validaciones]="['requerido']" formControlName="eventTypeId" (ngModelChange)="selectTypeEvent($event)"
+                        class="form-control">
                         <option [value]="null">Seleccione</option>
                         <option *ngFor="let eventType of eventsTypes" [value]="eventType.id">{{eventType.name}}</option>
                     </select>
@@ -30,11 +31,13 @@
                     <label class="control-label" for="">Numero asistentes</label>
                 </div>
                 <div class="col-md-4">
-                    <input validacion [validaciones]="['requerido']" formControlName="amountAttendingEventChildren" type="number" class="form-control">
+                    <input validacion [validaciones]="['requerido']" formControlName="amountAttendingEventChildren"
+                        type="number" class="form-control">
                     <span class="help-block">niños</span>
                 </div>
                 <div class="col-md-4">
-                    <input validacion [validaciones]="['requerido']" formControlName="amountAttendingEventAdults" type="number" class="form-control">
+                    <input validacion [validaciones]="['requerido']" formControlName="amountAttendingEventAdults" type="number"
+                        class="form-control">
                     <span class="help-block">adultos</span>
                 </div>
             </div>
@@ -59,10 +62,15 @@
                 </div>
                 <div class="col-md-8 ">
                     <div class="input-group">
-                        <input placeholder="03/26/1998, 1:56 PM" formControlName="dateStart" [owlDateTimeFilter]="myFilter" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2"
-                            class="form-control">
-                        <owl-date-time   #dt2></owl-date-time>
-                        <span [owlDateTimeTrigger]="dt2" class="input-group-addon">
+                        <input formControlName="dateStart" placeholder="03/26/1998, 1:00 PM" [owlDateTimeFilter]="myFilter"
+                            [owlDateTimeTrigger]="dt2"  [owlDateTime]="dt2" class="form-control">
+                        <owl-date-time 
+                        panelClass="size"
+                        backdropClass="size"
+                        hour12Timer="true"
+                        pickerMode="dialog" #dt2></owl-date-time>
+                        <span [owlDateTimeTrigger]="dt2"
+                         class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </span>
 
@@ -77,8 +85,13 @@
                 </div>
                 <div class="col-md-8 ">
                     <div class="input-group">
-                        <input formControlName="dateFinish" type="datetime-local" class="form-control">
-                        <span class="input-group-addon">
+                        <input formControlName="dateFinish" placeholder="04/26/1998, 5:00 PM" [owlDateTimeFilter]="myFilter"
+                            [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3" class="form-control">
+                        <owl-date-time
+                        backdropClass="size"
+                        panelClass="size"
+                        pickerMode="dialog" hour12Timer="true" #dt3></owl-date-time>
+                        <span [owlDateTimeTrigger]="dt3" class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </span>
                     </div>

@@ -6,12 +6,22 @@ import { EventTypeModel } from '../../model/event-type-model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HeadquarterFilterModel } from '../../model/headquarter-filter-model';
 import { HeaderService } from '../../services/header.service';
+import { OwlDateTimeIntl, OWL_DATE_TIME_LOCALE, DateTimeAdapter } from 'ng-pick-datetime';
+import { CalendarPicker } from 'src/app/shared/calendar-picker';
+import { NativeDateTimeAdapter } from 'ng-pick-datetime/date-time/adapter/native-date-time-adapter.class';
+import { Platform } from '@angular/cdk/platform';
 
 @Component({
   selector: 'app-filtro-sede',
   templateUrl: `./filtro-sede.component.html`,
-  styleUrls: [`./filtro-sede.component.css`]
+  styleUrls: [`./filtro-sede.component.css`],
+  providers : [
+    {provide: OWL_DATE_TIME_LOCALE, useValue: 'co'},
+    {provide: DateTimeAdapter, useClass: NativeDateTimeAdapter, deps: [OWL_DATE_TIME_LOCALE, Platform]},
+    {provide: OwlDateTimeIntl, useClass: CalendarPicker}
+    ]
 })
+
 export class FiltroSedeComponent implements OnInit {
   public eventsTypes: EventTypeModel[] = []
   public formulario: FormGroup;
