@@ -18,11 +18,16 @@ export class HeadquarterListComponent implements OnInit {
   }
 
   getHeadquarterByExperence() {
+<<<<<<< HEAD
     this.eventosService.getHeadquarterByExperence(this.eventosService.experience.eventTypeId,1).subscribe(response => {
+=======
+    this.eventosService.getHeadquarterByExperence().subscribe(response => {
+>>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
       console.log(response)
       Object.assign(this.headquarters, response);
     });
   }
+<<<<<<< HEAD
   selectHeadquarter(headquarter : HeadquarteModel){
     let tempHeadquarte : HeadquarteModel = new HeadquarteModel();
     Object.assign(tempHeadquarte, headquarter)
@@ -31,4 +36,7 @@ export class HeadquarterListComponent implements OnInit {
     debugger
 
   }
+=======
+
+>>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
 }

@@ -1,5 +1,6 @@
 <div class="col-md-6 col-md-offset-3">
     <form [formGroup]="formulario" (ngSubmit)="submit()" class="form-horizontal">
+<<<<<<< HEAD
             <div class="row">
                     <div class="form-group">
                         <div class="col-md-4">
@@ -11,14 +12,21 @@
                     </div>
                 </div>
         
+=======
+>>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
         <div class="row">
             <div class="form-group">
                 <div class="col-md-4">
                     <label class="control-label" for="">Tipo evento</label>
                 </div>
                 <div class="col-md-8">
+<<<<<<< HEAD
                     <select validacion [validaciones]="['requerido']" formControlName="eventTypeId"  (ngModelChange)="selectTypeEvent($event)" class="form-control">
                         <option [value]="null">Seleccione</option>
+=======
+                    <select  formControlName="eventTypeId"  class="form-control">
+                        <option [value]="">Seleccione</option>
+>>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
                         <option *ngFor="let eventType of eventsTypes" [value]="eventType.id">{{eventType.name}}</option>
                     </select>
                 </div>
@@ -30,15 +38,24 @@
                     <label class="control-label" for="">Numero asistentes</label>
                 </div>
                 <div class="col-md-4">
+<<<<<<< HEAD
                     <input validacion [validaciones]="['requerido']" formControlName="amountAttendingEventChildren" type="number" class="form-control">
                     <span class="help-block">niños</span>
                 </div>
                 <div class="col-md-4">
                     <input validacion [validaciones]="['requerido']" formControlName="amountAttendingEventAdults" type="number" class="form-control">
+=======
+                    <input formControlName="cantidadAsistentesNiños" type="number" class="form-control">
+                    <span class="help-block">niños</span>
+                </div>
+                <div class="col-md-4">
+                    <input formControlName="cantidadAsistentesAdultos" type="number" class="form-control">
+>>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
                     <span class="help-block">adultos</span>
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
 
         <div class="row">
             <div class="form-group">
@@ -52,6 +69,8 @@
                 </div>
             </div>
         </div>
+=======
+>>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
         <div class="row">
             <div class="form-group">
                 <div class="col-md-4">
@@ -59,6 +78,7 @@
                 </div>
                 <div class="col-md-8 ">
                     <div class="input-group">
+<<<<<<< HEAD
                         <input placeholder="03/26/1998, 1:56 PM" formControlName="dateStart" [owlDateTimeFilter]="myFilter" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2"
                             class="form-control">
                         <owl-date-time   #dt2></owl-date-time>
@@ -66,6 +86,12 @@
                             <i class="fa fa-calendar"></i>
                         </span>
 
+=======
+                        <input formControlName="fechaInicio" type="datetime-local" class="form-control">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+>>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
                     </div>
                 </div>
             </div>
@@ -77,7 +103,11 @@
                 </div>
                 <div class="col-md-8 ">
                     <div class="input-group">
+<<<<<<< HEAD
                         <input formControlName="dateFinish" type="datetime-local" class="form-control">
+=======
+                        <input formControlName="fechaFin" type="datetime-local" class="form-control">
+>>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
                         <span class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </span>

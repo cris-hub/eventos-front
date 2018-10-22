@@ -7,6 +7,10 @@
     border-radius: 5px;    
     
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
 .divHotel div.infoHotel{
     padding: 20px; 
     box-sizing: border-box;
@@ -53,4 +57,8 @@
     .divHotel div.tabHotels{
         float: left;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c

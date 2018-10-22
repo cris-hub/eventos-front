@@ -31,9 +31,12 @@ import { ReservationDataCompanyComponent } from './components/reservation/reserv
 import { ReservationSummaryComponent } from './components/reservation/reservation-summary/reservation-summary.component';
 import { SharedModule } from './shared/shared.module';
 import { ConfirmationReservationComponent } from './components/confirmation/confirmation-reservation/confirmation-reservation.component';
+<<<<<<< HEAD
 import { HeaderService } from './services/header.service';
 import { ValidacionDirective } from './directivas/validacion/validacion.directive';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+=======
+>>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +54,10 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
     ReservationDataCompanyComponent,
     ReservationSummaryComponent,
     ConfirmationReservationComponent,
+<<<<<<< HEAD
     ValidacionDirective
+=======
+>>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
 
   ],
   imports: [
@@ -67,6 +73,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     NgxGalleryModule,
+<<<<<<< HEAD
     OwlDateTimeModule, 
     OwlNativeDateTimeModule,
     SharedModule.forRoot()
@@ -74,6 +81,13 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
   ],exports : [HeadquarteDetailsComponent,ValidacionDirective],
   providers: [EventosService,HeaderService],
+=======
+    SharedModule.forRoot()
+
+
+  ],
+  providers: [EventosService],
+>>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
   bootstrap: [AppComponent],
   entryComponents: [CourseDialogComponent]
 

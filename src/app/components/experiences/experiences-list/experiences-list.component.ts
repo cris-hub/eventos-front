@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ExperienceModel } from '../../../model/experience-model';
 import { EventosService } from '../../../services/eventos.service';
+<<<<<<< HEAD
 import { HeaderService } from 'src/app/services/header.service';
+=======
+>>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
 
 @Component({
   selector: 'app-experiences-list',
@@ -10,6 +13,7 @@ import { HeaderService } from 'src/app/services/header.service';
 
 })
 export class ExperiencesListComponent implements OnInit {
+<<<<<<< HEAD
   public experiences: ExperienceModel[]
 
   constructor(
@@ -19,6 +23,11 @@ export class ExperiencesListComponent implements OnInit {
   ) {
     headerService.title = 'Experiencias'
    }
+=======
+ public experiences : ExperienceModel[]
+   
+  constructor(private eventosService : EventosService) { }
+>>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
 
   ngOnInit() {
     this.eventosService.getExperiencias().subscribe(res => {
@@ -26,6 +35,7 @@ export class ExperiencesListComponent implements OnInit {
     });
   }
 
+<<<<<<< HEAD
   selectExperience(experence : ExperienceModel) {
     let tempExperience : ExperienceModel = new ExperienceModel();
     Object.assign(tempExperience,experence)
@@ -35,4 +45,6 @@ export class ExperiencesListComponent implements OnInit {
   }
 
 
+=======
+>>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
 }
