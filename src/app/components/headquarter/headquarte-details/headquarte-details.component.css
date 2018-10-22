@@ -1,11 +1,17 @@
 .img-contet {
     padding-left: 0%;
 }
+.padding {
+padding-bottom: 25px
+}
 .divHotel{
     background: #FFFFFF;
     box-shadow: 3px 3px 7px 0px #d3d3d3;
     border-radius: 5px;    
     
+}
+.seleccionada {
+    box-shadow: 6px 6px 14px 0px #d3d3d3;
 }
 .divHotel div.infoHotel{
     padding: 20px; 
@@ -35,7 +41,7 @@
     margin-top: 30px;    
 }
 .divHotel div.tabHotels > div{
-    padding: 0 20px;
+    padding: 20px;
 }
 
 @media (max-width: 640px) {

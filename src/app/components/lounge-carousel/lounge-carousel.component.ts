@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA } from '@angular/material';
 import { LoungeModel } from '../../model/lounge-model';
+import { EventosService } from 'src/app/services/eventos.service';
 
 @Component({
   selector: 'app-lounge-carousel',
@@ -10,22 +11,25 @@ import { LoungeModel } from '../../model/lounge-model';
 export class LoungeCarouselComponent {
   @Input() images: any;
   @Input() lounge: LoungeModel;
-  constructor(private dialog: MatDialog) {}
-  
-  
+  constructor(
+    private dialog: MatDialog,
+    public eventosServie: EventosService
+  ) { }
+
+
   /**
    * funcion para abrir las imagenes de las habitaciones
    * @param img (string) - URL de la imagen
    */
-  openDialog(img:string): void {
-      const dialogConfig = new MatDialogConfig();
-      dialogConfig.autoFocus = true;
-      dialogConfig.height = 'auto';
-      dialogConfig.width = 'auto';
-      dialogConfig.data = {
-          img: img
-      };
-      this.dialog.open(CourseDialogComponent, dialogConfig);
+  openDialog(img: string): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.height = 'auto';
+    dialogConfig.width = 'auto';
+    dialogConfig.data = {
+      img: img
+    };
+    this.dialog.open(CourseDialogComponent, dialogConfig);
   }
 }
 
@@ -39,6 +43,6 @@ export class LoungeCarouselComponent {
 export class CourseDialogComponent {
   public fullImage: string = '';
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
-      this.fullImage = data.img;
+    this.fullImage = data.img;
   }
 }

@@ -31,7 +31,7 @@
 
 </div>
 
-<div *ngIf="eventosService.reservation.headquarte.id == headquarter.id" class="col-md-12 collapse tabHotels"
+<div *ngIf="eventosService.reservation.headquarte.id == headquarter.id" class="col-md-12 collapse tabHotels padding"
     aria-labelledby="headingOne" role="tabpanel" [attr.id]="'lounge'+headquarter.id" [attr.data-parent]="'#tab'">
     <div *ngIf="lounge.length>0">
         <hr>
@@ -39,7 +39,7 @@
             <h4 class="text-center">Salones</h4>
             <div *ngFor="let room of lounge;let i = index">
                 <div class="col-md-3">
-                    <app-lounge-carousel data-toggle="collapse" (click)="selectLounge(room)" aria-expanded="false"
+                    <app-lounge-carousel data-toggle="collapse"  (click)="selectLounge(room)" aria-expanded="false"
                         [attr.data-target]="'#room'+room.id+'-'+headquarter.id+'-'+i" [images]="room.images" [lounge]="room"
                         [attr.aria-controls]="'room'+room.id+'-'+headquarter.id+'-'+i"></app-lounge-carousel>
                 </div>
@@ -54,7 +54,5 @@
 
             </app-lounge-tab-info>
         </div>
-
-
     </div>
 </div>

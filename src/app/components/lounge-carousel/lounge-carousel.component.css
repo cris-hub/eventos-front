@@ -13,3 +13,7 @@
     box-shadow: 3px 3px 7px 0px #d3d3d3;
     border-radius: 5px;    
 }
+
+.seleccionada {
+    box-shadow: 6px 6px 14px 0px #a5cbf7;
+}

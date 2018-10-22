@@ -1,4 +1,4 @@
-<div class="divHotel">
+<div [ngClass]=" { 'seleccionada' : eventosServie.reservation.lounge.id == lounge.id}" class="divHotel">
     <carousel>
         <slide *ngFor="let image of images">
             <img [src]="image.src" alt="{{image.alt}}" style="width: 100%; height: auto; " />
