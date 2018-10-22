@@ -34,6 +34,10 @@ export class ReservationSummaryComponent implements OnInit {
 
   ngOnInit() {
     debugger
+    if (!this.eventosService.reservation.company.NIT) {
+    this.router.navigate([`/experiencias`])
+      
+    }
     Object.assign(this.reservation, this.eventosService.reservation);
     Object.assign(this.company, this.eventosService.company);
     Object.assign(this.headquearterFilter, this.eventosService.headquearterFilter);
