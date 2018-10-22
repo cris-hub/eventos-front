@@ -1,11 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-<<<<<<< HEAD
 @import "~ng-pick-datetime/assets/style/picker.min.css";
-=======
-
->>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
 body{
     background: #F5F5F5 none no-repeat scroll 0 0;
     color: #202020 !important;    

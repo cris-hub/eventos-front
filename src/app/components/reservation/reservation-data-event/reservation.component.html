@@ -51,7 +51,7 @@
                                 <input id="hasIllumination" formControlName="hasIllumination" type="checkbox">
                             </div>
                             <div class="col-md-3">
-                                <label  class="" for="hasIllumination">Iluminación</label>
+                                <label class="" for="hasIllumination">Iluminación</label>
                             </div>
                             <div class="col-md-1">
                                 <input id="hasProfessionalSound" formControlName="hasProfessionalSound" type="checkbox">
@@ -84,7 +84,7 @@
                                 <label class="" for="hasSpeaker">Conferencista</label>
                             </div>
                             <div class="col-md-1">
-                                <input id="hasArtPresentations" formControlName="hasArtPresentations"  type="checkbox">
+                                <input id="hasArtPresentations" formControlName="hasArtPresentations" type="checkbox">
                             </div>
                             <div class="col-md-3">
                                 <label class="" for="hasArtPresentations">Presentaciones artisticas</label>
@@ -102,7 +102,8 @@
                                 <label class="" for="hasOthers">Otros</label>
                             </div>
                             <div class="col-md-12">
-                                <textarea formControlName="Others" *ngIf="formulario.get('hasOthers').value" placeholder="Otros servicios adicionales que le gustaria solicitar" class="col-md-12"></textarea>
+                                <textarea formControlName="Others" *ngIf="formulario.get('hasOthers').value"
+                                    placeholder="Otros servicios adicionales que le gustaria solicitar" class="col-md-12"></textarea>
                             </div>
                         </div>
                     </div>
@@ -113,10 +114,10 @@
     </form>
     <div class="row">
         <div class="col-md-9 col-md-offset-4">
-            <button (click)="goBack()" class="btn btn-default-colsubsidio col-md-offset-4 col-md-2">
+            <button (click)="goBack()" class="btn btn-default-colsubsidio col-md-offset-1 col-md-5">
                 Atras
             </button>
-            <button routerLink="datos-empresa" class="btn  btn-default-colsubsidio col-md-2">
+            <button routerLink="datos-empresa" class="btn  btn-primary-colsubsidio  col-md-5">
                 Siguiente
             </button>
         </div>

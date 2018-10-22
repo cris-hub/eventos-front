@@ -26,16 +26,10 @@
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
-<<<<<<< HEAD
     "ng-connection-service": "^1.0.4",
     "ng-pick-datetime": "^6.0.16",
     "ngx-bootstrap": "^3.0.1",
     "ngx-gallery": "^5.6.1",
-=======
-    "ngx-gallery": "^5.6.1",
-    "ng-connection-service": "^1.0.4",
-    "ngx-bootstrap": "^3.0.1",
->>>>>>> df07b74232c2b67ce2f6c69e0ccafe945a638d8c
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
