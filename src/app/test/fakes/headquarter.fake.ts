@@ -9,73 +9,13 @@ export const HEADQUEARTERFAKE = <HeadquarteModel[]>[
             {
                 id: 1,
             }
-        ], images: [
+        ], headquearterImagesModel: [
             {
-                alt: 'sedes colsubsidio',
-                src: '../../../assets/images/club_1.jpeg'
-            },
-            {
-                alt: 'sedes colsubsidio',
-                src: '../../../assets/images/club_1.jpeg'
-            },
-        ]
-    },
-    {
-        id: 2,
-        name: 'cubo',
-        description: 'multiples salones de mucha diversion',
-        experences: [
-            {
-                id: 1,
+                imagen : {
+                    alt: 'sedes colsubsidio',
+                    src: '../../../assets/images/club_1.jpeg'
+                }
             }
-        ], images: [
-            {
-                alt: 'sedes colsubsidio',
-                src: '../../../assets/images/club_1.jpeg'
-            },
-            {
-                alt: 'sedes colsubsidio',
-                src: '../../../assets/images/club_1.jpeg'
-            },
         ]
-    },
-    {
-        id: 3,
-        name: 'cubo',
-        description: 'multiples salones de mucha diversion',
-        experences: [
-            {
-                id: 1,
-            }
-        ], images: [
-            {
-                alt: 'sedes colsubsidio',
-                src: '../../../assets/images/club_1.jpeg'
-            },
-            {
-                alt: 'sedes colsubsidio',
-                src: '../../../assets/images/club_1.jpeg'
-            },
-        ]
-    },
-    {
-        id: 4,
-        name: 'cubo',
-        description: 'multiples salones de mucha diversion',
-        experences: [
-            {
-                id: 1,
-            }
-        ], images: [
-            {
-                alt: 'sedes colsubsidio',
-                src: '../../../assets/images/club_1.jpeg'
-            },
-            {
-                alt: 'sedes colsubsidio',
-                src: '../../../assets/images/club_1.jpeg'
-            },
-        ]
-    },
-]
+    },]
 

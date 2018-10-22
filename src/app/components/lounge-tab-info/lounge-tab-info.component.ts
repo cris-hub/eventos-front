@@ -40,7 +40,7 @@ export class LoungeTabInfoComponent implements OnInit {
         console.log(this.lounge)
         let tempLouge: LoungeModel = new LoungeModel();
         Object.assign(tempLouge, lounge)
-        delete tempLouge.images
+        delete tempLouge.loungeImagesModel
         Object.assign(this.eventosService.reservation.lounge, tempLouge)
         debugger
         console.log('experiencia/' + this.experiencia.id + '/sede/' + this.lounge.headquarterId + '/' + this.lounge.id);
@@ -61,12 +61,12 @@ export class LoungeTabInfoComponent implements OnInit {
         if (!this.lounge) {
             return
         }
-        if (this.lounge.images.length > 0) {
-            this.lounge.images.forEach(function (value) {
+        if (this.lounge.loungeImagesModel.length > 0) {
+            this.lounge.loungeImagesModel.forEach(function (value) {
                 let json = {
-                    "small": value.src,
-                    "medium": value.src,
-                    "big": value.src
+                    "small": value.imagen.src,
+                    "medium": value.imagen.src,
+                    "big": value.imagen.src
                 };
                 arrGallery.push(json);
                 console.log(arrGallery)

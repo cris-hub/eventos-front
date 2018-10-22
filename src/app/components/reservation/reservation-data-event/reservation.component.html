@@ -2,7 +2,7 @@
     <form [formGroup]="formulario" (ngSubmit)="submit()" class="form-horizontal">
         <div class="row">
             <div class="col-md-4 border-right">
-                <app-lounge-carousel [images]="lounge.images" [lounge]="lounge"></app-lounge-carousel>
+                <app-lounge-carousel [images]="lounge.loungeImagesModel" [lounge]="lounge"></app-lounge-carousel>
             </div>
             <div class="col-md-7 col-md-offset-1">
                 <div class="row">
@@ -53,12 +53,7 @@
                             <div class="col-md-3">
                                 <label class="" for="hasIllumination">Iluminación</label>
                             </div>
-                            <div class="col-md-1">
-                                <input id="hasProfessionalSound" formControlName="hasProfessionalSound" type="checkbox">
-                            </div>
-                            <div class="col-md-3">
-                                <label class="" for="hasProfessionalSound">Sonido profesional</label>
-                            </div>
+                         
                             <div class="col-md-1">
                                 <input id="hasPallet" formControlName="hasPallet" type="checkbox">
                             </div>
@@ -86,14 +81,23 @@
                             <div class="col-md-1">
                                 <input id="hasArtPresentations" formControlName="hasArtPresentations" type="checkbox">
                             </div>
+                      
                             <div class="col-md-3">
-                                <label class="" for="hasArtPresentations">Presentaciones artisticas</label>
+                                <label class="" for="hasTransport">Transporte</label>
                             </div>
                             <div class="col-md-1">
                                 <input id="hasTransport" formControlName="hasTransport" type="checkbox">
                             </div>
+                            
                             <div class="col-md-3">
-                                <label class="" for="hasTransport">Trasnsporte</label>
+                                <label class="" for="hasArtPresentations">Presentaciones artisticas</label>
+                            </div>
+                      
+                            <div class="col-md-1">
+                                <input id="hasProfessionalSound" formControlName="hasProfessionalSound" type="checkbox">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="" for="hasProfessionalSound">Sonido profesional</label>
                             </div>
                             <div class="col-md-1">
                                 <input id="hasOthers" formControlName="hasOthers" type="checkbox">

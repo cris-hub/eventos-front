@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ExperienceModel } from '../../model/experience-model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, Data } from '@angular/router';
 import { EventosService } from '../../services/eventos.service';
 import { EventTypeModel } from '../../model/event-type-model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HeadquarterFilterModel } from '../../model/headquarter-filter-model';
 import { HeaderService } from '../../services/header.service';
 import { OwlDateTimeIntl, OWL_DATE_TIME_LOCALE, DateTimeAdapter } from 'ng-pick-datetime';
-import { CalendarPicker } from 'src/app/shared/calendar-picker';
+import { CalendarPicker } from '../../shared/calendar-picker';
 import { NativeDateTimeAdapter } from 'ng-pick-datetime/date-time/adapter/native-date-time-adapter.class';
 import { Platform } from '@angular/cdk/platform';
 
@@ -54,7 +54,32 @@ export class FiltroSedeComponent implements OnInit {
       dateFinish: [this.eventosService.headquearterFilter.dateFinish],
       cityId: [this.eventosService.headquearterFilter.cityId],
     });
+
+    this.ValidacionesFechas();
+
+
+
+
   }
+  private ValidacionesFechas() {
+    this.formulario.get('dateStart').valueChanges.subscribe(valorQueCambio => {
+      let fechaActual = Date.now();
+      if (valorQueCambio < fechaActual) {
+        this.formulario.get('dateStart').setErrors({ error: 'La fecha debe ser mayor a la fecha actual ' });
+      }
+    });
+    this.formulario.get('dateFinish').valueChanges.subscribe(valorQueCambio => {
+      if (this.formulario.get('dateStart').value > this.formulario.get('dateFinish').value) {
+        this.formulario.get('dateFinish').setErrors({ error: ' Esta fecha debe ser mayor a la fecha de inicio del evento' });
+      }
+    });
+    this.formulario.get('dateStart').valueChanges.subscribe(valorQueCambio => {
+      if (this.formulario.get('dateStart').value < this.formulario.get('dateFinish').value) {
+        this.formulario.get('dateFinish').setErrors({ error: ' Esta fecha debe ser mayor a la fecha de inicio del evento' });
+      }
+    });
+  }
+
   obtenerParamtrosRuta() {
     this.eventosService.experience.id = parseInt(this.activeRoute.snapshot.paramMap.get('experiencia'))
   }

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { LoungeModel } from '../../../model/lounge-model';
 import { LOUNGEFAKE } from '../../../test/fakes/lounges.fake';
-import { EventosService } from 'src/app/services/eventos.service';
+import { EventosService } from '../../../services/eventos.service';
 import { Router } from '@angular/router';
-import { CompanyModel } from 'src/app/model/company-model';
-import { ReservationDataModel } from 'src/app/model/reservation-data-model';
-import { HeadquarterFilterModel } from 'src/app/model/headquarter-filter-model';
+import { CompanyModel } from '../../../model/company-model';
+import { ReservationDataModel } from '../../../model/reservation-data-model';
+import { HeadquarterFilterModel } from '../../../model/headquarter-filter-model';
 
 @Component({
   selector: 'app-confirmation-reservation',

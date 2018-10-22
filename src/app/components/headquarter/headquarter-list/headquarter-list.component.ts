@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HeadquarteModel } from '../../../model/headquarte-model';
 import { EventosService } from '../../../services/eventos.service';
-import { HeaderService } from 'src/app/services/header.service';
+import { HeaderService } from '../../../services/header.service';
 
 @Component({
   selector: 'app-headquarter-list',
@@ -30,7 +30,7 @@ export class HeadquarterListComponent implements OnInit {
   selectHeadquarter(headquarter: HeadquarteModel) {
     let tempHeadquarte: HeadquarteModel = new HeadquarteModel();
     Object.assign(tempHeadquarte, headquarter)
-    delete tempHeadquarte.images;
+    delete tempHeadquarte.headquearterImagesModel;
     Object.assign(this.eventosService.reservation.headquarte, tempHeadquarte)
     debugger
 

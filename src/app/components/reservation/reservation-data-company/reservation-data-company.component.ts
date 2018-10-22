@@ -6,8 +6,8 @@ import { LOUNGEFAKE } from '../../../test/fakes/lounges.fake';
 import { Location } from '@angular/common';
 import { ExperienceModel } from '../../../model/experience-model';
 import { EventosService } from '../../../services/eventos.service';
-import { EXPERENCESFAKES } from 'src/app/test/fakes/experences.fake';
-import { HeaderService } from 'src/app/services/header.service';
+import { EXPERENCESFAKES } from '../../../test/fakes/experences.fake';
+import { HeaderService } from '../../../services/header.service';
 
 @Component({
   selector: 'app-reservation-data-company',

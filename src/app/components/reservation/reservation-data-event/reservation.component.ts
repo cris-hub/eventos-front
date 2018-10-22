@@ -5,7 +5,7 @@ import { LoungeModel } from '../../../model/lounge-model';
 import { LOUNGEFAKE } from '../../../test/fakes/lounges.fake';
 import { Location } from '@angular/common';
 import { EventosService } from '../../../services/eventos.service';
-import { HeaderService } from 'src/app/services/header.service';
+import { HeaderService } from '../../../services/header.service';
 
 @Component({
   selector: 'app-reservation',

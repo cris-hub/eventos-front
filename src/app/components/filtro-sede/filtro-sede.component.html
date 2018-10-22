@@ -30,16 +30,18 @@
                 <div class="col-md-4">
                     <label class="control-label" for="">Numero asistentes</label>
                 </div>
-                <div class="col-md-4">
-                    <input validacion [validaciones]="['requerido']" formControlName="amountAttendingEventChildren"
-                        type="number" class="form-control">
-                    <span class="help-block">niños</span>
-                </div>
+
                 <div class="col-md-4">
                     <input validacion [validaciones]="['requerido']" formControlName="amountAttendingEventAdults" type="number"
                         class="form-control">
                     <span class="help-block">adultos</span>
                 </div>
+                <div class="col-md-4">
+                    <input validacion  formControlName="amountAttendingEventChildren"
+                        type="number" class="form-control">
+                    <span class="help-block">niños</span>
+                </div>
+              
             </div>
         </div>
 
@@ -73,8 +75,14 @@
                          class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </span>
-
+        
                     </div>
+                    <span class="text-danger validaciones" *ngIf="formulario.get('dateStart').invalid && formulario.get('dateStart').errors">
+                        {{
+                            formulario.get('dateStart').errors['error']
+                        }}
+                    </span>
+
                 </div>
             </div>
         </div>
@@ -94,7 +102,11 @@
                         <span [owlDateTimeTrigger]="dt3" class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </span>
+                     
                     </div>
+                    <span class="text-danger validaciones" *ngIf="formulario.get('dateFinish').invalid && formulario.get('dateFinish').errors">
+                       {{formulario.get('dateFinish').errors['error']}} 
+                    </span>
                 </div>
             </div>
         </div>

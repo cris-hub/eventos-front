@@ -3,6 +3,8 @@ import { EventTypeModel } from "./event-type-model";
 
 export class ExperienceModel {
   id : number
+  
+  imagenId : number
   imagen:ImageModel;
   name: string;
   description: string;

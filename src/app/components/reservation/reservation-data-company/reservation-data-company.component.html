@@ -3,7 +3,7 @@
     <div class="col-md-10 col-md-offset-1">
         <div class="row">
             <div class="col-md-4 border-right">
-                <app-lounge-carousel [images]="lounge.images" [lounge]="lounge"></app-lounge-carousel>
+                <app-lounge-carousel [images]="lounge.loungeImagesModel" [lounge]="lounge"></app-lounge-carousel>
             </div>
             <div class="col-md-8">
                 <div class="col-md-10 col-md-offset-1">
@@ -17,7 +17,9 @@
                     <div class="row">
                         <div class="form-group">
                             <div class="col-md-4">
-                                <label class="control-label" for="">Nombre empresa</label>
+                                <label class="control-label" for="">Nombre empresa 
+                                    <span class="text-danger validaciones"> *</span>
+                                </label>
                             </div>
                             <div class="col-md-8 ">
                                 <input type="text" formControlName="nameCompany" validacion [validaciones]="['requerido']"
@@ -29,11 +31,18 @@
                     <div class="row">
                         <div class="form-group">
                             <div class="col-md-4">
-                                <label class="control-label" for="">NIT</label>
+                                <label class="control-label" for="">NIT
+                                    <span class="text-danger validaciones"> *</span>
+                                </label>
                             </div>
-                            <div class="col-md-8 ">
-                                <input type="text" formControlName="NIT" validacion [validaciones]="['requerido']"
+                            <div class="col-md-4 ">
+                                <input type="number" formControlName="NIT" validacion [validaciones]="['requerido','numerico']"
                                     class="form-control">
+                            </div>
+                            <div class="col-md-1 no-margin-no-padding text-center">-</div>
+                            <div class="col-md-3">
+                                <input type="number" placeholder="" formControlName="numberVerification" validacion [validaciones]="['requerido','numerico']"
+                                class="form-control">
                             </div>
                         </div>
                     </div>
@@ -42,29 +51,25 @@
                     <div class="row">
                         <div class="form-group">
                             <div class="col-md-4">
-                                <label class="control-label" for="">Correo</label>
+                                <label class="control-label" for="">Correo
+                                    <span class="text-danger validaciones"> *</span>
+
+                                </label>
                             </div>
                             <div class="col-md-8 ">
-                                <input type="email" formControlName="dateStart" validacion [validaciones]="['requerido','correo ']"
+                                <input type="email" formControlName="dateStart" validacion [validaciones]="['requerido','correo']"
                                     class="form-control">
                             </div>
                         </div>
                     </div>
+              
                     <div class="row">
                         <div class="form-group">
                             <div class="col-md-4">
-                                <label class="control-label" for="">Numero verificacion</label>
-                            </div>
-                            <div class="col-md-8 ">
-                                <input type="text" formControlName="numberVerification" validacion [validaciones]="['requerido']"
-                                    class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <div class="col-md-4">
-                                <label class="control-label" for="">Responsable evento</label>
+                                <label class="control-label" for="">Responsable evento
+                                    <span class="text-danger validaciones"> *</span>
+
+                                </label>
                             </div>
                             <div class="col-md-8 ">
                                 <input type="text" formControlName="responsable" validacion [validaciones]="['requerido']"
@@ -76,7 +81,10 @@
                     <div class="row">
                         <div class="form-group">
                             <div class="col-md-4">
-                                <label class="control-label" for="">Teléfono fijo</label>
+                                <label class="control-label" for="">Teléfono fijo
+                                    <span class="text-danger validaciones"> *</span>
+
+                                </label>
                             </div>
                             <div class="col-md-8 ">
                                 <div class="col-md-7 no-margin-no-padding">
@@ -95,7 +103,10 @@
                     <div class="row">
                         <div class="form-group">
                             <div class="col-md-4">
-                                <label class="control-label" for="">Teléfono movil</label>
+                                <label class="control-label" for="">Teléfono movil
+                                    <span class="text-danger validaciones"> *</span>
+
+                                </label>
                             </div>
                             <div class="col-md-8 ">
                                 <input type="text" formControlName="mobilePhone" validacion [validaciones]="['requerido']"

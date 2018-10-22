@@ -9,7 +9,7 @@ import { HEADQUEARTERFAKE } from '../test/fakes/headquarter.fake';
 import { InternetConnectionService } from './internet-connection.service';
 import { ReservationDataModel } from '../model/reservation-data-model';
 import { environment } from '../../environments/environment';
-import { HttpClient } from '../../../node_modules/@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { HeadquarterFilterModel } from '../model/headquarter-filter-model';
 import { CompanyModel } from '../model/company-model';

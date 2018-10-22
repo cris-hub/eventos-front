@@ -4,7 +4,7 @@
     <!-- CARRUSEL DE IMAGENES DE LOS HOTELES -->
     <div class="col-md-3 img-contet">
         <div class="galleryHotel">
-            <carousel-gallery [images]="headquarter.images"></carousel-gallery>
+            <carousel-gallery [images]="images"></carousel-gallery>
         </div>
     </div>
 
@@ -33,20 +33,20 @@
 
 <div *ngIf="eventosService.reservation.headquarte.id == headquarter.id" class="col-md-12 collapse tabHotels padding"
     aria-labelledby="headingOne" role="tabpanel" [attr.id]="'lounge'+headquarter.id" [attr.data-parent]="'#tab'">
-    <div *ngIf="lounge.length>0">
+    <div *ngIf="lounges.length>0">
         <hr>
         <div class="row">
             <h4 class="text-center">Salones</h4>
-            <div *ngFor="let room of lounge;let i = index">
+            <div *ngFor="let room of lounges;let i = index">
                 <div class="col-md-3">
                     <app-lounge-carousel data-toggle="collapse"  (click)="selectLounge(room)" aria-expanded="false"
-                        [attr.data-target]="'#room'+room.id+'-'+headquarter.id+'-'+i" [images]="room.images" [lounge]="room"
+                        [attr.data-target]="'#room'+room.id+'-'+headquarter.id+'-'+i" [images]="room.loungeImagesModel" [lounge]="room"
                         [attr.aria-controls]="'room'+room.id+'-'+headquarter.id+'-'+i"></app-lounge-carousel>
                 </div>
             </div>
         </div>
     </div>
-    <div *ngFor="let room of lounge;let i = index">
+    <div *ngFor="let room of lounges;let i = index">
         <div *ngIf="eventosService.reservation.lounge"> 
             <app-lounge-tab-info *ngIf=" eventosService.reservation.lounge.id == room.id" class="collapse tabHotels"
                 role="tabpanel" [attr.data-parent]="'#lounge'+headquarter.id" [attr.id]="'room'+room.id+'-'+headquarter.id+'-'+i"

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExperienceModel } from '../../../model/experience-model';
 import { EventosService } from '../../../services/eventos.service';
-import { HeaderService } from 'src/app/services/header.service';
+import { HeaderService } from '../../../services/header.service';
 
 @Component({
   selector: 'app-experiences-list',

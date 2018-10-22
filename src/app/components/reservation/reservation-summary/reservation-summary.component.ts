@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { LoungeModel } from '../../../model/lounge-model';
 import { LOUNGEFAKE } from '../../../test/fakes/lounges.fake';
-import { FormGroup, FormBuilder } from '../../../../../node_modules/@angular/forms';
-import { ActivatedRoute, Router } from '../../../../../node_modules/@angular/router';
-import { Location } from '../../../../../node_modules/@angular/common';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { ExperienceModel } from '../../../model/experience-model';
 import { EventosService } from '../../../services/eventos.service';
 import { ReservationDataModel } from '../../../model/reservation-data-model';
 import { HeadquarterFilterModel } from '../../../model/headquarter-filter-model';
-import { CompanyModel } from 'src/app/model/company-model';
+import { CompanyModel } from '../../../model/company-model';
 
 @Component({
   selector: 'app-reservation-summary',

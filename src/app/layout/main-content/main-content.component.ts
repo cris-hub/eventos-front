@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '../../../../node_modules/@angular/common';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-main-content',
