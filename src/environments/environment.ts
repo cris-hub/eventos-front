@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiAlliancesUrl: "http://localhost:8008/",
+  baseBackEnd: 'http://localhost:8008/',
+  baseManagerContent: 'http://localhost/GestorContenidos/web/index.php?r=',
 };
 
 /*

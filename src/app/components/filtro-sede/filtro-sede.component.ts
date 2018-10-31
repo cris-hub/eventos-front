@@ -53,6 +53,7 @@ export class FiltroSedeComponent implements OnInit {
       dateStart: [this.eventosService.headquearterFilter.dateStart],
       dateFinish: [this.eventosService.headquearterFilter.dateFinish],
       cityId: [this.eventosService.headquearterFilter.cityId],
+      capacity : [this.eventosService.headquearterFilter.amountAttendingEventChildren + this.eventosService.headquearterFilter.amountAttendingEventAdults ]
     });
 
     this.ValidacionesFechas();
@@ -101,8 +102,6 @@ export class FiltroSedeComponent implements OnInit {
   }
 
   selectTypeEvent(typeEvent){
-    console.log(typeEvent)
-    debugger
   }
 
   submit() {
@@ -110,9 +109,11 @@ export class FiltroSedeComponent implements OnInit {
     if (!this.formulario.valid) {
       return  
     }
+    this.formulario.get('capacity')
+    .setValue(this.formulario.get('amountAttendingEventChildren').value +this.formulario.get('amountAttendingEventAdults').value)
+
     Object.assign(this.eventosService.reservation,this.formulario.value)
     Object.assign(this.eventosService.headquearterFilter,this.formulario.value)
-
     this.router.navigate([`/experiencia/${this.eventosService.experience.id}/sedes`])
   }
 }

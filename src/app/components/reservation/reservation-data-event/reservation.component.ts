@@ -13,7 +13,7 @@ import { HeaderService } from '../../../services/header.service';
   styleUrls: ['reservation.component.css']
 })
 export class ReservationComponent implements OnInit {
-  private lounge: LoungeModel = LOUNGEFAKE[0]
+  private lounge: LoungeModel 
   public formulario: FormGroup;
 
   constructor(
@@ -25,11 +25,16 @@ export class ReservationComponent implements OnInit {
     private headerService : HeaderService
 
   ) { 
-    this.headerService.title = 'Reservar'
+    this.lounge  =this.eventosService.reservation.lounge
+    this.headerService.title = 'Reservar'\
+    debugger
+    
   }
 
   ngOnInit() {
     this.initFormulario();
+      this.lounge  =this.eventosService.reservation.lounge
+    
 
   }
   goBack() {

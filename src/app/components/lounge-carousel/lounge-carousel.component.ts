@@ -10,11 +10,13 @@ import { LoungeImagesModel } from '../../model/lougen-images-model';
   templateUrl: './lounge-carousel.component.html',
   styleUrls: ['./lounge-carousel.component.css']
 })
-export class LoungeCarouselComponent implements OnInit{
+export class LoungeCarouselComponent {
   ngOnInit(): void {
     debugger
-
+if (this.images) {
+  // code...
     this.loungeImages = this.images.map(c => c.imagen)
+}
   }
   @Input() public images: LoungeImagesModel[] = []
   @Input() public lounge: LoungeModel;

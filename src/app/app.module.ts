@@ -35,6 +35,9 @@ import { HeaderService } from './services/header.service';
 import { ValidacionDirective } from './directivas/validacion/validacion.directive';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { CalendarPicker } from './shared/calendar-picker';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './app.interceptor';
+import { AuthService } from './services/auth.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +77,16 @@ import { CalendarPicker } from './shared/calendar-picker';
 
 
   ],exports : [HeadquarteDetailsComponent,ValidacionDirective],
-  providers: [EventosService,HeaderService],
+  providers: [
+    EventosService,
+    HeaderService,
+    AuthService,
+    {
+        provide: HTTP_INTERCEPTORS,
+        useClass: TokenInterceptor,
+        multi: true
+    },
+  ],
   bootstrap: [AppComponent],
   entryComponents: [CourseDialogComponent]
 

@@ -9,7 +9,7 @@ export const HEADQUEARTERFAKE = <HeadquarteModel[]>[
             {
                 id: 1,
             }
-        ], headquearterImagesModel: [
+        ], images: [
             {
                 imagen : {
                     alt: 'sedes colsubsidio',

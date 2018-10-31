@@ -16,7 +16,8 @@ import { CompanyModel } from '../../../model/company-model';
   styleUrls: ['./reservation-summary.component.css']
 })
 export class ReservationSummaryComponent implements OnInit {
-  private lounge: LoungeModel = LOUNGEFAKE[0]
+  private lounge: LoungeModel 
+  
   public formulario: FormGroup;
   private experiencia: ExperienceModel = new ExperienceModel()
   public reservation: ReservationDataModel = new ReservationDataModel();
@@ -30,7 +31,8 @@ export class ReservationSummaryComponent implements OnInit {
     private formBuilder: FormBuilder,
     private location: Location,
     private eventosService: EventosService
-  ) { }
+  ) {
+   }
 
   ngOnInit() {
     debugger
@@ -38,6 +40,9 @@ export class ReservationSummaryComponent implements OnInit {
     this.router.navigate([`/experiencias`])
       
     }
+
+      this.lounge  =this.eventosService.reservation.lounge
+    
     Object.assign(this.reservation, this.eventosService.reservation);
     Object.assign(this.company, this.eventosService.company);
     Object.assign(this.headquearterFilter, this.eventosService.headquearterFilter);

@@ -9,7 +9,7 @@ import { HEADQUEARTERFAKE } from '../test/fakes/headquarter.fake';
 import { InternetConnectionService } from './internet-connection.service';
 import { ReservationDataModel } from '../model/reservation-data-model';
 import { environment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { HeadquarterFilterModel } from '../model/headquarter-filter-model';
 import { CompanyModel } from '../model/company-model';
@@ -19,7 +19,6 @@ import { LoungeModel } from '../model/lounge-model';
   providedIn: 'root'
 })
 export class EventosService {
-  private url: string;
   public experience: ExperienceModel = new ExperienceModel();
   public reservation: ReservationDataModel = new ReservationDataModel()
   public lounge : LoungeModel = new LoungeModel()
@@ -33,19 +32,18 @@ export class EventosService {
     private internetConnectionService: InternetConnectionService
   ) {
     this.getTiposEventos();
-    this.conectionConfig();
   }
 
 
-  private conectionConfig(): void {
-    this.url = environment.apiAlliancesUrl;
-  }
+
 
 
   public createReservation(nitComapny : string,reservation: ReservationDataModel):Observable<any> {
-    return this.http.post<any>(this.url + 'reserva', {nit: nitComapny, reserva: JSON.stringify(reservation)}).pipe(map(res => res));
+    return this.http.post<any>(
+      environment.baseBackEnd
+      + 'reserva', {nit: nitComapny, reserva: JSON.stringify(reservation)}).pipe(map(res => res));
   }
-  
+    
   public getExperienciaPorId(id: number): Observable<ExperienceModel> {
     let data = null
     console.log(this.internetConnectionService.isConnected)
@@ -64,24 +62,29 @@ export class EventosService {
 
 
   }
+
+  
   public getExperiencias(): Observable<ExperienceModel[]> {
-    let data = null
-    console.log(this.internetConnectionService.isConnected)
-    if (!this.internetConnectionService.isConnected) {
-      data = new Observable((observe) => {
-        observe.next(EXPERENCESFAKES)
-        observe.complete();
-      });
-      return data
-    }
-    data = new Observable((observe) => {
-      observe.next(EXPERENCESFAKES)
-      observe.complete();
-    });
-    return data
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+      return this.http.get<ExperienceModel[]>(
+        environment.baseManagerContent
+        +'recreacion/restexperences/getall-experences' ,{headers : headers}
+      );    
   }
 
+    public getlistloungebyheadquarterid(headquarterId:number): Observable<LoungeModel[]> {
+            let params =  'headquarterId='+headquarterId ;
+
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+      return this.http.post<LoungeModel[]>(
+        environment.baseManagerContent
+        +'recreacion/restlounge/getlistloungebyheadquarterid',params ,{headers : headers}
+      );    
+  }
+
+
   public getTiposEventos(): Observable<EventTypeModel[]> {
+     let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
     let data = null
     console.log(this.internetConnectionService.isConnected)
     if (!this.internetConnectionService.isConnected) {
@@ -91,13 +94,15 @@ export class EventosService {
       });
       return data
     }
-    data = new Observable((observe) => {
-      observe.next(EVENTTYPEFAKES)
-      observe.complete();
-    });
+    data = this.http.get<ExperienceModel[]>(
+        environment.baseManagerContent
+        +'recreacion/restexperences/getall-event-types' ,{headers : headers}
+      );  
     return data
   }
-  public getHeadquarterByExperence(eventType: number, capacity: number): Observable<HeadquarteModel[]> {
+  public getHeadquarterByExperence(experenceId: number, capacity: number): Observable<HeadquarteModel[]> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
     let data = null
     console.log(this.internetConnectionService.isConnected)
     if (!this.internetConnectionService.isConnected) {
@@ -107,10 +112,12 @@ export class EventosService {
       });
       return data
     }
-    data = new Observable((observe) => {
-      observe.next(HEADQUEARTERFAKE)
-      observe.complete();
-    });
+            let params =  'capacity='+capacity +'&experenceId=' + experenceId ;
+
+    data =  this.http.post<ExperienceModel[]>(
+        environment.baseManagerContent
+        +'recreacion/restheadquarter/getlistheadquarterbycapacityloungeandexperenceid',params ,{headers : headers}
+      );    
     return data
 
   }

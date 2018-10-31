@@ -9,7 +9,7 @@ export const LOUNGEFAKE = <LoungeModel[]>[
         capacity: 20,
         name: 'La faraona',
         description: 'numero 1',
-        loungeImagesModel: [
+        images: [
             {
                 imagen: {
                     alt: 'sedes colsubsidio',

@@ -12,21 +12,27 @@ import { ImageModel } from '../../../model/image-model';
 })
 export class HeadquarteDetailsComponent implements OnInit {
   @Input() public headquarter: HeadquarteModel = new HeadquarteModel();
-  public lounges: LoungeModel[] = LOUNGEFAKE
+  public lounges: LoungeModel[] = []
   public images : ImageModel []
   constructor(
     public eventosService : EventosService
   ) { }
 
   ngOnInit() {
-    this.images = this.headquarter.headquearterImagesModel.map(c => c.imagen)
-    this.lounges = LOUNGEFAKE;
+    this.images = this.headquarter.images.map(c => c.imagen)
+  }
+
+
+  searchLounges(headquarterId:number){
+    debugger
+this.eventosService.getlistloungebyheadquarterid(headquarterId).subscribe(response => {
+  this.lounges = response
+})
   }
   selectLounge(lounge : LoungeModel){
       console.log(this.lounges)
       let tempLouge: LoungeModel = new LoungeModel();
       Object.assign(tempLouge, lounge)
-      delete tempLouge.loungeImagesModel
       debugger
       Object.assign(this.eventosService.reservation.lounge, tempLouge)
   }

@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
-  apiAlliancesUrl: "http://localhost:8008/",
+  baseBackEnd: 'http://localhost:8008/',
+  baseManagerContent: 'http://localhost/GestorContenidos/web/index.php?r=',
 
 };

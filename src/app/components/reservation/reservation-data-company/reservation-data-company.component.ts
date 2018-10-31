@@ -15,9 +15,9 @@ import { HeaderService } from '../../../services/header.service';
   styleUrls: ['./reservation-data-company.component.css']
 })
 export class ReservationDataCompanyComponent implements OnInit {
-  private lounge: LoungeModel = LOUNGEFAKE[0]
+  private lounge: LoungeModel
   public formulario: FormGroup;
-  private experiencia: ExperienceModel = EXPERENCESFAKES[0]
+  private experiencia: ExperienceModel = this.eventosService.experience
   constructor(
     private activeRoute: ActivatedRoute,
     private router: Router,
@@ -27,11 +27,14 @@ export class ReservationDataCompanyComponent implements OnInit {
     private headerService : HeaderService
   ) {
     this.headerService.title = 'Reservar'
+    debugger
 
    }
 
   ngOnInit() {
+
     this.initFormulario();
+    this.lounge  =this.eventosService.reservation.lounge
 
   }
 
@@ -46,7 +49,7 @@ export class ReservationDataCompanyComponent implements OnInit {
     this.eventosService.company = this.formulario.value
     this.eventosService.reservation.company = this.formulario.value
 
-    this.router.navigate([`/experiencia/${this.experiencia.id}/sede/${this.lounge.headquarterId}/${this.lounge.id}/detalle-reserva`])
+    this.router.navigate([`/experiencia/${this.experiencia.id}/sede/${this.eventosService.reservation.headquarte.id}/${this.lounge.id}/detalle-reserva`])
   }
 
 

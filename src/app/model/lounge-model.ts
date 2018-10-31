@@ -5,7 +5,7 @@ import { LoungeImagesModel } from "./lougen-images-model";
 export class LoungeModel {
     id: number
     name: string
-    loungeImagesModel: LoungeImagesModel[]
+    images: LoungeImagesModel[]
     capacity : number
     description: string
     headquarterId: number

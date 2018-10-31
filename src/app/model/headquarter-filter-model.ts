@@ -7,7 +7,10 @@ export class HeadquarterFilterModel {
     public eventType: number
     public cityId : number
     constructor() {
+        this.amountAttendingEventAdults = 0
+        this.amountAttendingEventChildren = 0
         this.capacity = this.amountAttendingEventAdults + this.amountAttendingEventChildren
+
     }
 
 }

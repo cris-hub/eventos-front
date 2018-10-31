@@ -8,7 +8,7 @@ export class HeadquarteModel {
     name: string
     description: string
     experences : ExperienceModel[]
-    headquearterImagesModel: HeadquearterImagesModel[]
+    images: HeadquearterImagesModel[]
     lounges : LoungeModel[]
     loungesQueryParams : string
     constructor() {

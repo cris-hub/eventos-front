@@ -18,7 +18,7 @@
     <div class="accordion" id="tab" role="tablist" aria-multiselectable="true">
 
         <div class="col-md-3 showRooms" role="tab" id="headingOne">
-            <button class="btn" type="button" data-toggle="collapse" aria-expanded="false" [attr.data-target]="'#lounge'+headquarter.id"
+            <button class="btn" type="button" data-toggle="collapse" (click)="searchLounges(headquarter.id)" aria-expanded="false" [attr.data-target]="'#lounge'+headquarter.id"
                 [attr.aria-controls]="'lounge'+headquarter.id">
                 Ver Salones
             </button>
@@ -40,7 +40,7 @@
             <div *ngFor="let room of lounges;let i = index">
                 <div class="col-md-3">
                     <app-lounge-carousel data-toggle="collapse"  (click)="selectLounge(room)" aria-expanded="false"
-                        [attr.data-target]="'#room'+room.id+'-'+headquarter.id+'-'+i" [images]="room.loungeImagesModel" [lounge]="room"
+                        [attr.data-target]="'#room'+room.id+'-'+headquarter.id+'-'+i" [images]="room.images" [lounge]="room"
                         [attr.aria-controls]="'room'+room.id+'-'+headquarter.id+'-'+i"></app-lounge-carousel>
                 </div>
             </div>
