@@ -8,6 +8,7 @@ import { ExperienceModel } from '../../../model/experience-model';
 import { EventosService } from '../../../services/eventos.service';
 import { EXPERENCESFAKES } from '../../../test/fakes/experences.fake';
 import { HeaderService } from '../../../services/header.service';
+import { BreadcrumbsService } from 'ng6-breadcrumbs';
 
 @Component({
   selector: 'app-reservation-data-company',
@@ -15,7 +16,7 @@ import { HeaderService } from '../../../services/header.service';
   styleUrls: ['./reservation-data-company.component.css']
 })
 export class ReservationDataCompanyComponent implements OnInit {
-  private lounge: LoungeModel
+  public lounge: LoungeModel
   public formulario: FormGroup;
   private experiencia: ExperienceModel = this.eventosService.experience
   constructor(
@@ -24,17 +25,39 @@ export class ReservationDataCompanyComponent implements OnInit {
     private formBuilder: FormBuilder,
     private location: Location,
     private eventosService: EventosService,
-    private headerService : HeaderService
+    private headerService : HeaderService,
+    private breadcrumbsService : BreadcrumbsService,
   ) {
     this.headerService.title = 'Reservar'
-    debugger
+   
 
    }
 
-  ngOnInit() {
+   addMigas() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.breadcrumbsService.store([
+          { label: this.eventosService.reservation.experience.name, url: '/experiencia/' + this.eventosService.reservation.experience.id, params: [] },
+          { label: 'sedes', url: `/experiencia/${this.eventosService.reservation.experience.id}/sedes`, params: [] },
+          {
+            label: `armar evento`,
+            url: `/experiencia/${this.eventosService.reservation.experience.id}/sede/${this.eventosService.reservation.headquarte.id}/${this.eventosService.reservation.lounge.id}/reserva`, params: []
+          },
+          {
+            label: `Dinos quien eres`,
+            url: `/experiencia/${this.eventosService.reservation.experience.id}/sede/${this.eventosService.reservation.headquarte.id}/${this.eventosService.reservation.lounge.id}/datos-empresa`, params: []
+          },
 
+        ])
+        resolve();
+      }, 0);
+    });
+  }
+
+  ngOnInit() {
     this.initFormulario();
     this.lounge  =this.eventosService.reservation.lounge
+    this.addMigas()
 
   }
 
@@ -58,11 +81,11 @@ export class ReservationDataCompanyComponent implements OnInit {
       nameCompany: [this.eventosService.company.nameCompany, Validators.required],
       NIT: [this.eventosService.company.NIT, Validators.required],
       numberVerification: [this.eventosService.company.numberVerification, Validators.required],
-      dateStart: [this.eventosService.company.dateStart, Validators.required],
       responsable: [this.eventosService.company.responsable, Validators.required],
       landline: [this.eventosService.company.landline, Validators.required],
       mobilePhone: [this.eventosService.company.mobilePhone, Validators.required],
       extLandline: [this.eventosService.company.extLandline],
+      mail : [this.eventosService.company.mail,Validators.required]
 
     });
   }

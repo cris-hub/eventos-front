@@ -43,11 +43,8 @@ export class AuthService {
                     retry(3), // reintentar una solicitud fallida hasta 3 veces
                     catchError(this.handleError)
                 ).subscribe(
-                    
                     data => {
                         this.setSession(data);
-        debugger
-
                     },
                     error => {
                         console.info('Error: ' + error);

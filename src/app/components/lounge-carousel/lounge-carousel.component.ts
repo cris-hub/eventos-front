@@ -10,39 +10,47 @@ import { LoungeImagesModel } from '../../model/lougen-images-model';
   templateUrl: './lounge-carousel.component.html',
   styleUrls: ['./lounge-carousel.component.css']
 })
-export class LoungeCarouselComponent {
+export class LoungeCarouselComponent implements OnInit {
   ngOnInit(): void {
-    debugger
-if (this.images) {
-  // code...
-    this.loungeImages = this.images.map(c => c.imagen)
-}
+    if (this.images) {
+      // code...
+      this.loungeImages = this.images.map(c => c.imagen)
+    }
+    if (this.lounge) {
+      // code...
+      if (this.lounge.images) {
+        // code...
+        this.loungeImages = this.lounge.images.map(c => c.imagen)
+      }
+    } else {
+      this.loungeImages = this.eventosServie.reservation.lounge.images.map(c => c.imagen)
+    }
   }
   @Input() public images: LoungeImagesModel[] = []
   @Input() public lounge: LoungeModel;
-  public loungeImages: ImageModel[] 
-    constructor(
-      private dialog: MatDialog,
-      public eventosServie: EventosService
-    ) { 
-      
-    }
+  public loungeImages: ImageModel[]
+  constructor(
+    private dialog: MatDialog,
+    public eventosServie: EventosService
+  ) {
+
+  }
 
 
-/**
- * funcion para abrir las imagenes de las habitaciones
- * @param img (string) - URL de la imagen
- */
-openDialog(img: string): void {
-  const dialogConfig = new MatDialogConfig();
-  dialogConfig.autoFocus = true;
-  dialogConfig.height = 'auto';
-  dialogConfig.width = 'auto';
-  dialogConfig.data = {
-    img: img
-  };
-  this.dialog.open(CourseDialogComponent, dialogConfig);
-}
+  /**
+   * funcion para abrir las imagenes de las habitaciones
+   * @param img (string) - URL de la imagen
+   */
+  openDialog(img: string): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.height = 'auto';
+    dialogConfig.width = 'auto';
+    dialogConfig.data = {
+      img: img
+    };
+    this.dialog.open(CourseDialogComponent, dialogConfig);
+  }
 }
 
 /**

@@ -6,10 +6,12 @@ import { MainHeaderComponent } from './main-header/main-header.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { SharedModule } from '../shared/shared.module';
 
+
 @NgModule({
   imports: [
     LayoutRoutingModule,
-    SharedModule
+    SharedModule,
+
   ],
   declarations: [],
   exports: [LayoutComponent, MainHeaderComponent, MainContentComponent]

@@ -6,10 +6,18 @@ import { LayoutComponent } from '../layout/layout.component';
 import { MainHeaderComponent } from '../layout/main-header/main-header.component';
 import { MainContentComponent } from '../layout/main-content/main-content.component';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { LayoutModule } from '../layout/layout.module';
 import { CarouselGalleryComponent } from '../components/carousel-gallery/carousel-gallery.component';
 import { MainFooterComponent } from '../layout/main-footer/main-footer.component';
+import { BreadcrumbsModule } from "ng6-breadcrumbs";
+import { EventosService } from '../services/eventos.service';
+import { HeaderService } from '../services/header.service';
+import { AuthService } from '../services/auth.service';
+import { TokenInterceptor } from '../app.interceptor';
+import { ReservationService } from '../services/reservation.service';
+import { MailService } from '../services/mail.service';
+import { CourseDialogComponent } from '../components/lounge-carousel/lounge-carousel.component';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -21,13 +29,15 @@ import { MainFooterComponent } from '../layout/main-footer/main-footer.component
     RouterModule,
     HttpClientModule,
     HttpModule,
+    BreadcrumbsModule
 
   ],
   declarations: [
     LayoutComponent,
     MainContentComponent,
     MainHeaderComponent,
-    MainFooterComponent
+    MainFooterComponent,
+    CourseDialogComponent
   ],
   exports: [
     LayoutComponent,
@@ -36,15 +46,26 @@ import { MainFooterComponent } from '../layout/main-footer/main-footer.component
     MainFooterComponent,
     CommonModule,
     FormsModule,
-  ]
+  ],  providers: [
+    EventosService,
+    HeaderService,
+    ReservationService,
+    MailService,
+    AuthService,
+    {
+        provide: HTTP_INTERCEPTORS,
+        useClass: TokenInterceptor,
+        multi: true
+    },
+  ],
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
-        ngModule: SharedModule,
-        providers: [
-         
-        ]
+      ngModule: SharedModule,
+      providers: [
+
+      ]
     };
-}
+  }
 }

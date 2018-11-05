@@ -16,7 +16,6 @@ export class TokenInterceptor implements HttpInterceptor {
 
         //SI NO TIENE EL HEADER 'X-Skip-Interceptor' CONCATENA EL TOKEN JWT
         if (!req.headers.has(InterceptorSkipHeader)) {
-
             const access_token = sessionStorage.getItem('jwt_sessionid');
 
             if (access_token) {

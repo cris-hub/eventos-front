@@ -38,6 +38,8 @@ import { CalendarPicker } from './shared/calendar-picker';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './app.interceptor';
 import { AuthService } from './services/auth.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +57,7 @@ import { AuthService } from './services/auth.service';
     ReservationDataCompanyComponent,
     ReservationSummaryComponent,
     ConfirmationReservationComponent,
-    ValidacionDirective,
+    ValidacionDirective
 
   ],
   imports: [
@@ -76,17 +78,8 @@ import { AuthService } from './services/auth.service';
     SharedModule.forRoot()
 
 
-  ],exports : [HeadquarteDetailsComponent,ValidacionDirective],
-  providers: [
-    EventosService,
-    HeaderService,
-    AuthService,
-    {
-        provide: HTTP_INTERCEPTORS,
-        useClass: TokenInterceptor,
-        multi: true
-    },
-  ],
+  ],exports : [HeadquarteDetailsComponent,ValidacionDirective,CourseDialogComponent],
+
   bootstrap: [AppComponent],
   entryComponents: [CourseDialogComponent]
 

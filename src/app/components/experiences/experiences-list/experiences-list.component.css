@@ -8,3 +8,9 @@
     padding-top: 20px;
     justify-content: center;
 }
+
+  
+  .row {
+    display: table;
+}
+

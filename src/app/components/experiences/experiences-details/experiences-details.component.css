@@ -4,22 +4,23 @@
     border-radius: 5px;    
     padding: 0%;
     width:100%;
+    height: 240px;
 }
 .divHotel > div{
     padding: 0;    
+    width:100%;
+
 }
 .divHotel div.infoHotel{
     padding: 20px; 
     box-sizing: border-box;
     font-size: 12px;
-    height: 190px;
     border-bottom: 1px solid #d3d3d3;
 }
 .divHotel div.showRooms{
     border-left: 1px solid #d3d3d3;
     text-align: center;
     line-height: 190px;
-    height: 190px;
     border-bottom: 1px solid #d3d3d3;
 }
 .divHotel div.showRooms button{
@@ -41,9 +42,7 @@
 }
 
 @media (max-width: 640px) {
-    .divHotel div.infoHotel{
-        height: auto;
-    }
+
     .divHotel div.showRooms{
         border-left: none;
         height:auto;
@@ -56,3 +55,5 @@
         float: left;
     }
 }
+
+

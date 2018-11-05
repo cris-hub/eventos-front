@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class HeaderService {
-  public title : string
+  public title : string = ''
+  public subtitle : string = ''
+
+
   constructor() { }
 }

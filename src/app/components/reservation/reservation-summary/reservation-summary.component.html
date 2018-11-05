@@ -1,4 +1,4 @@
-<div class="col-md-10 col-md-offset-1">
+<div [formGroup]="formulario" class="col-md-10 col-md-offset-1">
     <div class="row">
         <div class="col-md-4 border-right">
             <app-lounge-carousel [images]="lounge.images" [lounge]="lounge"></app-lounge-carousel>
@@ -175,23 +175,181 @@
                             </div>
                             <div class="col-md-7 ">
                                 <p class="text-muted">
-                                    {{company.mobilePhone}}
+                                    {{company.mail}}
                                 </p>
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5">
+                                <label for="">Adicionales</label>
+                            </div>
+                            <div class="col-md-7 ">
+                                <p class="text-muted">
+                                    {{formulario.get('hasBreakfast').value ? "desayuno, " : ""}}
+                                    {{formulario.get('hasLunch').value ? "Almuezo, " : ""}}
+                                    {{formulario.get('hasRefreshmentAM').value ? "Refrigerio AM , " : ""}}
+                                    {{formulario.get('hasRefreshmentPM').value ? "Refrigerio PM , " : ""}}
+                                    {{formulario.get('hasDinner').value ? "Cena, " : ""}}
+                                    {{formulario.get('hasIllumination').value ? "Iluminacion, " : ""}}
+                                    {{formulario.get('hasProfessionalSound').value ? "Sonido profesional, " : ""}}
+                                    {{formulario.get('hasDedicatedChannel').value ? "Canal dedicado, " : ""}}
+                                    {{formulario.get('hasPallet').value ? "Tarima, " : ""}}
+                                    {{formulario.get('hasTent').value ? "Carpa, " : ""}}
+                                    {{formulario.get('hasSpeaker').value ? "Conferencista, " : ""}}
+                                    {{formulario.get('hasTransport').value ? "Transporte, " : ""}}
+                                    {{formulario.get('hasArtPresentations').value ? "Presentaciones Artisticas, " :
+                                    ""}}
+                                    {{formulario.get('others').value ? formulario.get('others').value : ""}}
+
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12" *ngIf="false">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>Alimentos</h4>
+                                <div class="form-group">
+                                    <div class="col-md-1">
+                                        <input id="hasBreakfast" formControlName="hasBreakfast" type="checkbox">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="" for="hasBreakfast">Desayuno</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input id="hasLunch" formControlName="hasLunch" type="checkbox">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="" for="hasLunch">Almuerzo</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input id="hasRefreshmentAM" formControlName="hasRefreshmentAM" type="checkbox">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="" for="hasRefreshmentAM">Refrigerio a.m</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input id="hasRefreshmentPM" formControlName="hasRefreshmentPM" type="checkbox">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="" for="hasRefreshmentPM">Refrigerio p.m</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input id="hasDinner" formControlName="hasDinner" type="checkbox">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="" for="hasDinner">Cena</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>Servicios</h4>
+                                <div class="form-group">
+                                    <div class="col-md-1">
+                                        <input id="hasIllumination" formControlName="hasIllumination" type="checkbox">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="" for="hasIllumination">Iluminación</label>
+                                    </div>
+
+                                    <div class="col-md-1">
+                                        <input id="hasPallet" formControlName="hasPallet" type="checkbox">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="" for="hasPallet">Tarima</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input id="hasTent" formControlName="hasTent" type="checkbox">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="" for="hasTent">Carpa</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input id="hasDedicatedChannel" formControlName="hasDedicatedChannel" type="checkbox">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="" for="hasDedicatedChannel">Canal dedicado</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input id="hasSpeaker" formControlName="hasSpeaker" type="checkbox">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="" for="hasSpeaker">Conferencista</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input id="hasArtPresentations" formControlName="hasArtPresentations" type="checkbox">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label class="" for="hasTransport">Transporte</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input id="hasTransport" formControlName="hasTransport" type="checkbox">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label class="" for="hasArtPresentations">Presentaciones artisticas</label>
+                                    </div>
+
+                                    <div class="col-md-1">
+                                        <input id="hasProfessionalSound" formControlName="hasProfessionalSound" type="checkbox">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="" for="hasProfessionalSound">Sonido profesional</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input id="hasOthers" formControlName="hasOthers" type="checkbox">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="" for="hasOthers">Otros</label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <textarea formControlName="others" *ngIf="formulario.get('hasOthers').value"
+                                            placeholder="Otros servicios adicionales que le gustaria solicitar" class="col-md-12"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
 
 
                 </div>
             </div>
         </div>
     </div>
+
+    <br>
+    <div class="row">
+        <div class="col-md-9 col-md-offset-5">
+            <input id="termsAndConditions" formControlName="termsAndConditions" type="checkbox">
+            <label for="termsAndConditions">
+                <a href="../../../../assets/documentacion/Politicas_Eventos.pdf" target="_blank"> Terminos y
+                    Condiciones</a>
+            </label>
+        </div>
+    </div>
+
+
+    <br>
+
+
+
     <div class="row">
         <div class="col-md-9 col-md-offset-4">
-            <button (click)="goBack()" class="btn btn-default-colsubsidio col-md-offset-1 col-md-5">
+            <button (click)="goBack()" class="btn btn-default-colsubsidio col-md-offset-1 col-md-7">
                 Atras
             </button>
-            <button (click)="reservar()" class="btn  btn-primary-colsubsidio  col-md-5">
+            <button (click)="reservar()" [attr.disabled]="formulario.get('termsAndConditions').value ? null :''" class="btn  btn-primary-colsubsidio  col-md-5">
                 Siguiente
             </button>
 

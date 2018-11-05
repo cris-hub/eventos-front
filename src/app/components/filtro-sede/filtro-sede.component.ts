@@ -10,50 +10,57 @@ import { OwlDateTimeIntl, OWL_DATE_TIME_LOCALE, DateTimeAdapter } from 'ng-pick-
 import { CalendarPicker } from '../../shared/calendar-picker';
 import { NativeDateTimeAdapter } from 'ng-pick-datetime/date-time/adapter/native-date-time-adapter.class';
 import { Platform } from '@angular/cdk/platform';
+import { BreadcrumbsService } from 'ng6-breadcrumbs';
 
 @Component({
   selector: 'app-filtro-sede',
   templateUrl: `./filtro-sede.component.html`,
   styleUrls: [`./filtro-sede.component.css`],
-  providers : [
-    {provide: OWL_DATE_TIME_LOCALE, useValue: 'co'},
-    {provide: DateTimeAdapter, useClass: NativeDateTimeAdapter, deps: [OWL_DATE_TIME_LOCALE, Platform]},
-    {provide: OwlDateTimeIntl, useClass: CalendarPicker}
-    ]
+  providers: [
+    { provide: OWL_DATE_TIME_LOCALE, useValue: 'co' },
+    { provide: DateTimeAdapter, useClass: NativeDateTimeAdapter, deps: [OWL_DATE_TIME_LOCALE, Platform] },
+    { provide: OwlDateTimeIntl, useClass: CalendarPicker }
+  ]
 })
 
 export class FiltroSedeComponent implements OnInit {
   public eventsTypes: EventTypeModel[] = []
+  public cities = []
   public formulario: FormGroup;
 
-  public invalidDateTime2 : any = ''
+  public invalidDateTime2: any = ''
   constructor(
     private activeRoute: ActivatedRoute,
     private eventosService: EventosService,
     public headerService: HeaderService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private breadcrumbsService: BreadcrumbsService
+
   ) {
-    this.headerService.title = 'Buscar Salones'
   }
 
   ngOnInit() {
-    console.log(this.activeRoute.snapshot.paramMap.get('experiencia'))
+
+
     this.consulterTiposEventos();
+    this.getallcities();
     this.obtenerParamtrosRuta();
-    this.consultarExperienciaSeleccionada(this.eventosService.experience.id);
+    console.log(this.activeRoute.snapshot.paramMap.get('experiencia'), this.eventosService.reservation.experience.id)
+
+    this.consultarExperienciaSeleccionada(this.eventosService.reservation.experience.id);
     this.initFormulario();
   }
   initFormulario() {
     this.formulario = this.formBuilder.group({
-      nameEvent : [this.eventosService.reservation.nameEvent],
-      eventTypeId: [this.eventosService.headquearterFilter.eventType,Validators.required],
+      nameEvent: [this.eventosService.reservation.nameEvent],
+      eventTypeId: [this.eventosService.reservation.experience.eventTypeId, Validators.required],
       amountAttendingEventChildren: [this.eventosService.headquearterFilter.amountAttendingEventChildren],
       amountAttendingEventAdults: [this.eventosService.headquearterFilter.amountAttendingEventAdults],
-      dateStart: [this.eventosService.headquearterFilter.dateStart],
-      dateFinish: [this.eventosService.headquearterFilter.dateFinish],
+      dateStart: [this.eventosService.headquearterFilter.dateStart, Validators.required],
+      dateFinish: [this.eventosService.headquearterFilter.dateFinish, Validators.required],
       cityId: [this.eventosService.headquearterFilter.cityId],
-      capacity : [this.eventosService.headquearterFilter.amountAttendingEventChildren + this.eventosService.headquearterFilter.amountAttendingEventAdults ]
+      capacity: [this.eventosService.headquearterFilter.amountAttendingEventChildren + this.eventosService.headquearterFilter.amountAttendingEventAdults]
     });
 
     this.ValidacionesFechas();
@@ -82,13 +89,21 @@ export class FiltroSedeComponent implements OnInit {
   }
 
   obtenerParamtrosRuta() {
-    this.eventosService.experience.id = parseInt(this.activeRoute.snapshot.paramMap.get('experiencia'))
+    this.eventosService.reservation.experience.id = parseInt(this.activeRoute.snapshot.paramMap.get('experiencia'))
   }
   consultarExperienciaSeleccionada(id: number) {
-    this.eventosService.getExperienciaPorId(id).subscribe(response => {
-      Object.assign(this.eventosService.experience, response);
-      this.eventosService.headquearterFilter.eventType = this.eventosService.experience.eventTypeId
-      console.log(this.eventosService.experience,this.eventosService.headquearterFilter.eventType)
+    console.log(id)
+
+    this.eventosService.getExperienceById(id).subscribe(response => {
+      Object.assign(this.eventosService.reservation.experience, response);
+      if (this.eventosService.reservation.experience.eventTypeId) {
+        this.eventosService.headquearterFilter.eventType = this.eventosService.reservation.experience.eventTypeId
+      }
+      this.breadcrumbsService.store([
+        { label: response.name, url: '/', params: [] }
+      ])
+      this.headerService.title = response.name
+
     })
   }
   consulterTiposEventos() {
@@ -97,23 +112,31 @@ export class FiltroSedeComponent implements OnInit {
       Object.assign(this.eventsTypes, response);
     })
   }
+
+  getallcities() {
+    this.eventosService.getallcities().subscribe(response => {
+      this.cities = response
+    })
+  }
   filtrarSedesPorCamposFormulario() {
     this.eventosService.getHeadquarterByExperence(this.eventosService.experience.eventTypeId, 1)
   }
 
-  selectTypeEvent(typeEvent){
+  selectTypeEvent(typeEvent) {
   }
+
+
 
   submit() {
     console.log(this.formulario)
     if (!this.formulario.valid) {
-      return  
+      return
     }
     this.formulario.get('capacity')
-    .setValue(this.formulario.get('amountAttendingEventChildren').value +this.formulario.get('amountAttendingEventAdults').value)
+      .setValue(this.formulario.get('amountAttendingEventChildren').value + this.formulario.get('amountAttendingEventAdults').value)
 
-    Object.assign(this.eventosService.reservation,this.formulario.value)
-    Object.assign(this.eventosService.headquearterFilter,this.formulario.value)
-    this.router.navigate([`/experiencia/${this.eventosService.experience.id}/sedes`])
+    Object.assign(this.eventosService.reservation, this.formulario.value)
+    Object.assign(this.eventosService.headquearterFilter, this.formulario.value)
+    this.router.navigate([`/experiencia/${this.eventosService.reservation.experience.id}/sedes`])
   }
 }

@@ -106,7 +106,7 @@
                                 <label class="" for="hasOthers">Otros</label>
                             </div>
                             <div class="col-md-12">
-                                <textarea formControlName="Others" *ngIf="formulario.get('hasOthers').value"
+                                <textarea formControlName="others" *ngIf="formulario.get('hasOthers').value"
                                     placeholder="Otros servicios adicionales que le gustaria solicitar" class="col-md-12"></textarea>
                             </div>
                         </div>
@@ -121,7 +121,7 @@
             <button (click)="goBack()" class="btn btn-default-colsubsidio col-md-offset-1 col-md-5">
                 Atras
             </button>
-            <button routerLink="datos-empresa" class="btn  btn-primary-colsubsidio  col-md-5">
+            <button (click)="submit()" class="btn  btn-primary-colsubsidio  col-md-5">
                 Siguiente
             </button>
         </div>

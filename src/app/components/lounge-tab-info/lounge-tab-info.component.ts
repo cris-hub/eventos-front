@@ -41,13 +41,11 @@ export class LoungeTabInfoComponent implements OnInit {
         let tempLouge: LoungeModel = new LoungeModel();
         Object.assign(tempLouge, lounge)
         Object.assign(this.eventosService.reservation.lounge, tempLouge)
-        debugger
         console.log('experiencia/' + this.experiencia.id + '/sede/' + this.eventosService.reservation.headquarte.id + '/' + this.lounge.id);
         this.router.navigate([`/experiencia/${this.experiencia.id}/sede/${ this.eventosService.reservation.headquarte.id}/${this.lounge.id}/reserva`])
     }
 
     clearSeleccion() {
-        debugger
         this.eventosService.reservation.lounge = new LoungeModel()
 
     }

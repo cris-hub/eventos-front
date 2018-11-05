@@ -13,7 +13,7 @@ import { HeadquarterFilterModel } from '../../../model/headquarter-filter-model'
   styleUrls: ['./confirmation-reservation.component.css']
 })
 export class ConfirmationReservationComponent implements OnInit {
-  private lounge: LoungeModel = LOUNGEFAKE[0]
+  public lounge: LoungeModel = LOUNGEFAKE[0]
 
   constructor(
     private evetosService: EventosService,

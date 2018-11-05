@@ -21,11 +21,13 @@ import { LoungeModel } from '../model/lounge-model';
 export class EventosService {
   public experience: ExperienceModel = new ExperienceModel();
   public reservation: ReservationDataModel = new ReservationDataModel()
-  public lounge : LoungeModel = new LoungeModel()
-  public company : CompanyModel = new CompanyModel()
-  public headquearter : HeadquarteModel = new HeadquarteModel()
+  public lounge: LoungeModel = new LoungeModel()
+  public company: CompanyModel = new CompanyModel()
+  public headquearter: HeadquarteModel = new HeadquarteModel()
   public headquearterFilter: HeadquarterFilterModel = new HeadquarterFilterModel()
 
+
+  private header: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
   constructor(
     private http: HttpClient,
@@ -38,53 +40,43 @@ export class EventosService {
 
 
 
-  public createReservation(nitComapny : string,reservation: ReservationDataModel):Observable<any> {
-    return this.http.post<any>(
-      environment.baseBackEnd
-      + 'reserva', {nit: nitComapny, reserva: JSON.stringify(reservation)}).pipe(map(res => res));
-  }
-    
-  public getExperienciaPorId(id: number): Observable<ExperienceModel> {
+
+
+  public getExperienceById(id: number): Observable<ExperienceModel> {
+    let params = 'experenceId=' + id;
     let data = null
-    console.log(this.internetConnectionService.isConnected)
-    if (!this.internetConnectionService.isConnected) {
-      data = new Observable((observe) => {
-        observe.next(EXPERENCESFAKES.find(experiencia => experiencia.id === id))
-        observe.complete();
-      });
-      return data
-    }
-    data = new Observable((observe) => {
-      observe.next(EXPERENCESFAKES.find(experiencia => experiencia.id === id))
-      observe.complete();
-    });
+    data = this.http.post<LoungeModel[]>(
+      environment.baseManagerContent
+      + 'recreacion/restexperences/getexperencesbyid', params, { headers: this.header }
+    );
     return data
 
-
+    //
+  }
+  public getallcities(): Observable<any> {
+    return this.http.get<any>(
+      environment.baseManagerContent
+      + 'recreacion/restexperences/getallcities', { headers: this.header }
+    );
   }
 
-  
   public getExperiencias(): Observable<ExperienceModel[]> {
-    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-      return this.http.get<ExperienceModel[]>(
-        environment.baseManagerContent
-        +'recreacion/restexperences/getall-experences' ,{headers : headers}
-      );    
+    return this.http.get<ExperienceModel[]>(
+      environment.baseManagerContent
+      + 'recreacion/restexperences/getall-experences', { headers: this.header }
+    );
   }
 
-    public getlistloungebyheadquarterid(headquarterId:number): Observable<LoungeModel[]> {
-            let params =  'headquarterId='+headquarterId ;
-
-    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-      return this.http.post<LoungeModel[]>(
-        environment.baseManagerContent
-        +'recreacion/restlounge/getlistloungebyheadquarterid',params ,{headers : headers}
-      );    
+  public getlistloungebyheadquarteridandloungecapacity(headquarterId: number,capacity : number): Observable<LoungeModel[]> {
+    let params = 'headquarterId=' + headquarterId + '&capacity=' + capacity;
+    return this.http.post<LoungeModel[]>(
+      environment.baseManagerContent
+      + 'recreacion/restlounge/getlistloungebyheadquarteridandloungecapacity', params, { headers: this.header }
+    );
   }
 
 
   public getTiposEventos(): Observable<EventTypeModel[]> {
-     let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
     let data = null
     console.log(this.internetConnectionService.isConnected)
     if (!this.internetConnectionService.isConnected) {
@@ -95,13 +87,14 @@ export class EventosService {
       return data
     }
     data = this.http.get<ExperienceModel[]>(
-        environment.baseManagerContent
-        +'recreacion/restexperences/getall-event-types' ,{headers : headers}
-      );  
+      environment.baseManagerContent
+      + 'recreacion/restexperences/getall-event-types', { headers: this.header }
+    );
     return data
   }
   public getHeadquarterByExperence(experenceId: number, capacity: number): Observable<HeadquarteModel[]> {
-    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+    let params = 'capacity=' + capacity + '&experenceId=' + experenceId;
 
     let data = null
     console.log(this.internetConnectionService.isConnected)
@@ -112,12 +105,11 @@ export class EventosService {
       });
       return data
     }
-            let params =  'capacity='+capacity +'&experenceId=' + experenceId ;
 
-    data =  this.http.post<ExperienceModel[]>(
-        environment.baseManagerContent
-        +'recreacion/restheadquarter/getlistheadquarterbycapacityloungeandexperenceid',params ,{headers : headers}
-      );    
+    data = this.http.post<ExperienceModel[]>(
+      environment.baseManagerContent
+      + 'recreacion/restheadquarter/getlistheadquarterbycapacityloungeandexperenceid', params, { headers: this.header }
+    );
     return data
 
   }

@@ -1,11 +1,13 @@
 <div class="container">
-
+        <div class="row">
+                    <breadcrumb [allowBootstrap]="true"></breadcrumb>
+            </div>
     <div class="row experiences-header ">
         <div class="col-md-12">
             <blockquote class="blockquote text-center">
                 <h3 class="mb-0">{{headerService.title}}</h3>
-                <footer class="blockquote-footer">Someone famous in
-                    <cite title="Source Title">Source Title</cite>
+                <footer class="blockquote-footer">
+                        {{headerService.subtitle}}
                 </footer>
             </blockquote>
         </div>

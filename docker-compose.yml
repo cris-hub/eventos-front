@@ -1,0 +1,8 @@
+version: '3.5'
+services:
+  container_eventos_frontend:
+    container_name: eventos-rontend
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+        

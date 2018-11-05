@@ -6,6 +6,7 @@ import { LOUNGEFAKE } from '../../../test/fakes/lounges.fake';
 import { Location } from '@angular/common';
 import { EventosService } from '../../../services/eventos.service';
 import { HeaderService } from '../../../services/header.service';
+import { BreadcrumbsService } from 'ng6-breadcrumbs';
 
 @Component({
   selector: 'app-reservation',
@@ -13,7 +14,7 @@ import { HeaderService } from '../../../services/header.service';
   styleUrls: ['reservation.component.css']
 })
 export class ReservationComponent implements OnInit {
-  private lounge: LoungeModel 
+  public lounge: LoungeModel
   public formulario: FormGroup;
 
   constructor(
@@ -21,21 +22,41 @@ export class ReservationComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private location: Location,
-    private eventosService : EventosService,
-    private headerService : HeaderService
+    private eventosService: EventosService,
+    private headerService: HeaderService,
+    private breadcrumbsService: BreadcrumbsService
 
-  ) { 
-    this.lounge  =this.eventosService.reservation.lounge
-    this.headerService.title = 'Reservar'\
-    debugger
-    
+  ) {
+    this.headerService.title = 'Reservar'
+    this.headerService.subtitle = ''
+
+  }
+
+  addMigas() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.breadcrumbsService.store([
+          { label: this.eventosService.reservation.experience.name, url: '/experiencia/' + this.eventosService.reservation.experience.id, params: [] },
+          { label: 'sedes', url: `/experiencia/${this.eventosService.reservation.experience.id}/sedes`, params: [] },
+          {
+            label: `armar evento`,
+            url: `/experiencia/${this.eventosService.reservation.experience.id}/sedes/${this.eventosService.reservation.headquarte.id}/${this.eventosService.reservation.lounge.id}`, params: []
+          },
+
+        ])
+        resolve();
+      }, 0);
+
+
+
+    });
   }
 
   ngOnInit() {
-    this.initFormulario();
-      this.lounge  =this.eventosService.reservation.lounge
-    
+    this.addMigas().then();
 
+    this.initFormulario();
+    this.lounge = this.eventosService.reservation.lounge
   }
   goBack() {
     this.location.back();
@@ -57,13 +78,23 @@ export class ReservationComponent implements OnInit {
       hasArtPresentations: [this.eventosService.reservation.hasArtPresentations],
       hasTransport: [this.eventosService.reservation.hasTransport],
       hasOthers: [this.eventosService.reservation.hasOthers],
-      Others: [this.eventosService.reservation.others],
+      others: [this.eventosService.reservation.others],
 
 
     });
+
     this.formulario.get('hasOthers').valueChanges.subscribe(val => {
       console.log(val)
-      this.formulario.get('Others').setValue('');
+      this.formulario.get('others').setValue('');
     })
+  }
+
+  submit() {
+    if (this.formulario.invalid) {
+      return
+    }
+    Object.assign(this.eventosService.reservation,this.formulario.value);
+let urlNavigate = `${this.router.url}/datos-empresa`
+this.router.navigate([`/${urlNavigate}`]);
   }
 }

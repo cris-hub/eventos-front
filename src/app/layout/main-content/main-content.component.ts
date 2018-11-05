@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { BreadcrumbsService } from 'ng6-breadcrumbs';
 
 @Component({
   selector: 'app-main-content',
@@ -10,13 +11,15 @@ import { Location } from '@angular/common';
 export class MainContentComponent implements OnInit {
 
   constructor(
-    private location : Location
+    private location : Location,
   ) { }
 
   goBack(){
+ 
     this.location.back()
   }
   ngOnInit() {
+
   }
 
 }

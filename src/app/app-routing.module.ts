@@ -14,9 +14,11 @@ const routes: Routes = [
     path: '', component: LayoutComponent, children:
       [
 
-        { path: '', redirectTo: '/experiencias', pathMatch: 'full' },
-        { path: 'experiencias', component: ExperiencesListComponent },
-        { path: 'experiencia/:experiencia', component: FiltroSedeComponent },
+        {
+          path: '', redirectTo: '/experiencias', pathMatch: 'full'},
+        {
+          path: 'experiencias', component: ExperiencesListComponent},
+        { path: 'experiencia/:experiencia', component: FiltroSedeComponent  },
         { path: 'experiencia/:experiencia/sedes', component: HeadquarterListComponent },
         { path: 'experiencia/:experiencia/sede/:sede/:salon/reserva', component: ReservationComponent },
         { path: 'experiencia/:experiencia/sede/:sede/:salon/reserva/datos-empresa', component: ReservationDataCompanyComponent },
@@ -28,7 +30,7 @@ const routes: Routes = [
 ];
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

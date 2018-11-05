@@ -1,12 +1,14 @@
 export class CompanyModel {
-    nameCompany: string 
+    nameCompany: string
     NIT: string
     dateStart: Date
     numberVerification: number
-    responsable:string
+    responsable: string
     landline: string
     mobilePhone: string
     extLandline: string
-    constructor(){
+    mail: string
+    termsAndConditions: Boolean;
+    constructor() {
     }
 }

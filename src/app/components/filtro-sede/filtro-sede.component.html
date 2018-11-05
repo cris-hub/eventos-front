@@ -12,6 +12,7 @@
         </div>
 
         <div class="row">
+            
             <div class="form-group">
                 <div class="col-md-4">
                     <label class="control-label" for="">Tipo evento</label>
@@ -34,7 +35,7 @@
                 <div class="col-md-4">
                     <input validacion [validaciones]="['requerido']" formControlName="amountAttendingEventAdults" type="number"
                         class="form-control">
-                    <span class="help-block">adultos</span>
+                    <span class="help-block">adultos<span class="text-danger validaciones"> *</span></span>  
                 </div>
                 <div class="col-md-4">
                     <input validacion  formControlName="amountAttendingEventChildren"
@@ -53,6 +54,9 @@
                 <div class="col-md-8">
                     <select formControlName="cityId" class="form-control">
                         <option [value]="null">Seleccione</option>
+                        <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
+
+                        
                     </select>
                 </div>
             </div>
@@ -60,11 +64,13 @@
         <div class="row">
             <div class="form-group">
                 <div class="col-md-4">
-                    <label class="control-label" for="">Fecha y hora inicio</label>
+                    <label class="control-label" for="">Fecha y hora inicio
+                        <span class="text-danger validaciones"> *</span>
+                    </label>
                 </div>
                 <div class="col-md-8 ">
                     <div class="input-group">
-                        <input formControlName="dateStart" placeholder="03/26/1998, 1:00 PM" [owlDateTimeFilter]="myFilter"
+                        <input formControlName="dateStart"  placeholder="03/26/1998, 1:00 PM" 
                             [owlDateTimeTrigger]="dt2"  [owlDateTime]="dt2" class="form-control">
                         <owl-date-time 
                         panelClass="size"
@@ -89,11 +95,13 @@
         <div class="row">
             <div class="form-group">
                 <div class="col-md-4">
-                    <label class="control-label" for="">Fecha y hora fin</label>
+                    <label class="control-label" for="">Fecha y hora fin
+                        <span class="text-danger validaciones"> *</span>
+                    </label>
                 </div>
                 <div class="col-md-8 ">
                     <div class="input-group">
-                        <input formControlName="dateFinish" placeholder="04/26/1998, 5:00 PM" [owlDateTimeFilter]="myFilter"
+                        <input formControlName="dateFinish"  placeholder="04/26/1998, 5:00 PM" 
                             [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3" class="form-control">
                         <owl-date-time
                         backdropClass="size"
@@ -104,7 +112,8 @@
                         </span>
                      
                     </div>
-                    <span class="text-danger validaciones" *ngIf="formulario.get('dateFinish').invalid && formulario.get('dateFinish').errors">
+                    <span class="text-danger validaciones"
+                     *ngIf="formulario.get('dateFinish').invalid && (formulario.get('dateFinish').dirty || formulario.get('dateFinish').touched)">
                        {{formulario.get('dateFinish').errors['error']}} 
                     </span>
                 </div>
