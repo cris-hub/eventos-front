@@ -1,8 +1,8 @@
 <div class="col-md-10 col-md-offset-1">
 <div class="row row-eq-height">
 
-    <div *ngFor="let experience of experiences" class="col-md-3 ">
-        <app-experiences-details (click)="selectExperience(experience)" [routerLink]="[
+    <div *ngFor="let experience of experiences" >
+        <app-experiences-details (click)="selectExperience(experience)"class="col-md-3 "  [routerLink]="[
                     '/experiencia', experience.id
                     ]" [experience]=experience>
         </app-experiences-details>
