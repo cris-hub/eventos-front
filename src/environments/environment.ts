@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseBackEnd: 'http://localhost:8008/',
+  baseBackEnd: 'http://colsdigitaldocker.cloudapp.net/eventosbackend/',
   baseManagerContent: 'http://localhost/GestorContenidos/web/index.php?r=',
 };
 

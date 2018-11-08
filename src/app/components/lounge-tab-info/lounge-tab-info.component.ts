@@ -14,8 +14,8 @@ export class LoungeTabInfoComponent implements OnInit {
 
     @Input() lounge: LoungeModel = new LoungeModel();
     @Input() params: any;
-    public galleryOptions: NgxGalleryOptions[];
-    public galleryImages: NgxGalleryImage[];
+    public galleryOptions: NgxGalleryOptions[] = [];
+    public galleryImages: NgxGalleryImage[] = [];
     private experiencia: ExperienceModel = new ExperienceModel()
 
     constructor(
@@ -59,18 +59,23 @@ export class LoungeTabInfoComponent implements OnInit {
         if (!this.lounge) {
             return
         }
-        if (this.lounge.images.length > 0) {
-            this.lounge.images.forEach(function (value) {
-                let json = {
-                    "small": value.imagen.src,
-                    "medium": value.imagen.src,
-                    "big": value.imagen.src
-                };
-                arrGallery.push(json);
-                console.log(arrGallery)
-            });
-            this.galleryImages = arrGallery;
+        if(this.lounge.images) {
+            if (this.lounge.images.length > 0) {
+                this.lounge.images.forEach(function (value) {
+                    let json = {
+                        "small": value.imagen.src,
+                        "medium": value.imagen.src,
+                        "big": value.imagen.src
+                    };
+                    arrGallery.push(json);
+                    console.log(arrGallery)
+                });
+                this.galleryImages = arrGallery ? arrGallery : [];
+            }
+        }else {
+            this.galleryImages = []
         }
+       
 
     }
 

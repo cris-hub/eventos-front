@@ -19,13 +19,13 @@ export class HeadquarteDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.images = this.headquarter.images.map(c => c.imagen)
+    this.images = this.headquarter.images ? this.headquarter.images.map(c => c.imagen) : [];
   }
 
 
   searchLounges(headquarterId: number) {
     this.eventosService.getlistloungebyheadquarteridandloungecapacity(headquarterId, this.eventosService.headquearterFilter.capacity).subscribe(response => {
-      this.lounges = response
+      this.lounges = response ? response : [];
     })
   }
   selectLounge(lounge: LoungeModel) {

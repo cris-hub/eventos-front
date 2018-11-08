@@ -1,58 +1,61 @@
 <div class="divHotel">
-
-
     <!-- CARRUSEL DE IMAGENES DE LOS HOTELES -->
     <div class="col-md-3 img-contet">
-        <div class="galleryHotel">
+        <div class="galleryHotel" *ngIf="images.length>0 ;else sinImagenes">
             <carousel-gallery [images]="images"></carousel-gallery>
         </div>
+        <ng-template #sinImagenes>
+            <div class="galleryHotel sinImagenes">
+                Asignar Imagenes
+            </div>
+        </ng-template>
     </div>
-
     <!-- DESCRIPCION DEL HOTEL -->
     <div class="col-md-6">
         <h4>{{headquarter.name}}</h4>
         <p>{{headquarter.description}}</p>
     </div>
-
     <!-- ENLACE PARA VER HABITACIONES -->
     <div class="accordion" id="tab" role="tablist" aria-multiselectable="true">
-
         <div class="col-md-3 showRooms" role="tab" id="headingOne">
-            <button class="btn" type="button" data-toggle="collapse" (click)="searchLounges(headquarter.id)" aria-expanded="false" [attr.data-target]="'#lounge'+headquarter.id"
-                [attr.aria-controls]="'lounge'+headquarter.id">
+            <button class="btn" type="button" data-toggle="collapse" (click)="searchLounges(headquarter.id)"
+                aria-expanded="false" [attr.data-target]="'#lounge'+headquarter.id" [attr.aria-controls]="'lounge'+headquarter.id">
                 Ver Salones
             </button>
         </div>
-
-
-
     </div>
-
-
 </div>
-
 <div *ngIf="eventosService.reservation.headquarte.id == headquarter.id" class="col-md-12 collapse tabHotels padding"
     aria-labelledby="headingOne" role="tabpanel" [attr.id]="'lounge'+headquarter.id" [attr.data-parent]="'#tab'">
-    <div *ngIf="lounges.length>0">
+    <div *ngIf="lounges">
         <hr>
-        <div class="row">
+        <div *ngIf="lounges.length>0 ; else sinSalones" class="row">
             <h4 class="text-center">Salones</h4>
             <div *ngFor="let room of lounges;let i = index">
                 <div class="col-md-3">
-                    <app-lounge-carousel data-toggle="collapse"  (click)="selectLounge(room)" aria-expanded="false"
+                    <app-lounge-carousel data-toggle="collapse" (click)="selectLounge(room)" aria-expanded="false"
                         [attr.data-target]="'#room'+room.id+'-'+headquarter.id+'-'+i" [images]="room.images" [lounge]="room"
                         [attr.aria-controls]="'room'+room.id+'-'+headquarter.id+'-'+i"></app-lounge-carousel>
                 </div>
             </div>
         </div>
     </div>
-    <div *ngFor="let room of lounges;let i = index">
-        <div *ngIf="eventosService.reservation.lounge"> 
-            <app-lounge-tab-info *ngIf=" eventosService.reservation.lounge.id == room.id" class="collapse tabHotels"
-                role="tabpanel" [attr.data-parent]="'#lounge'+headquarter.id" [attr.id]="'room'+room.id+'-'+headquarter.id+'-'+i"
-                [lounge]="room">
-
-            </app-lounge-tab-info>
+    <div *ngIf="lounges">
+        <div *ngIf="lounges.length>0">
+            <div *ngFor="let room of lounges;let i = index">
+                <div *ngIf="eventosService.reservation.lounge">
+                    <app-lounge-tab-info *ngIf=" eventosService.reservation.lounge.id == room.id" class="collapse tabHotels"
+                        role="tabpanel" [attr.data-parent]="'#lounge'+headquarter.id" [attr.id]="'room'+room.id+'-'+headquarter.id+'-'+i"
+                        [lounge]="room">
+                    </app-lounge-tab-info>
+                </div>
+            </div>
         </div>
     </div>
+    <ng-template #sinSalones>
+            <div >
+                Sin salones asignados
+            </div>
+        </ng-template>
+
 </div>

@@ -16,17 +16,23 @@ export class ConfirmationReservationComponent implements OnInit {
   public lounge: LoungeModel = LOUNGEFAKE[0]
 
   constructor(
-    private evetosService: EventosService,
+    private eventosService: EventosService,
     private router: Router
   ) { }
 
   ngOnInit() {
+
+    if (!this.eventosService.reservation.company.NIT) {
+      this.router.navigate([`/experiencias`])
+    }
+    this.lounge = this.eventosService.reservation.lounge
+     
   }
 
   terminar() {
-    this.evetosService.company = new CompanyModel()
-    this.evetosService.reservation = new ReservationDataModel()
-    this.evetosService.headquearterFilter = new HeadquarterFilterModel()
+    this.eventosService.company = new CompanyModel()
+    this.eventosService.reservation = new ReservationDataModel()
+    this.eventosService.headquearterFilter = new HeadquarterFilterModel()
     this.router.navigate(['/experiencias'])
   }
 
