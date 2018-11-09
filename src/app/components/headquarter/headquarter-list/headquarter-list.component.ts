@@ -29,7 +29,8 @@ export class HeadquarterListComponent implements OnInit {
   getHeadquarterByExperence() {
     this.eventosService.getHeadquarterByExperence(
       this.eventosService.reservation.experience.id,
-      this.eventosService.headquearterFilter.capacity
+      this.eventosService.headquearterFilter.capacity,
+      this.eventosService.headquearterFilter.cityId  
     ).subscribe(response => {
       this.breadcrumbsService.store([
         { label:   this.eventosService.reservation.experience.name , url: '/experiencia/' + this.eventosService.reservation.experience.id , params: [] },

@@ -28,6 +28,9 @@ export class LoungeCarouselComponent implements OnInit {
   }
   @Input() public images: LoungeImagesModel[] = []
   @Input() public lounge: LoungeModel;
+  @Input() public showDesc: Boolean = true;
+
+  
   public loungeImages: ImageModel[]
   constructor(
     private dialog: MatDialog,

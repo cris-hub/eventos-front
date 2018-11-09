@@ -92,10 +92,8 @@ export class EventosService {
     );
     return data
   }
-  public getHeadquarterByExperence(experenceId: number, capacity: number): Observable<HeadquarteModel[]> {
-
-    let params = 'capacity=' + capacity + '&experenceId=' + experenceId;
-
+  public getHeadquarterByExperence(experenceId: number, capacity: number,city : number): Observable<HeadquarteModel[]> {
+    let params =`capacity=${capacity}&experenceId=${experenceId}&city=${city}`
     let data = null
     console.log(this.internetConnectionService.isConnected)
     if (!this.internetConnectionService.isConnected) {

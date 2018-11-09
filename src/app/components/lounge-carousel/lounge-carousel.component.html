@@ -9,7 +9,7 @@
                         {{lounge.name}}
                     </h5>
                 </div>
-                <div class="col-md-12 text-justify">
+                <div *ngIf="showDesc" class="col-md-12 text-justify">
                     <p class="col-md-12"> 
                         {{lounge.description}}
                     </p>
