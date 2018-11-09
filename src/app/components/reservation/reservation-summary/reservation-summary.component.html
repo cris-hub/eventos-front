@@ -330,7 +330,7 @@
 
     <br>
     <div class="row">
-        <div class="col-md-9 col-md-offset-5">
+        <div class="col-md-9 col-md-offset-5 col-xs-offset-4">
             <input id="termsAndConditions" formControlName="termsAndConditions" type="checkbox">
             <label for="termsAndConditions">
                 <a href="../../../../assets/documentacion/Politicas_Eventos.pdf" target="_blank"> Terminos y
@@ -346,10 +346,10 @@
 
     <div class="row">
         <div class="col-md-9 col-md-offset-4">
-            <button (click)="goBack()" class="btn btn-default-colsubsidio col-md-offset-1 col-md-5">
+            <button (click)="goBack()" class="btn btn-default-colsubsidio col-md-offset-1 col-md-5  col-xs-6">
                 Atras
             </button>
-            <button (click)="reservar()" [attr.disabled]="formulario.get('termsAndConditions').value ? null :''" class="btn  btn-primary-colsubsidio  col-md-5">
+            <button (click)="reservar()" [attr.disabled]="formulario.get('termsAndConditions').value ? null :''" class="btn  btn-primary-colsubsidio  col-md-5  col-xs-6">
                 Siguiente
             </button>
 

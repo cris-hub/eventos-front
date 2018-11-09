@@ -32,7 +32,7 @@
         <div *ngIf="lounges.length>0 ; else sinSalones" class="row">
             <h4 class="text-center">Salones</h4>
             <div *ngFor="let room of lounges;let i = index">
-                <div class="col-md-3">
+                <div class="col-md-3 col-sm-6 col-xs-11 margin-boton ">
                     <app-lounge-carousel data-toggle="collapse" (click)="selectLounge(room)" aria-expanded="false"
                         [attr.data-target]="'#room'+room.id+'-'+headquarter.id+'-'+i" [images]="room.images" [lounge]="room"
                         [attr.aria-controls]="'room'+room.id+'-'+headquarter.id+'-'+i"></app-lounge-carousel>

@@ -103,7 +103,7 @@ export class FiltroSedeComponent implements OnInit {
         { label: response.name, url: '/', params: [] }
       ])
       this.headerService.title = response.name
-
+      this.headerService.subtitle = response.description
     })
   }
   consulterTiposEventos() {

@@ -5,6 +5,9 @@
 padding-bottom: 25px
 }
 
+.margin-boton {
+    margin-bottom: 1em;
+}
 .sinImagenes{
     background: #757575;
     text-align: center;

@@ -1,11 +1,24 @@
 <div class="divHotel col-md-3">
 
     <!-- CARRUSEL DE IMAGENES DE LOS HOTELES -->
-    <div class="galleryHotel">
-            <img [src]="experience.imagen ? experience.imagen.src : '' " [alt]="experience.imagen ? experience.imagen.alt : ''"  style="width: 100%;"  />
+    <div class="galleryHotel" style="height: 8.0em">
+            <img [src]="experience.imagen ? experience.imagen.src : '' " [alt]="experience.imagen ? experience.imagen.alt : ''"  style="width: 100%; height: 100%;"  />
     </div>
-    <div class="text-center">
-        <h4>{{experience.name}}</h4>
+    <div >
+        <h4 class="text-center site-text" > <b>{{experience.name.toUpperCase()}}</b> </h4>
+        <hr>
+        <div class="col-md-12 text-justify" style="min-height: 11em;  max-height: 11em; white-space: pre-line;  " >
+                {{
+                    experience.description.substr(0, 190) 
+                }}
+                <span *ngIf="experience.description.length>189" class="badge badge-secondary" style="cursor: pointer;">
+                    {{
+                        experience.description.length>189 ? " ... ": ""
+                    }}
+                </span>
+                
+        </div>
+     
     </div>
 
 </div>
