@@ -18,6 +18,10 @@ import { TokenInterceptor } from '../app.interceptor';
 import { ReservationService } from '../services/reservation.service';
 import { MailService } from '../services/mail.service';
 import { CourseDialogComponent } from '../components/lounge-carousel/lounge-carousel.component';
+import { LoadingPageModule } from 'angular-loading-page';         //Loading directive
+import { MaterialBarModule } from 'angular-loading-page';         //Loading animation component
+import { SlidingBarModule } from 'angular-loading-page';         //Loading animation component
+import { ThreeBounceModule } from 'angular-loading-page';         //Loading animation component
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -29,7 +33,12 @@ import { CourseDialogComponent } from '../components/lounge-carousel/lounge-caro
     RouterModule,
     HttpClientModule,
     HttpModule,
-    BreadcrumbsModule
+    BreadcrumbsModule,
+    LoadingPageModule,
+    MaterialBarModule,
+    SlidingBarModule,
+    ThreeBounceModule
+
 
   ],
   declarations: [
@@ -37,7 +46,7 @@ import { CourseDialogComponent } from '../components/lounge-carousel/lounge-caro
     MainContentComponent,
     MainHeaderComponent,
     MainFooterComponent,
-    CourseDialogComponent
+    CourseDialogComponent,
   ],
   exports: [
     LayoutComponent,

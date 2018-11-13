@@ -33,9 +33,9 @@
             <h4 class="text-center">Salones</h4>
             <div *ngFor="let room of lounges;let i = index">
                 <div class="col-md-3 col-sm-6 col-xs-11 margin-boton ">
-                    <app-lounge-carousel data-toggle="collapse" [showDesc]=false (click)="selectLounge(room)" aria-expanded="false"
-                        [attr.data-target]="'#room'+room.id+'-'+headquarter.id+'-'+i" [images]="room.images" [lounge]="room"
-                        [attr.aria-controls]="'room'+room.id+'-'+headquarter.id+'-'+i"></app-lounge-carousel>
+                    <app-lounge-carousel data-toggle="collapse" [showDesc]=false (click)="selectLounge(room)"
+                        aria-expanded="false" [attr.data-target]="'#room'+room.id+'-'+headquarter.id+'-'+i" [images]="room.images"
+                        [lounge]="room" [attr.aria-controls]="'room'+room.id+'-'+headquarter.id+'-'+i"></app-lounge-carousel>
                 </div>
             </div>
         </div>
@@ -53,9 +53,9 @@
         </div>
     </div>
     <ng-template #sinSalones>
-            <div >
-                Sin salones asignados
+            <div>
+                <mk-three-bounce style="margin:o auto" colorOne="#FBEE32" colorTwo="#3293FB" colorThree="#30005B"></mk-three-bounce>
             </div>
-        </ng-template>
+    </ng-template>
 
 </div>

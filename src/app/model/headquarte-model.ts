@@ -7,11 +7,13 @@ export class HeadquarteModel {
     id: number
     name: string
     description: string
+    emails: string 
     experences: ExperienceModel[]
     images: HeadquearterImagesModel[]
     lounges: LoungeModel[]
     loungesQueryParams: string
     constructor() {
         this.images = []
+        this.emails = ''
     }
 }

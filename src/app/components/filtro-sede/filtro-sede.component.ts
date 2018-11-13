@@ -41,7 +41,9 @@ export class FiltroSedeComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    if (!this.eventosService.reservation.experience.id) {
+      this.router.navigate([`/experiencias`])
+    }
 
     this.consulterTiposEventos();
     this.getallcities();
@@ -118,12 +120,9 @@ export class FiltroSedeComponent implements OnInit {
       this.cities = response
     })
   }
-  filtrarSedesPorCamposFormulario() {
-    this.eventosService.getHeadquarterByExperence(this.eventosService.experience.eventTypeId, 1)
-  }
 
-  selectTypeEvent(typeEvent) {
-  }
+
+
 
 
 

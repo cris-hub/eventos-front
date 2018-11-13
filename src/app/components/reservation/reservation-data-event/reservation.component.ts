@@ -53,6 +53,9 @@ export class ReservationComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (!this.eventosService.reservation.experience.id) {
+      this.router.navigate([`/experiencias`])
+    }
     this.addMigas().then();
 
     this.initFormulario();

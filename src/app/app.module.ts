@@ -38,9 +38,37 @@ import { CalendarPicker } from './shared/calendar-picker';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './app.interceptor';
 import { AuthService } from './services/auth.service';
+import { LoadingPageModule } from 'angular-loading-page';         //Loading directive
+import { MaterialBarModule } from 'angular-loading-page';         //Loading animation component
+import { SlidingBarModule } from 'angular-loading-page';         //Loading animation component
+import { ThreeBounceModule } from 'angular-loading-page';         //Loading animation component
 
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CarouselModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatTabsModule,
+    MatCardModule,
+    MatIconModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    NgxGalleryModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    MaterialBarModule,
+    LoadingPageModule,
+    SlidingBarModule,
+    ThreeBounceModule,
+    SharedModule.forRoot()
+
+
+  ], exports: [HeadquarteDetailsComponent, ValidacionDirective, CourseDialogComponent],
+
   declarations: [
     AppComponent,
     ExperiencesListComponent,
@@ -57,28 +85,9 @@ import { AuthService } from './services/auth.service';
     ReservationDataCompanyComponent,
     ReservationSummaryComponent,
     ConfirmationReservationComponent,
-    ValidacionDirective
+    ValidacionDirective,
 
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    CarouselModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatTabsModule,
-    MatCardModule,
-    MatIconModule,
-    MatDialogModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    NgxGalleryModule,
-    OwlDateTimeModule, 
-    OwlNativeDateTimeModule,
-    SharedModule.forRoot()
-
-
-  ],exports : [HeadquarteDetailsComponent,ValidacionDirective,CourseDialogComponent],
 
   bootstrap: [AppComponent],
   entryComponents: [CourseDialogComponent]

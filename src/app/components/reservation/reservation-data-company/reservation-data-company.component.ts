@@ -55,6 +55,9 @@ export class ReservationDataCompanyComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (!this.eventosService.reservation.experience.id) {
+      this.router.navigate([`/experiencias`])
+    }
     this.initFormulario();
     this.lounge  =this.eventosService.reservation.lounge
     this.addMigas()

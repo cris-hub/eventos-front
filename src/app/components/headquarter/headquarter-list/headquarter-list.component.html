@@ -1,10 +1,17 @@
 <div class="col-md-10 col-md-offset-1">
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div *ngIf="headquarters.length>0; else sinHeadquarters">
+            <div *ngFor="let headquarter of headquarters" class=" row divHotel">
+                <div AppHeadquarteHetails (click)="selectHeadquarter(headquarter)" [headquarter]="headquarter">
+                </div>
 
-        <div *ngFor="let headquarter of headquarters" class=" row divHotel">
-            <div AppHeadquarteHetails  (click)="selectHeadquarter(headquarter)" [headquarter]="headquarter">
+            </div>
+        </div>
+        <ng-template #sinHeadquarters>
+            <div>
+                <mk-three-bounce style="margin:o auto" colorOne="#FBEE32" colorTwo="#3293FB" colorThree="#30005B"></mk-three-bounce>
             </div>
 
-        </div>
+        </ng-template>
     </div>
 </div>

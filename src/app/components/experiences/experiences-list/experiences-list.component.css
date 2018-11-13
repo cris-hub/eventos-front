@@ -10,7 +10,12 @@
 }
 
   
-  .row {
+.row {
     display: table;
+}
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 

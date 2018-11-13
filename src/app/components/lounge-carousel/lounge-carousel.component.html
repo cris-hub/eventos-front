@@ -1,19 +1,20 @@
 <div [ngClass]=" { 'seleccionada' : eventosServie.reservation.lounge.id == lounge.id}" class="divHotel">
     <carousel>
-        <slide *ngFor="let image of loungeImages">
-            <img [src]="image.src" alt="{{image.alt}}" style="width: 100%; height: auto; " />
+        <slide *ngFor="let image of loungeImages" style="height: 8.0em">
+            <img [src]="image.src" alt="{{image.alt}}" style="width: 100%; height: 100%; " />
         </slide>
-        <div class="row">
-                <div class="col-md-12 text-center">
-                    <h5>
-                        {{lounge.name}}
-                    </h5>
-                </div>
-                <div *ngIf="showDesc" class="col-md-12 text-justify">
-                    <p class="col-md-12"> 
-                        {{lounge.description}}
-                    </p>
-                </div>
-            </div>
+       
     </carousel>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h5>
+                {{lounge.name}}
+            </h5>
+        </div>
+        <div *ngIf="showDesc" class="col-md-12 text-justify">
+            <p class="col-md-12"> 
+                {{lounge.description}}
+            </p>
+        </div>
+    </div>
 </div>

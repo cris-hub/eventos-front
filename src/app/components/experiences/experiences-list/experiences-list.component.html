@@ -1,12 +1,25 @@
 <div class="col-md-10 col-md-offset-1">
-<div class="row row-eq-height">
+    <div class="row center">
 
-    <div *ngFor="let experience of experiences" >
-        <app-experiences-details (click)="selectExperience(experience)"class="col-md-3 col-sm-6 col-xs-11 " [routerLink]="[
+
+        <div *ngIf="experiences.length>0; else sinExperiencias">
+
+            <div *ngFor="let experience of experiences">
+                <app-experiences-details (click)="selectExperience(experience)" class="col-md-3 col-sm-6 col-xs-11 "
+                    [routerLink]="[
                     '/experiencia', experience.id
-                    ]" [experience]=experience>
-        </app-experiences-details>
+                    ]"
+                    [experience]=experience>
+                </app-experiences-details>
+            </div>
+        </div>
+        <ng-template #sinExperiencias>
+            <div>
+                <mk-three-bounce style="margin:o auto" colorOne="#FBEE32" colorTwo="#3293FB" colorThree="#30005B"></mk-three-bounce>
+            </div>
+        </ng-template>
+
     </div>
-</div>
+
 
 </div>

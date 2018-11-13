@@ -3,6 +3,7 @@ import { HeadquarteModel } from '../../../model/headquarte-model';
 import { EventosService } from '../../../services/eventos.service';
 import { HeaderService } from '../../../services/header.service';
 import { BreadcrumbsService } from 'ng6-breadcrumbs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-headquarter-list',
@@ -14,7 +15,9 @@ export class HeadquarterListComponent implements OnInit {
   constructor(
     private eventosService: EventosService,
     private headerService: HeaderService,
-    private breadcrumbsService: BreadcrumbsService
+    private breadcrumbsService: BreadcrumbsService,
+    private router: Router,
+
 
   ) {
     this.headerService.title = 'Nuestras sedes'
@@ -23,6 +26,9 @@ export class HeadquarterListComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (!this.eventosService.reservation.experience.id) {
+      this.router.navigate([`/experiencias`])
+    }
     this.getHeadquarterByExperence();
   }
 

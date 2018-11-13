@@ -65,12 +65,11 @@ export class ReservationSummaryComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.eventosService.reservation.company.NIT) {
+    if (!this.eventosService.reservation.experience.id) {
       this.router.navigate([`/experiencias`])
     }
     this.initFormulario()
     this.lounge = this.eventosService.reservation.lounge
-
     Object.assign(this.reservation, this.eventosService.reservation);
     Object.assign(this.company, this.eventosService.company);
     Object.assign(this.headquearterFilter, this.eventosService.headquearterFilter);
@@ -87,7 +86,8 @@ export class ReservationSummaryComponent implements OnInit {
     let mail: MailModel = new MailModel()
     mail.content= reservaJsonString;
     mail.to = this.eventosService.company.mail;
-    
+    mail.copyyCC = this.eventosService.reservation.headquarte.emails.split(';');
+    debugger
 
     this.reservaService.createReservation(this.company.NIT, reservaJsonString).subscribe(response => {
       console.log(response)

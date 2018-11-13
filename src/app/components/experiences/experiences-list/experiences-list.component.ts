@@ -14,7 +14,9 @@ import { Observable, Subject } from 'rxjs';
 export class ExperiencesListComponent implements OnInit {
 
   public experiences: ExperienceModel[] = []
-
+  
+  
+  private localStorageService;
   constructor(
     private eventosService: EventosService,
     private headerService: HeaderService,
