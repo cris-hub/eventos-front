@@ -1,15 +1,778 @@
-<!doctype html>
+
+
+
+
+
+
+
+
+<!-- sadasdsajdsalkdjaslkdjaslkdjlkdsajdklasjldkjaslkdjsalkdjaslkdjaslkdj -->
+
+
+
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Eventos</title>
-  <base href="./">
-  
+  <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="http://192.168.102.70/css/app.css">
+
+  <!-- Por restricciones de VPN esta URL no carga -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
+
 <body>
+
+  <header>
+    <div class="desktop-v hide-for-small show-for-large">
+      <div class="upper-selector">
+      </div>
+      <section class="top-container">
+        <div class="content-limit">
+          <div class="left-container">
+            <div class="logo">
+              <a href="http://192.168.102.70">
+                <img src="http://192.168.102.70/images/logo.png" alt="Logo Colsubsidio">
+              </a>
+            </div>
+            <div class="links-container">
+              <ul class="menu">
+                <li class="active"><a href="http://192.168.102.70" id="menuAfiliados">Para afiliadoss</a></li>
+                <li><a href="http://192.168.102.70/empresas" id="menuEmpresas">Para empresas</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="search-form-container">
+            <div class="has-form">
+              <form id="searchForm" action="http://192.168.102.70/afiliados/busqueda/" method="GET" onsubmit="location.href ='http://192.168.102.70/afiliados/busqueda/' + encodeURIComponent(this.q.value.replace(/[^\w\s]/gi,'a')) + '/pagina/1'; return false;">
+                <div class="search-input-container">
+                  <input id="ipt-keywords" class="search" name="q" type="text" placeholder="Buscar">
+                  <input name="tipo" type="hidden" value="afiliados">
+                </div>
+                <div class="search-button-container">
+                  <input id="btn-search" class="search-btn" type="submit" value="Search">
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="right-container">
+            <div class="links-container">
+              <ul class="menu">
+                <li><a href="http://192.168.102.70/afiliados/quienes-somos">Quiénes somos</a></li>
+                <li><a href="http://192.168.102.70/afiliados/servicio-al-cliente">Servicio al cliente</a></li>
+              </ul>
+            </div>
+            <div class="share-container">
+              <div class="social-container">
+                <ul class="social-share">
+                  <li>
+                    <a href="https://www.facebook.com/ColsubsidioInfo/" target="_blank"><img src="http://192.168.102.70/uploads/2016/10/fb.png"
+                        alt="Facebook"></a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/Colsubsidio_Ofi" target="_blank"><img src="http://192.168.102.70/uploads/2016/10/tw.png"
+                        alt="Twitter"></a>
+                  </li>
+                  <li>
+                    <a href="https://www.youtube.com/user/Colsubsidio01" target="_blank"><img src="http://192.168.102.70/uploads/2016/10/yt.png"
+                        alt="Youtube"></a>
+                  </li>
+                  <li>
+                    <a href="https://www.linkedin.com/company-beta/757002/" target="_blank"><img src="http://192.168.102.70/uploads/2016/10/in.png"
+                        alt="Linkedin"></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="row menu-container menu-centered">
+        <ul class="dropdown menu main-level-menu" data-dropdown-menu>
+
+          <li role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-haspopup="true" aria-expanded="false"
+            aria-label="Transacciones en linea" data-is-click="false">
+            <a tabindex="0" style="text-transform: uppercase;">Transacciones en linea</a>
+            <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" aria-hidden="true" role="menu"
+              style="">
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="https://afiliados.colsubsidio.com/wps/portal/colsubsidio/zona-transaccional/acceso-afiliados/"
+                  target="_blank">Ingresar al Servicio Transaccional</a>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="https://portales.colsubsidio.com/CuotaMovil/" target="_blank">Ingresar al Servicio Cuota Móvil</a>
+              </li>
+            </ul>
+          </li>
+
+          <li role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-label="Afiliaciones y Subsidios">
+            <a href="http://192.168.102.70/afiliados/afiliaciones-y-subsidios" style="text-transform: uppercase;">Afiliaciones
+              y Subsidios</a>
+
+            <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" aria-hidden="true" role="menu"
+              style="">
+
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/afiliaciones-y-subsidios/afiliaciones">
+                  Afiliaciones </a>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/afiliaciones-y-subsidios/subsidios">
+                  Subsidios </a>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/afiliaciones-y-subsidios/tarjeta-de-afiliacion-multiservicios">
+                  Tarjeta de afiliación multiservicios </a>
+              </li>
+            </ul>
+
+          </li>
+          <li role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-label="Turismo">
+            <a href="http://192.168.102.70/afiliados/turismo" style="text-transform: uppercase;">Turismo</a>
+
+            <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" aria-hidden="true" role="menu"
+              style="">
+
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/turismo/hoteles-colsubsidio">
+                  Hoteles Colsubsidio </a>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/turismo/parque-recreativo-y-zoologico-piscilago">
+                  Parque recreativo y zoológico Piscilago </a>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/turismo/agencia-de-viajes">
+                  Agencia de Viajes </a>
+              </li>
+            </ul>
+
+          </li>
+          <li role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-label="Vivienda">
+            <a href="http://192.168.102.70/afiliados/vivienda" style="text-transform: uppercase;">Vivienda</a>
+
+            <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" aria-hidden="true" role="menu"
+              style="">
+
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/vivienda/proyectos">
+                  Proyectos </a>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/vivienda/simulador-de-vivienda">
+                  Simulador de Vivienda </a>
+              </li>
+
+              <li role="menuitem" class="is-dropdown-submenu-parent is-submenu-item is-dropdown-submenu-item opens-right"
+                aria-label="Subsidio de vivienda">
+                <a href="http://192.168.102.70/afiliados/vivienda/subsidio-de-vivienda">
+                  Subsidio de vivienda </a>
+                <ul class="submenu is-dropdown-submenu vertical" data-submenu="" aria-hidden="true" role="menu">
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/vivienda/subsidio-de-vivienda/subsidio-para-construccion-en-sitio-propio">
+                      Subsidio para construcción en sitio propio </a>
+                  </li>
+
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/vivienda/subsidio-de-vivienda/subsidio-para-mejoramiento-de-vivienda">
+                      Subsidio para mejoramiento de vivienda </a>
+                  </li>
+
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/vivienda/subsidio-de-vivienda/subsidio-para-vivienda-nueva">
+                      Subsidio para vivienda nueva </a>
+                  </li>
+
+                </ul>
+              </li>
+            </ul>
+
+          </li>
+          <li role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-label="Recreación y Deportes">
+            <a href="http://192.168.102.70/afiliados/recreacion-y-deportes" style="text-transform: uppercase;">Recreación
+              y Deportes</a>
+
+            <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" aria-hidden="true" role="menu"
+              style="">
+
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/recreacion-y-deportes/cafe-de-las-letras">
+                  Café de las Letras </a>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/recreacion-y-deportes/clubes">
+                  clubes </a>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/recreacion-y-deportes/deportes">
+                  Deportes </a>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/recreacion-y-deportes/eventos-sociales">
+                  Eventos Sociales </a>
+              </li>
+            </ul>
+
+          </li>
+          <li role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-label="Cultura">
+            <a href="http://192.168.102.70/afiliados/cultura" style="text-transform: uppercase;">Cultura</a>
+
+            <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" aria-hidden="true" role="menu"
+              style="">
+
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/cultura/teatro">
+                  Teatro </a>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/cultura/campus-creativo-195">
+                  Campus Creativo 195 </a>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/cultura/red-de-bibliotecas">
+                  Red de Bibliotecas </a>
+              </li>
+            </ul>
+
+          </li>
+          <li role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-label="Salud">
+            <a href="http://192.168.102.70/afiliados/salud" style="text-transform: uppercase;">Salud</a>
+
+            <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" aria-hidden="true" role="menu"
+              style="">
+
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/salud/https://portales.colsubsidio.com:448/web/salud/inicio">
+                  Solicita Tu Cita Médica </a>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/salud/https://laboratorios.colsubsidio.com">
+                  Resultados de laboratorio </a>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/salud/atencion-basica">
+                  Atención básica </a>
+              </li>
+
+              <li role="menuitem" class="is-dropdown-submenu-parent is-submenu-item is-dropdown-submenu-item opens-right"
+                aria-label="Clínicas y centros de especialistas">
+                <a href="http://192.168.102.70/afiliados/salud/clinicas-y-centros-de-especialistas">
+                  Clínicas y centros de especialistas </a>
+                <ul class="submenu is-dropdown-submenu vertical" data-submenu="" aria-hidden="true" role="menu">
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/salud/clinicas-y-centros-de-especialistas/centro-de-especialistas-calle-63.html">
+                      Centro de Especialistas Calle 63 </a>
+                  </li>
+
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/salud/clinicas-y-centros-de-especialistas/clinica-infantil-colsubsidio.html">
+                      Clínica Infantil Colsubsidio </a>
+                  </li>
+
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/salud/clinicas-y-centros-de-especialistas/clinica-materno-infantil.html">
+                      Clínica Materno Infantil </a>
+                  </li>
+
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/salud/clinicas-y-centros-de-especialistas/clinica-colsubsidio-ciudad-roma.html">
+                      Clínica Colsubsidio Ciudad Roma </a>
+                  </li>
+
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/salud/clinicas-y-centros-de-especialistas/clinica-el-lago.html">
+                      Clínica El Lago </a>
+                  </li>
+
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/salud/clinicas-y-centros-de-especialistas/clinica-calle-100.html">
+                      Clínica Calle 100 </a>
+                  </li>
+
+                </ul>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/salud/programas-de-promocion-y-prevencion">
+                  Programas de Promoción y Prevención </a>
+              </li>
+
+              <li role="menuitem" class="is-dropdown-submenu-parent is-submenu-item is-dropdown-submenu-item opens-right"
+                aria-label="Salud preferencial">
+                <a href="http://192.168.102.70/afiliados/salud/salud-preferencial">
+                  Salud preferencial </a>
+                <ul class="submenu is-dropdown-submenu vertical" data-submenu="" aria-hidden="true" role="menu">
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/salud/salud-preferencial/chequeos-medicos-preventivos">
+                      Chequeos médicos preventivos </a>
+                  </li>
+
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/salud/salud-preferencial/atencion-pac">
+                      Atención PAC </a>
+                  </li>
+
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/salud/salud-preferencial/cirugia-plastica-y-estetica-intima-y-refractiva">
+                      Cirugía plástica y estética, íntima y refractiva </a>
+                  </li>
+
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/salud/salud-preferencial/medicina-alternativa">
+                      Medicina alternativa </a>
+                  </li>
+
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/salud/salud-preferencial/odontologia-especializada">
+                      Odontología especializada </a>
+                  </li>
+
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/salud/salud-preferencial/salud-preferencial-mazuren">
+                      Salud preferencial Mazuren </a>
+                  </li>
+
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/salud/salud-preferencial/vacunacion">
+                      Vacunación </a>
+                  </li>
+
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/salud/salud-preferencial/vinculos">
+                      Vínculos </a>
+                  </li>
+
+                </ul>
+              </li>
+            </ul>
+
+          </li>
+          <li role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-label="Crédito y Seguros">
+            <a href="http://192.168.102.70/afiliados/credito-y-seguros" style="text-transform: uppercase;">Crédito y
+              Seguros</a>
+
+            <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" aria-hidden="true" role="menu"
+              style="">
+
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/credito-y-seguros/lineas-de-credito">
+                  Lineas de Crédito </a>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/credito-y-seguros/programa-entre-amigos">
+                  programa 'Entre Amigos' </a>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/credito-y-seguros/seguros">
+                  Seguros </a>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/credito-y-seguros/educacion-financiera">
+                  Educación Financiera </a>
+              </li>
+
+              <li role="menuitem" class="is-dropdown-submenu-parent is-submenu-item is-dropdown-submenu-item opens-right"
+                aria-label="Información de interés">
+                <a href="http://192.168.102.70/afiliados/credito-y-seguros/informacion-de-interes">
+                  Información de interés </a>
+                <ul class="submenu is-dropdown-submenu vertical" data-submenu="" aria-hidden="true" role="menu">
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/credito-y-seguros/informacion-de-interes/gestion-de-cobranza">
+                      Gestión de cobranza </a>
+                  </li>
+
+                </ul>
+              </li>
+            </ul>
+
+          </li>
+          <li role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-label="Supermercados y Droguerías">
+            <a href="http://192.168.102.70/afiliados/supermercados-y-droguerias" style="text-transform: uppercase;">Supermercados
+              y Droguerías</a>
+
+            <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" aria-hidden="true" role="menu"
+              style="">
+
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/supermercados-y-droguerias/supermercados">
+                  Supermercados </a>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/supermercados-y-droguerias/droguerias">
+                  Droguerías </a>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/supermercados-y-droguerias/tu-club">
+                  Tu Club </a>
+              </li>
+            </ul>
+
+          </li>
+          <li role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-label="Educación">
+            <a href="http://192.168.102.70/afiliados/educacion" style="text-transform: uppercase;">Educación</a>
+
+            <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" aria-hidden="true" role="menu"
+              style="">
+
+
+              <li role="menuitem" class="is-dropdown-submenu-parent is-submenu-item is-dropdown-submenu-item opens-right"
+                aria-label="Colegios">
+                <a href="http://192.168.102.70/afiliados/educacion/colegios">
+                  Colegios </a>
+                <ul class="submenu is-dropdown-submenu vertical" data-submenu="" aria-hidden="true" role="menu">
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/educacion/colegios/colegio-colsubsidio-ciudadela.html">
+                      Colegio Colsubsidio Ciudadela </a>
+                  </li>
+
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/educacion/colegios/colegio-colsubsidio-norte.html">
+                      Colegio Colsubsidio Norte </a>
+                  </li>
+
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/educacion/colegios/colegio-colsubsidio-chicala.html">
+                      Colegio Colsubsidio Chicalá </a>
+                  </li>
+
+
+                  <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                    <a href="http://192.168.102.70/afiliados/educacion/colegios/colegio-colsubsidio-maipore.html">
+                      Colegio Colsubsidio Maiporé </a>
+                  </li>
+
+                </ul>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/educacion/educacion-superior">
+                  Educación Superior </a>
+              </li>
+              <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+                <a href="http://192.168.102.70/afiliados/educacion/educacion-flexible-por-ciclos">
+                  Educacion flexible por ciclos </a>
+              </li>
+            </ul>
+
+          </li>
+          <li role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-label="Agencia de empleo">
+            <a href="http://192.168.102.70/afiliados/agencia-de-empleo" style="text-transform: uppercase;">Agencia de
+              empleo</a>
+
+
+          </li>
+          <li role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-label="Sedes">
+            <a href="http://192.168.102.70/afiliados/sedes" style="text-transform: uppercase;">Sedes</a>
+
+
+          </li>
+
+        </ul>
+      </section>
+
+
+    </div>
+
+    <div class="mobile-v hide-for-large show-for-small">
+      <div class="row align-justify align-middle">
+        <div id="mobile-menu-trigger" class="trigger-mobile-menu columns">
+          <div class="icon-mobile"></div>
+        </div>
+        <div class="logo columns align-middle">
+          <a href="http://192.168.102.70">
+            <img src="http://192.168.102.70/images/logo.png" alt="Logo Colsubsidio">
+          </a>
+        </div>
+        <div id="trigger-mobile-search" class="trigger-mobile-search columns">
+          <div class="icon-mobile"></div>
+        </div>
+      </div>
+
+      <div id="mobile-search" class="mobile-search row">
+        <div class="columns align-middle">
+          <form id="searchForm" action="http://192.168.102.70/afiliados/busqueda/" method="GET" onsubmit="location.href ='http://192.168.102.70/afiliados/busqueda/' + encodeURIComponent(this.q.value.replace(/[^\w\s]/gi,'a')) + '/pagina/1'; return false;">
+            <div class="search-input-container">
+              <input id="ipt-keywordsMobile" class="search" name="q" type="text" placeholder="Buscar">
+              <input name="tipo" type="hidden" value="afiliados">
+            </div>
+            <div class="search-button-container">
+              <input id="btn-search" class="search-btn" type="submit" value="Buscar">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="desktop-v hide-for-small show-for-large"> 
   <app-root></app-root>
+
+</div>
+
+
+
+  <footer>
+    <div class="separation-line"></div>
+    <div class="grey_bg">
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="row blue_line align-center">
+            <ul class="buttons_top">
+
+              <li class="btn_footer">
+
+
+                <a href="servicio-al-cliente/preguntas-frecuentes/preguntas-frecuentes" target="_self" class="btn_f">
+                  <div class="icon">
+                    <span class="triangle"></span>
+                    <div class="icon-container">
+                      <img src="http://192.168.102.70/uploads/2016/10/question-icon.png" alt="">
+                    </div>
+                  </div>
+                  <div class="title">Preguntas Frecuentes Afiliados</div>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+
+
+              </li>
+              <li class="btn_footer">
+
+
+                <a href="servicio-al-cliente/guia-de-tramites.html" target="_self" class="btn_f">
+                  <div class="icon">
+                    <span class="triangle"></span>
+                    <div class="icon-container">
+                      <img src="http://192.168.102.70/uploads/2016/10/tramites-icon.png" alt="">
+                    </div>
+                  </div>
+                  <div class="title">Guía de trámites</div>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+
+
+              </li>
+              <li class="btn_footer">
+
+
+                <a href="servicio-al-cliente/servicio-al-cliente" target="_self" class="btn_f">
+                  <div class="icon">
+                    <span class="triangle"></span>
+                    <div class="icon-container">
+                      <img src="http://192.168.102.70/uploads/2016/10/servicio-cliente-icon.png" alt="">
+                    </div>
+                  </div>
+                  <div class="title">Servicio al Cliente Afiliados</div>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+
+
+              </li>
+              <li class="btn_footer">
+
+
+                <a href="servicio-al-cliente/centros-de-servicio.html" target="_self" class="btn_f">
+                  <div class="icon">
+                    <span class="triangle"></span>
+                    <div class="icon-container">
+                      <img src="http://192.168.102.70/uploads/2016/10/location-icon.png" alt="">
+                    </div>
+                  </div>
+                  <div class="title">Centros de servicio</div>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+
+
+              </li>
+
+            </ul>
+          </div>
+
+          <div class="row menu_footer">
+            <div class="large-3 medium-3 small-12 columns menu_col first-column-container">
+              <h5>Legales</h5>
+              <ul class="mf_inner">
+                <li>
+                  <a href="/uploads/2017/07/Manual-de-politicas-y-procedimientos-para-el-tratamiento-de-datos-personales-ok.pdf"
+                    target="_blank">Manual de Políticas y Procedimientos para el Trato de Datos Personales</a>
+                </li>
+                <li>
+                  <a href="/uploads/2017/07/Aviso-de-privacidad.pdf" target="_blank">Aviso de Privacidad</a>
+                </li>
+                <li>
+                  <a href="/uploads/2017/08/Politica_de_privacidad_de_datos_del_servicio_transacciones_seguras_en_www_colsubsidio_com.pdf"
+                    target="_blank">Política de Servicios Transaccionales seguros.</a>
+                </li>
+                <li>
+                  <a href="/uploads/2018/02/BANNER-focus.jpg" target="_blank">Grupos focales</a>
+                </li>
+                <li>
+                  <a href="https://www.descubrecolsubsidio.com/actualizacion/" target="_blank">Actualización de datos</a>
+                </li>
+
+              </ul>
+            </div>
+
+            <div class="large-6 medium-6 small-12 columns menu_col second-column-container">
+              <h5>Nuestros portales</h5>
+              <ul class="mf_inner">
+                <li>
+                  <a href="http://elcubocolsubsidio.co/" target="_blank">El cubo</a>
+                </li>
+                <li>
+                  <a href="http://clubescolsubsidio.co/" target="_blank">Clubes</a>
+                </li>
+                <li>
+                  <a href="http://cafedelasletras.co/" target="_blank">Café de las letras</a>
+                </li>
+                <li>
+                  <a href="http://www.hotelescolsubsidio.com/" target="_blank">Hoteles Colsubsidio</a>
+                </li>
+                <li>
+                  <a href="http://piscilago.co/" target="_blank">Piscilago</a>
+                </li>
+                <li>
+                  <a href="https://www.tuclubcolsubsidio.com/" target="_blank">Tu Club</a>
+                </li>
+                <li>
+                  <a href="http://www.teatrocolsubsidio.com/" target="_blank">Teatro</a>
+                </li>
+                <li>
+                  <a href="http://aventureroscolsubsidio.com/" target="_blank">Aventureros</a>
+                </li>
+                <li>
+                  <a href="http://www.drogueriascolsubsidio.com/" target="_blank">Droguerías</a>
+                </li>
+                <li>
+                  <a href="http://www.capitalhumano.com.co/" target="_blank">Capital Humano</a>
+                </li>
+                <li>
+                  <a href="http://agenciadeempleocolsubsidio.com/" target="_blank">Agencia de empleo</a>
+                </li>
+                <li>
+                  <a href="http://www.tusbeneficioscolsubsidio.com/" target="_blank">Tus beneficios</a>
+                </li>
+                <li>
+                  <a href="https://afiliados.colsubsidio.com/wps/portal/colsubsidio/zona-transaccional/acceso-afiliados-citas-medicas"
+                    target="_blank">Citas médicas</a>
+                </li>
+                <li>
+                  <a href="https://afiliados.colsubsidio.com/wps/portal/colsubsidio/zona-transaccional/acceso-afiliados/"
+                    target="_blank">Portal Transaccional</a>
+                </li>
+                <li>
+                  <a href="https://afiliados.colsubsidio.com/wps/portal/colsubsidio/zona-transaccional/acceso-afiliaciones/ingreso-afiliaciones"
+                    target="_blank">Afiliaciones en línea</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="large-3 medium-3 small-12 columns menu_col">
+              <h5>Nuestras redes</h5>
+              <ul class="small-12 columns end social">
+
+                <li>
+                  <a href="https://www.facebook.com/ColsubsidioInfo/" target="_blank"><img src="http://192.168.102.70/uploads/2016/10/fb.png"
+                      alt="Facebook"></a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/Colsubsidio_Ofi" target="_blank"><img src="http://192.168.102.70/uploads/2016/10/tw.png"
+                      alt="Twitter"></a>
+                </li>
+                <li>
+                  <a href="https://www.youtube.com/user/Colsubsidio01" target="_blank"><img src="http://192.168.102.70/uploads/2016/10/yt.png"
+                      alt="Youtube"></a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/company-beta/757002/" target="_blank"><img src="http://192.168.102.70/uploads/2016/10/in.png"
+                      alt="Linkedin"></a>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="filiales">
+      <div class="section-title">Filiales</div>
+
+      <div class="logo_footer">
+        <a href="http://www.proteccion.com/portal/secciones/PROTPORTAL/HOME/seccion_HTML.html" target="_blank">
+          <img src="http://192.168.102.70/uploads/2016/10/proteccion.png" alt="Proteccion">
+        </a>
+      </div>
+      <div class="logo_footer">
+        <a href="http://www.famisanar.com.co/" target="_blank">
+          <img src="http://192.168.102.70/uploads/2016/10/famisanar.png" alt="Famisanar">
+        </a>
+      </div>
+      <div class="logo_footer">
+        <a href="https://www.bancompartir.co/#!inicio" target="_blank">
+          <img src="http://192.168.102.70/uploads/2016/10/bancompartir.png" alt="Bancompartir">
+        </a>
+      </div>
+      <div class="logo_footer">
+        <a href="http://www.pagosimple.com/" target="_blank">
+          <img src="http://192.168.102.70/uploads/2016/10/simple.png" alt="Simple">
+        </a>
+      </div>
+      <div class="logo_footer">
+        <a href="http://www.nuevaeps.com.co/" target="_blank">
+          <img src="http://192.168.102.70/uploads/2016/10/nueva.png" alt="Nueva EPS">
+        </a>
+      </div>
+
+    </div>
+
+    <div class="copy">
+      <div class="row align-center">
+        <div class="small-12 medium-6 columns logos-footer">
+
+          <a href="http://www.ssf.gov.co/wps/portal/ES/Inicio" target="_blank">
+            <img src="http://192.168.102.70/uploads/2016/10/logos_footer_1.png" alt="">
+          </a>
+          <a href="http://www.supersalud.gov.co/" target="_blank">
+            <img src="http://192.168.102.70/uploads/2016/10/logos_footer_2.png" alt="">
+          </a>
+
+        </div>
+        <div class="small-12 medium-6 columns copyright">
+          <span>Copyright ©2016 COLSUBSIDIO Todos los derechos reservados.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="http://192.168.102.70/js/jquery.js"></script>
+  <script src="http://192.168.102.70/js/app.js"></script>
+
 </body>
+
 </html>

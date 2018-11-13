@@ -18,7 +18,7 @@
                     <label class="control-label" for="">Tipo evento</label>
                 </div>
                 <div class="col-md-8">
-                    <select validacion [validaciones]="['requerido']" formControlName="eventTypeId" (ngModelChange)="selectTypeEvent($event)"
+                    <select validacion [validaciones]="['requerido']" formControlName="eventTypeId" 
                         class="form-control">
                         <option [value]="null">Seleccione</option>
                         <option *ngFor="let eventType of eventsTypes" [value]="eventType.id">{{eventType.name}}</option>
