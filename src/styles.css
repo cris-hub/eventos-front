@@ -7,6 +7,10 @@ body{
     color: #202020 !important;    
     padding-bottom: 100px;
 }
+.row {
+    margin: 0 !important;
+    max-width: 100%!important;
+}
 
 .divHotel .carousel-inner,
 .divHotel .left.carousel-control.carousel-control-prev{

@@ -1,7 +1,7 @@
 <div class="col-md-10 col-md-offset-1">
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
         <div *ngIf="headquarters.length>0; else sinHeadquarters">
-            <div *ngFor="let headquarter of headquarters" class=" row divHotel">
+            <div *ngFor="let headquarter of headquarters" class=" col-md-12 divHotel">
                 <div AppHeadquarteHetails (click)="selectHeadquarter(headquarter)" [headquarter]="headquarter">
                 </div>
 
