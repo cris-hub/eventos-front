@@ -4,6 +4,7 @@ import { EventosService } from '../../../services/eventos.service';
 import { HeaderService } from '../../../services/header.service';
 import { BreadcrumbsService } from 'ng6-breadcrumbs';
 import { Observable, Subject } from 'rxjs';
+import { retry, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-experiences-list',
@@ -14,8 +15,8 @@ import { Observable, Subject } from 'rxjs';
 export class ExperiencesListComponent implements OnInit {
 
   public experiences: ExperienceModel[] = []
-  
-  
+
+
   private localStorageService;
   constructor(
     private eventosService: EventosService,
@@ -28,9 +29,11 @@ export class ExperiencesListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.eventosService.getExperiencias().subscribe(res => {
+    this.eventosService.getExperiencias().pipe(
+      retry(3), // reintentar una solicitud fallida hasta 3 veces
+    ).subscribe(res => {
       this.breadcrumbsService.storePrefixed(
-        {label: 'Experiencias' , url: '/', params: []} 
+        { label: 'Experiencias', url: '/', params: [] }
       )
       this.experiences = res;
     });

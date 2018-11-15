@@ -50,10 +50,12 @@ export class LoungeTabInfoComponent implements OnInit {
 
     }
     setGallery() {
-        this.galleryOptions = [
-            { "image": false, "thumbnailsRemainingCount": true, "height": "190px", "width": "100%" },
-            { "breakpoint": 500, "width": "100%", "thumbnailsColumns": 2 }
-        ];
+        this.galleryOptions =[
+            { "previewCloseOnClick": true, "previewCloseOnEsc": true },
+            { "breakpoint": 500, "width": "100%", "height": "300px", "thumbnailsColumns": 3 },
+            { "breakpoint": 300, "width": "100%", "height": "200px", "thumbnailsColumns": 2 }
+            ]
+            
 
         var arrGallery = [];
         if (!this.lounge) {

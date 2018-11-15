@@ -54,9 +54,9 @@
         </div>
     </div>
     <ng-template #sinSalones>
-            <div>
-                <mk-three-bounce style="margin:o auto" colorOne="#FBEE32" colorTwo="#3293FB" colorThree="#30005B"></mk-three-bounce>
-            </div>
+        <div *mkLoadingPage="{checkPendingHttp: true}">
+            <mk-three-bounce style="margin:o auto" colorOne="#FBEE32" colorTwo="#3293FB" colorThree="#30005B"></mk-three-bounce>
+        </div>
     </ng-template>
 
 </div>

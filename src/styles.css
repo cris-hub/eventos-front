@@ -11,6 +11,9 @@ body{
     margin: 0 !important;
     max-width: 100%!important;
 }
+table tbody tr:first-child {
+    background: #F5F5F5 !important;
+}
 
 .divHotel .carousel-inner,
 .divHotel .left.carousel-control.carousel-control-prev{
