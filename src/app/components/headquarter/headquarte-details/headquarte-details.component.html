@@ -20,7 +20,7 @@
         <div class="col-md-3 showRooms" role="tab" id="headingOne">
             <button class="btn" type="button" data-toggle="collapse" (click)="searchLounges(headquarter.id)"
                 aria-expanded="false" [attr.data-target]="'#lounge'+headquarter.id" [attr.aria-controls]="'lounge'+headquarter.id">
-                Ver Salones
+                Ver escenarios
             </button>
         </div>
     </div>
@@ -30,7 +30,7 @@
     <div *ngIf="lounges">
         <hr>
         <div *ngIf="lounges.length>0 ; else sinSalones" class="col-md-12">
-            <h4 class="text-center">Salones</h4>
+            <h4 class="text-center">Escenarios</h4>
             <div *ngFor="let room of lounges;let i = index">
                 <div class="col-md-3 col-sm-6 col-xs-11 margin-boton ">
                     <app-lounge-carousel data-toggle="collapse" [showDesc]=false (click)="selectLounge(room)"
