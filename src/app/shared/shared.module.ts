@@ -22,6 +22,7 @@ import { LoadingPageModule } from 'angular-loading-page';         //Loading dire
 import { MaterialBarModule } from 'angular-loading-page';         //Loading animation component
 import { SlidingBarModule } from 'angular-loading-page';         //Loading animation component
 import { ThreeBounceModule } from 'angular-loading-page';         //Loading animation component
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -56,6 +57,8 @@ import { ThreeBounceModule } from 'angular-loading-page';         //Loading anim
     CommonModule,
     FormsModule,
   ],  providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+
     EventosService,
     HeaderService,
     ReservationService,

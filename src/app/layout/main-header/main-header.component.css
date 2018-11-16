@@ -19,6 +19,10 @@
     border-right: 1px solid #d3d3d3;
 
 }
+breadcrumb.container-fluid {
+margin: 0 !important;
+padding: 0 !important;
+}
 
 h1 {
     color: #011F5B
