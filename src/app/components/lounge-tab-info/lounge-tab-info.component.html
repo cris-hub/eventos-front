@@ -1,16 +1,21 @@
-<div  class="" >
+<div class="">
 
     <mat-tab-group class="tab-group">
+        <mat-tab label="Imágenes">
+            <div class="tab-content">
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <ngx-gallery style="width: 100%;" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+                </div>
+            </div>
+        </mat-tab>
+
         <mat-tab label="Información">
             <div class="tab-content">
                 {{lounge.description}}
             </div>
         </mat-tab>
-        <mat-tab label="Imágenes">
-            <div class="tab-content">
-                <ngx-gallery [options]="galleryOptions"  [images]="galleryImages"></ngx-gallery>
-            </div>
-        </mat-tab>
+
     </mat-tab-group>
 
     <div class="row">

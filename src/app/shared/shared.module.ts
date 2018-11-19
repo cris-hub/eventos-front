@@ -24,6 +24,7 @@ import { SlidingBarModule } from 'angular-loading-page';         //Loading anima
 import { ThreeBounceModule } from 'angular-loading-page';         //Loading animation component
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
  */
@@ -38,8 +39,9 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
     LoadingPageModule,
     MaterialBarModule,
     SlidingBarModule,
-    ThreeBounceModule
-
+    ThreeBounceModule,
+    SlickCarouselModule
+    
 
   ],
   declarations: [

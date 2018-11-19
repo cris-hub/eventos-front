@@ -33,12 +33,12 @@
                 </div>
 
                 <div class="col-md-4">
-                    <input validacion [validaciones]="['requerido']" formControlName="amountAttendingEventAdults" type="number"
+                    <input validacion [validaciones]="['requerido']" min="0" formControlName="amountAttendingEventAdults" type="number"
                         class="form-control">
                     <span class="help-block">adultos<span class="text-danger validaciones"> *</span></span>  
                 </div>
                 <div class="col-md-4">
-                    <input validacion  formControlName="amountAttendingEventChildren"
+                    <input validacion min="0" formControlName="amountAttendingEventChildren"
                         type="number" class="form-control">
                     <span class="help-block">niños</span>
                 </div>
