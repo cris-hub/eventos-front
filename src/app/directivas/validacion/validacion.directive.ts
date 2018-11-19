@@ -13,7 +13,7 @@ import { Validator, AbstractControl, NG_VALIDATORS } from '@angular/forms';
   ]
 })
 
-export class ValidacionDirective implements Validator,OnChanges {
+export class ValidacionDirective implements Validator, OnChanges {
 
   @Input() validaciones: string[];
   @Input() control: AbstractControl;
@@ -31,7 +31,7 @@ export class ValidacionDirective implements Validator,OnChanges {
       if (this._onChange) this._onChange();
     }
 
-    
+
 
   }
 
@@ -83,7 +83,7 @@ export class ValidacionDirective implements Validator,OnChanges {
 
 
   ListaValidaciones(): string {
-    
+
     for (let validaciones of this.validaciones) {
 
       // tipos de validaciones se la validacion requiere de un parametro se le asigna ejem: "typovalidacion:parametro"
@@ -170,7 +170,8 @@ export class ValidacionDirective implements Validator,OnChanges {
 
 
   minimo(valor: string): string {
-    if (this.textoInput.length < Number(valor) && (this.textoInput.length > 0)) {
+    if (Number(this.textoInput) < Number(valor)) {
+
       return "Este campo requiere minimo " + valor + " digitos";
     }
     return '';
@@ -204,7 +205,7 @@ export class ValidacionDirective implements Validator,OnChanges {
     } else {
       return '';
     }
-  } 
+  }
 
 
 }

@@ -17,7 +17,7 @@ export class HeadquarteDetailsComponent implements OnInit {
     public loungesSlick: LoungeModel[] = []
     private indexShow = 0;
 
-    @Input() public images: ImageModel[]
+    @Input() public images: ImageModel[] = []
 
     public galleryOptions: NgxGalleryOptions[] = [];
     public galleryImages: NgxGalleryImage[] = [];
@@ -34,6 +34,7 @@ export class HeadquarteDetailsComponent implements OnInit {
     searchLounges(headquarterId: number) {
         this.eventosService.getlistloungebyheadquarteridandloungecapacity(headquarterId, this.eventosService.headquearterFilter.capacity).subscribe(response => {
             this.lounges = response ? response : [];
+            this.loungesSlick = [];
             this.loungesSlick.push(this.lounges[this.indexShow]);
             this.loungesSlick.unshift(this.lounges[this.indexShow + 1]);
         })
