@@ -38,7 +38,7 @@
                     <span class="help-block">adultos<span class="text-danger validaciones"> *</span></span>  
                 </div>
                 <div class="col-md-4">
-                    <input validacion min="0"  formControlName="amountAttendingEventChildren"
+                    <input  min="0" validacion [validaciones]="['minimo:0']"  formControlName="amountAttendingEventChildren"
                         type="number" class="form-control">
                     <span class="help-block">niños</span>
                 </div>

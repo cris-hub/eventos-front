@@ -36,12 +36,12 @@
                                 </label>
                             </div>
                             <div class="col-md-4 ">
-                                <input type="number" min="0" formControlName="NIT" validacion [validaciones]="['minimo : 0']"
+                                <input type="number" min="0" formControlName="NIT" validacion [validaciones]="['requerido','minimo:0']"
                                     class="form-control">                                                                                                                                                               
                             </div>
                             <div class="col-md-1 no-margin-no-padding text-center">-</div>
                             <div class="col-md-3">
-                                <input type="number" placeholder="" min="0" formControlName="numberVerification" validacion [validaciones]="['requerido','numerico']"
+                                <input type="number" placeholder="" min="0" formControlName="numberVerification" validacion [validaciones]="['requerido','minimo:0']"
                                 class="form-control">
                             </div>
                         </div>
@@ -88,14 +88,14 @@
                             </div>
                             <div class="col-md-8 ">
                                 <div class="col-md-7 no-margin-no-padding">
-                                    <input type="tel" formControlName="landline" validacion [validaciones]="['requerido']"
+                                    <input type="number" formControlName="landline" validacion [validaciones]="['requerido','minimo:0']"
                                         class="form-control">
                                 </div>
                                 <div class="col-md-2">
                                     <label class="control-label" for="">ext</label>
                                 </div>
                                 <div class="col-md-3  no-margin-no-padding">
-                                    <input type="number" min="0" formControlName="extLandline" class="form-control">
+                                    <input type="number" min="0" validacion [validaciones]="['requerido','minimo:0']" formControlName="extLandline" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -109,7 +109,7 @@
                                 </label>
                             </div>
                             <div class="col-md-8 ">
-                                <input type="tel" formControlName="mobilePhone" validacion [validaciones]="['requerido']"
+                                <input type="number" formControlName="mobilePhone" validacion [validaciones]="['requerido','minimo:0']"
                                     class="form-control">
 
                             </div>
