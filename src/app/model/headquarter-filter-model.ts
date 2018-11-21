@@ -10,6 +10,9 @@ export class HeadquarterFilterModel {
         this.amountAttendingEventAdults = 0
         this.amountAttendingEventChildren = 0
         this.capacity = this.amountAttendingEventAdults + this.amountAttendingEventChildren
+        this.dateStart = new Date();
+        this.dateFinish = new Date();
+
 
     }
 

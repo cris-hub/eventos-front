@@ -25,9 +25,20 @@ import { ThreeBounceModule } from 'angular-loading-page';         //Loading anim
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { OWL_DATE_TIME_LOCALE, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
  */
+
+export const MY_NATIVE_FORMATS = {
+  fullPickerInput: {year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric'},
+  datePickerInput: {year: 'numeric', month: 'numeric', day: 'numeric'},
+  timePickerInput: {hour: 'numeric', minute: 'numeric'},
+  monthYearLabel: {year: 'numeric', month: 'short'},
+  dateA11yLabel: {year: 'numeric', month: 'long', day: 'numeric'},
+  monthYearA11yLabel: {year: 'numeric', month: 'long'},
+};
+
 @NgModule({
   imports: [
     CommonModule,
@@ -60,7 +71,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     FormsModule,
   ],  providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
-
+    {provide: OWL_DATE_TIME_LOCALE, useValue: 'co'},
+    {provide: OWL_DATE_TIME_FORMATS, useValue: MY_NATIVE_FORMATS},
     EventosService,
     HeaderService,
     ReservationService,
