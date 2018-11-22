@@ -34,9 +34,7 @@ app.get('/*', function (req, res) {
 });
 
 app.post('/', function (req, res) {
-    let reqdata = {}
-    Object.assign(reqdata,req)
-    res.json(reqdata)
+
     console.log(req)
 
     res.sendFile(path.join(__dirname + '/dist/eventos/index.html'));
