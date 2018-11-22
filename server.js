@@ -34,7 +34,7 @@ app.get('/*', function (req, res) {
 });
 
 app.post('/', function (req, res) {
-    res.setHeader('cookings', req.cookies)
+    res.json(req)
     console.log(req)
 
     res.sendFile(path.join(__dirname + '/dist/eventos/index.html'));
