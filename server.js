@@ -36,6 +36,7 @@ app.get('/*', function (req, res) {
 app.post('/', function (req, res) {
 
     console.log(req)
+    console.log(res)
 
     res.sendFile(path.join(__dirname + '/dist/eventos/index.html'));
 });
