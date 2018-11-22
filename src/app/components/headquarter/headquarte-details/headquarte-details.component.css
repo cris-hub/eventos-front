@@ -1,5 +1,6 @@
 .img-contet {
     padding-left: 0%;
+        width: 49%;
 }
 .padding {
 padding-bottom: 25px
@@ -33,7 +34,7 @@ padding-bottom: 25px
 .divHotel div.showRooms{
     text-align: center;
     line-height: 190px;
-    height: 190px;
+    height: 148px;
 }
 .divHotel div.showRooms button{
     vertical-align: middle;
