@@ -36,6 +36,8 @@ app.get('/*', function (req, res) {
 app.post('/', function (req, res) {
 
     res.sendFile(path.join(__dirname + '/dist/eventos/index.html'));
+   console.log(req)
+    res.setHeader('cookings', req.cookies)
 });
 
 // Start the app by listening on the default Heroku port
