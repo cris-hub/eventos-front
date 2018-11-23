@@ -88,6 +88,11 @@ export class FiltroSedeComponent implements OnInit {
         this.formulario.get('dateFinish').setErrors({ error: ' Esta fecha debe ser mayor a la fecha de inicio del evento' });
       }
     });
+    this.formulario.get('dateStart').valueChanges.subscribe(valorQueCambio => {
+      if (this.formulario.get('dateStart').value == this.formulario.get('dateFinish').value) {
+        this.formulario.get('dateFinish').setErrors({ error: 'La fecha fin debe ser mayor a la fecha de inicio del evento' });
+      }
+    });
   }
 
   obtenerParamtrosRuta() {
