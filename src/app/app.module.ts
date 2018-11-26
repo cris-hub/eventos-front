@@ -42,7 +42,6 @@ import { LoadingPageModule } from 'angular-loading-page';         //Loading dire
 import { MaterialBarModule } from 'angular-loading-page';         //Loading animation component
 import { SlidingBarModule } from 'angular-loading-page';         //Loading animation component
 import { ThreeBounceModule } from 'angular-loading-page';         //Loading animation component
-import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 
 @NgModule({
@@ -65,7 +64,6 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     LoadingPageModule,
     SlidingBarModule,
     ThreeBounceModule,
-    SlickCarouselModule,
     SharedModule.forRoot()
 
 

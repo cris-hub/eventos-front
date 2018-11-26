@@ -60,7 +60,7 @@ export class FiltroSedeComponent implements OnInit {
       amountAttendingEventChildren: [this.eventosService.headquearterFilter.amountAttendingEventChildren],
       amountAttendingEventAdults: [this.eventosService.headquearterFilter.amountAttendingEventAdults],
       dateStart: [this.eventosService.headquearterFilter.dateStart, Validators.required],
-      dateFinish: [this.eventosService.headquearterFilter.dateFinish, Validators.required],
+      dateFinish: [this.eventosService.headquearterFilter.dateFinish , Validators.required],
       cityId: [this.eventosService.headquearterFilter.cityId],
       capacity: [this.eventosService.headquearterFilter.amountAttendingEventChildren + this.eventosService.headquearterFilter.amountAttendingEventAdults]
     });
@@ -79,20 +79,16 @@ export class FiltroSedeComponent implements OnInit {
       }
     });
     this.formulario.get('dateFinish').valueChanges.subscribe(valorQueCambio => {
-      if (this.formulario.get('dateStart').value > this.formulario.get('dateFinish').value) {
+      if (this.formulario.get('dateStart').value >= this.formulario.get('dateFinish').value) {
         this.formulario.get('dateFinish').setErrors({ error: ' Esta fecha debe ser mayor a la fecha de inicio del evento' });
       }
     });
     this.formulario.get('dateStart').valueChanges.subscribe(valorQueCambio => {
-      if (this.formulario.get('dateStart').value < this.formulario.get('dateFinish').value) {
+      if (this.formulario.get('dateStart').value <= this.formulario.get('dateFinish').value) {
         this.formulario.get('dateFinish').setErrors({ error: ' Esta fecha debe ser mayor a la fecha de inicio del evento' });
       }
     });
-    this.formulario.get('dateStart').valueChanges.subscribe(valorQueCambio => {
-      if (this.formulario.get('dateStart').value == this.formulario.get('dateFinish').value) {
-        this.formulario.get('dateFinish').setErrors({ error: 'La fecha fin debe ser mayor a la fecha de inicio del evento' });
-      }
-    });
+
   }
 
   obtenerParamtrosRuta() {

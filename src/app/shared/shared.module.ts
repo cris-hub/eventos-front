@@ -24,7 +24,6 @@ import { SlidingBarModule } from 'angular-loading-page';         //Loading anima
 import { ThreeBounceModule } from 'angular-loading-page';         //Loading animation component
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
-import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { OWL_DATE_TIME_LOCALE, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -51,7 +50,6 @@ export const MY_NATIVE_FORMATS = {
     MaterialBarModule,
     SlidingBarModule,
     ThreeBounceModule,
-    SlickCarouselModule
     
 
   ],
