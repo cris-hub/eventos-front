@@ -35,8 +35,13 @@ export class HeadquarteDetailsComponent implements OnInit {
         this.eventosService.getlistloungebyheadquarteridandloungecapacity(headquarterId, this.eventosService.headquearterFilter.capacity).subscribe(response => {
             this.lounges = response ? response : [];
             this.loungesSlick = [];
-            this.loungesSlick.push(this.lounges[this.indexShow]);
-            this.loungesSlick.unshift(this.lounges[this.indexShow + 1]);
+            if (this.lounges.length > 1) {
+                this.loungesSlick.push(this.lounges[this.indexShow]);
+                this.loungesSlick.unshift(this.lounges[this.indexShow + 1]);    
+            }else {
+                this.loungesSlick= this.lounges;
+            }
+            
         })
     }
     selectLounge(lounge: LoungeModel) {

@@ -60,7 +60,7 @@ export class FiltroSedeComponent implements OnInit {
       amountAttendingEventChildren: [this.eventosService.headquearterFilter.amountAttendingEventChildren],
       amountAttendingEventAdults: [this.eventosService.headquearterFilter.amountAttendingEventAdults],
       dateStart: [this.eventosService.headquearterFilter.dateStart, Validators.required],
-      dateFinish: [this.eventosService.headquearterFilter.dateFinish , Validators.required],
+      dateFinish: [this.eventosService.headquearterFilter.dateFinish, Validators.required],
       cityId: [this.eventosService.headquearterFilter.cityId],
       capacity: [this.eventosService.headquearterFilter.amountAttendingEventChildren + this.eventosService.headquearterFilter.amountAttendingEventAdults]
     });
@@ -72,22 +72,45 @@ export class FiltroSedeComponent implements OnInit {
 
   }
   private ValidacionesFechas() {
-    this.formulario.get('dateStart').valueChanges.subscribe(valorQueCambio => {
-      let fechaActual = Date.now();
-      if (valorQueCambio < fechaActual) {
+
+    //cambio fecha inicio
+    this.formulario.get('dateStart').valueChanges.subscribe((valorQueCambio: Date) => {
+      let fechaActual = new Date();
+      let dateFinish: Date = this.formulario.get('dateFinish').value
+      console.log(valorQueCambio, dateFinish, 'x');
+      debugger
+      if (valorQueCambio > dateFinish) {
+        console.log(valorQueCambio, this.formulario.get('dateFinish').value, '0');
+        this.formulario.get('dateStart').setErrors({ error: ' Esta fecha debe ser menor a la fecha de fin del evento' });
+      }
+      else if (valorQueCambio.toString() == dateFinish.toString()) {
+        console.log(valorQueCambio, this.formulario.get('dateFinish').value, '1');
+        this.formulario.get('dateStart').setErrors({ error: 'Esta fecha no puede ser igual a la fecha fin' });
+      } else if (valorQueCambio < fechaActual) {
         this.formulario.get('dateStart').setErrors({ error: 'La fecha debe ser mayor a la fecha actual ' });
       }
+      else {
+        this.formulario.get('dateStart').setErrors(null);
+      }
+
     });
+
+
+
+    // cambio fecha dfrin
     this.formulario.get('dateFinish').valueChanges.subscribe(valorQueCambio => {
-      if (this.formulario.get('dateStart').value >= this.formulario.get('dateFinish').value) {
+      let dateStart: Date = this.formulario.get('dateFinish').value
+      if (valorQueCambio < dateStart) {
         this.formulario.get('dateFinish').setErrors({ error: ' Esta fecha debe ser mayor a la fecha de inicio del evento' });
       }
-    });
-    this.formulario.get('dateStart').valueChanges.subscribe(valorQueCambio => {
-      if (this.formulario.get('dateStart').value <= this.formulario.get('dateFinish').value) {
-        this.formulario.get('dateFinish').setErrors({ error: ' Esta fecha debe ser mayor a la fecha de inicio del evento' });
+
+      else if (valorQueCambio == dateStart) {
+        this.formulario.get('dateFinish').setErrors({ error: ' Esta fecha no puede ser igual a la fecha inicio' });
+      } else {
+        this.formulario.get('dateFinish').setErrors(null);
       }
     });
+
 
   }
 

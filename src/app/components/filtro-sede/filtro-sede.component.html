@@ -83,12 +83,11 @@
                         </span>
         
                     </div>
-                    <span class="text-danger validaciones" *ngIf="formulario.get('dateStart').invalid && formulario.get('dateStart').errors">
-                        {{
-                            formulario.get('dateStart').errors['error']
-                        }}
-                    </span>
-
+             
+                    <span class="text-danger validaciones"
+                    *ngIf="formulario.get('dateStart').invalid && (formulario.get('dateStart').dirty || formulario.get('dateStart').touched)">
+                      {{formulario.get('dateStart').errors['error']}} 
+                   </span>
                 </div>
             </div>
         </div>
