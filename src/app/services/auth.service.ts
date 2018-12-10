@@ -1,10 +1,11 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {throwError} from 'rxjs';
-import {catchError, retry} from 'rxjs/operators';
-import {CONSTANTS} from './constants';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { CONSTANTS } from './constants';
 import * as moment from "moment";
 import { environment } from 'src/environments/environment.prod';
+import { AppConfig } from '../app.config';
 
 
 @Injectable()
@@ -15,7 +16,11 @@ export class AuthService {
     private authPassword: string;
     private authModule: string;
 
-    constructor(private _http: HttpClient) {
+    constructor(
+        private _http: HttpClient,
+        private config: AppConfig
+    ) {
+        Object.assign(environment, config.getAllConfig())
         // this.urlAuth = CONSTANTS.urlAuth;
         this.authUsername = CONSTANTS.authApiRest_username;
         this.authPassword = CONSTANTS.authApiRest_password;
@@ -36,9 +41,9 @@ export class AuthService {
             let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
             headers = headers.append('X-Skip-Interceptor', 'true');
             return this._http.post(
-                environment.baseManagerContent+
+                environment.baseManagerContent +
                 'recreacion/resthotel/login'
-                , params, {headers: headers})
+                , params, { headers: headers })
                 .pipe(
                     retry(3), // reintentar una solicitud fallida hasta 3 veces
                     catchError(this.handleError)
@@ -52,14 +57,14 @@ export class AuthService {
                 );
         }
     }
-    
+
     /**
      * funcion para determinar si el token esta activo
      */
     private isLoggedIn(): boolean {
         return moment().isBefore(this.getExpiration());
     }
-    
+
     /**
      * funcion para setear y guardar en session los datos del token
      * @param {Object} data: datos del token
@@ -69,7 +74,7 @@ export class AuthService {
         sessionStorage.setItem('jwt_sessionid', data.access_token);
         sessionStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
     }
-    
+
     /**
      * funcion para obtener la fecha de expiracion del Token
      */

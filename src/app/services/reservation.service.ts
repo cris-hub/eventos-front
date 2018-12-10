@@ -5,6 +5,7 @@ import { InternetConnectionService } from './internet-connection.service';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AppConfig } from '../app.config';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,9 @@ export class ReservationService {
 
   constructor(
     private http: HttpClient,
-    private internetConnectionService: InternetConnectionService
-  ) {
+    private config: AppConfig
+    ) {
+      Object.assign(environment, config.getAllConfig())
   }
 
 

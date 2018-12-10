@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule, ModuleWithProviders, APP_INITIALIZER } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -25,6 +25,7 @@ import { ThreeBounceModule } from 'angular-loading-page';         //Loading anim
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 import { OWL_DATE_TIME_LOCALE, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
+import { AppConfig } from '../app.config';
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
  */
@@ -38,6 +39,9 @@ export const MY_NATIVE_FORMATS = {
   monthYearA11yLabel: {year: 'numeric', month: 'long'},
 };
 
+export function initConfig(config: AppConfig) {
+  return () => config.load();
+}
 @NgModule({
   imports: [
     CommonModule,
@@ -67,7 +71,8 @@ export const MY_NATIVE_FORMATS = {
     MainFooterComponent,
     CommonModule,
     FormsModule,
-  ],  providers: [
+  ], 
+  providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     {provide: OWL_DATE_TIME_LOCALE, useValue: 'co'},
     {provide: OWL_DATE_TIME_FORMATS, useValue: MY_NATIVE_FORMATS},
@@ -81,6 +86,13 @@ export const MY_NATIVE_FORMATS = {
         useClass: TokenInterceptor,
         multi: true
     },
+    AppConfig,
+          { 
+            provide: APP_INITIALIZER,
+            useFactory: initConfig,
+            deps: [AppConfig],
+            multi: true 
+          }
   ],
 })
 export class SharedModule {

@@ -3,6 +3,8 @@ services:
   container_eventos_frontend:
     container_name: eventos-frontend
     image: eventos-front
+    ports:
+      - "8090:80"
     build:
       context: ./
       dockerfile: ./Dockerfile

@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { MailModel } from '../model/mail-model';
+import { AppConfig } from '../app.config';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,10 @@ export class MailService {
 
   constructor(
     private http: HttpClient,
-    private internetConnectionService: InternetConnectionService
+    private internetConnectionService: InternetConnectionService,
+    private config: AppConfig
   ) {
+    Object.assign(environment, config.getAllConfig())
   }
 
 

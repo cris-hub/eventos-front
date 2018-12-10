@@ -14,6 +14,7 @@ import { map } from 'rxjs/operators';
 import { HeadquarterFilterModel } from '../model/headquarter-filter-model';
 import { CompanyModel } from '../model/company-model';
 import { LoungeModel } from '../model/lounge-model';
+import { AppConfig } from '../app.config';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +32,10 @@ export class EventosService {
 
   constructor(
     private http: HttpClient,
-    private internetConnectionService: InternetConnectionService
+    private internetConnectionService: InternetConnectionService,
+    private config: AppConfig
   ) {
+    Object.assign(environment, config.getAllConfig())
     this.getTiposEventos();
   }
 
@@ -67,7 +70,7 @@ export class EventosService {
     );
   }
 
-  public getlistloungebyheadquarteridandloungecapacity(headquarterId: number,capacity : number): Observable<LoungeModel[]> {
+  public getlistloungebyheadquarteridandloungecapacity(headquarterId: number, capacity: number): Observable<LoungeModel[]> {
     let params = 'headquarterId=' + headquarterId + '&capacity=' + capacity;
     return this.http.post<LoungeModel[]>(
       environment.baseManagerContent
@@ -92,8 +95,8 @@ export class EventosService {
     );
     return data
   }
-  public getHeadquarterByExperence(experenceId: number, capacity: number,city : number): Observable<HeadquarteModel[]> {
-    let params =`capacity=${capacity}&experenceId=${experenceId}&city=${city}`
+  public getHeadquarterByExperence(experenceId: number, capacity: number, city: number): Observable<HeadquarteModel[]> {
+    let params = `capacity=${capacity}&experenceId=${experenceId}&city=${city}`
     let data = null
     console.log(this.internetConnectionService.isConnected)
     if (!this.internetConnectionService.isConnected) {
