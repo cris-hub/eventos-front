@@ -115,6 +115,7 @@
                      *ngIf="formulario.get('dateFinish').invalid && (formulario.get('dateFinish').dirty || formulario.get('dateFinish').touched)">
                        {{formulario.get('dateFinish').errors['error']}} 
                     </span>
+                    <label class="text-danger validaciones" *ngIf="formulario.errors && formulario.dirty || formulario.touched">{{ formulario.errors?.dates | json }}</label>
                 </div>
             </div>
         </div>

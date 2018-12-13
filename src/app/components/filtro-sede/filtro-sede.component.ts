@@ -59,18 +59,35 @@ export class FiltroSedeComponent implements OnInit {
       eventTypeId: [this.eventosService.reservation.experience.eventTypeId, Validators.required],
       amountAttendingEventChildren: [this.eventosService.headquearterFilter.amountAttendingEventChildren],
       amountAttendingEventAdults: [this.eventosService.headquearterFilter.amountAttendingEventAdults],
-      dateStart: [this.eventosService.headquearterFilter.dateStart, Validators.required],
-      dateFinish: [this.eventosService.headquearterFilter.dateFinish, Validators.required],
+      dateStart: [this.eventosService.headquearterFilter.dateStart],
+     
+      dateFinish: [this.eventosService.headquearterFilter.dateFinish],
       cityId: [this.eventosService.headquearterFilter.cityId],
       capacity: [this.eventosService.headquearterFilter.amountAttendingEventChildren + this.eventosService.headquearterFilter.amountAttendingEventAdults]
-    });
-
-    this.ValidacionesFechas();
-
-
-
+    }, { validator: this.dateValidation('dateStart', 'dateFinish') });
 
   }
+
+  private dateValidation(dateStart: string, dateFinish: string) {
+    return (group: FormGroup): { [key: string]: any } => {
+      let s = group.controls[dateStart];
+      let f = group.controls[dateFinish];
+      let n = new Date();
+      if (s.value > f.value) {
+        return {
+          dates: "Fecha inicio mayor a la fecha fin"
+        };
+      }
+      if (s.value < n) {
+        return {
+          dates: "La fecha inicio debe ser mayor a la actual"
+        };
+      }
+      return {};
+    }
+  }
+
+
   private ValidacionesFechas() {
 
     //cambio fecha inicio
@@ -91,6 +108,7 @@ export class FiltroSedeComponent implements OnInit {
       }
       else {
         this.formulario.get('dateStart').setErrors(null);
+        this.formulario.get('dateFinish').setValidators(null);
       }
 
     });
@@ -104,10 +122,13 @@ export class FiltroSedeComponent implements OnInit {
         this.formulario.get('dateFinish').setErrors({ error: ' Esta fecha debe ser mayor a la fecha de inicio del evento' });
       }
 
-      else if (valorQueCambio == dateStart) {
+      else if (valorQueCambio.toString() == dateStart.toString()) {
         this.formulario.get('dateFinish').setErrors({ error: ' Esta fecha no puede ser igual a la fecha inicio' });
       } else {
         this.formulario.get('dateFinish').setErrors(null);
+        this.formulario.get('dateFinish').setValidators(null);
+
+
       }
     });
 
