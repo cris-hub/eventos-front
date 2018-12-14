@@ -4,7 +4,7 @@
         <section id="main">
             <div class="row">
                 <div class="col-md-12 col-md-offset-1">
-                    <button (click)="goBack()" class="btn btn-link"> <span class="fa fa-chevron-left"></span> atras</button>
+                    <button  *ngIf="headerService.showButtomBack" (click)="goBack()" class="btn btn-link"> <span class="fa fa-chevron-left"></span> atras</button>
                 </div>
             </div>
             <div id="content">

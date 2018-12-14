@@ -37,7 +37,11 @@ export class ReservationSummaryComponent implements OnInit {
     private mailService: MailService,
     private formBuilder :FormBuilder
   ) {
+    if (!this.eventosService.reservation.experience.id) {
+      this.router.navigate([`/experiencias`])
+    }
   }
+
 
   addMigas() {
     return new Promise((resolve, reject) => {
@@ -65,9 +69,7 @@ export class ReservationSummaryComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.eventosService.reservation.experience.id) {
-      this.router.navigate([`/experiencias`])
-    }
+   
     this.initFormulario()
     this.lounge = this.eventosService.reservation.lounge
     Object.assign(this.reservation, this.eventosService.reservation);

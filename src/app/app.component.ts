@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { HeaderService } from './services/header.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,11 @@ import { AuthService } from './services/auth.service';
 export class AppComponent implements OnInit {
   public title = 'app';
 
-  constructor(private _serviceAuth: AuthService) { }
+  constructor(private _serviceAuth: AuthService,private headerService :HeaderService) {
+    this.headerService.title = '';
+    this.headerService.subtitle = ''
+
+   }
 
   ngOnInit() { this._serviceAuth.login(); }
 }

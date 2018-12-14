@@ -38,12 +38,15 @@ export class FiltroSedeComponent implements OnInit {
     private breadcrumbsService: BreadcrumbsService
 
   ) {
+    this.headerService.showButtomBack = true
+    if (!this.eventosService.reservation.experience.id) {
+      
+      this.router.navigate([`/experiencias`])
+    }
   }
 
   ngOnInit() {
-    if (!this.eventosService.reservation.experience.id) {
-      this.router.navigate([`/experiencias`])
-    }
+
 
     this.consulterTiposEventos();
     this.getallcities();
@@ -70,17 +73,18 @@ export class FiltroSedeComponent implements OnInit {
 
   private dateValidation(dateStart: string, dateFinish: string) {
     return (group: FormGroup): { [key: string]: any } => {
-      let s = group.controls[dateStart];
-      let f = group.controls[dateFinish];
+      let s :Date = group.controls[dateStart].value;
+      let f :Date= group.controls[dateFinish].value;
       let n = new Date();
-      if (s.value > f.value) {
+      n.setDate(n.getDate()+1)
+      n.setHours(0,0,0,0)
+      if (s > f) {
         return {
-          dates: "Fecha inicio mayor a la fecha fin"
+          dates: "La fecha de claudicación del evento  debe ser mayor a la fecha inicial   "
         };
-      }
-      if (s.value < n) {
+      } else if (s < n) {
         return {
-          dates: "La fecha inicio debe ser mayor a la actual"
+          dates: "El dia de inicio debe ser mayor al actual"
         };
       }
       return {};

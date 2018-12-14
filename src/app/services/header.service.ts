@@ -6,7 +6,12 @@ import { Injectable } from '@angular/core';
 export class HeaderService {
   public title : string = ''
   public subtitle : string = ''
+  public showButtomBack : Boolean = true
 
 
-  constructor() { }
+  constructor() {
+this.title = ''
+this.subtitle = ''
+
+   }
 }

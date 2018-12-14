@@ -13,6 +13,7 @@ export class HeadquarterFilterModel {
         this.dateStart = new Date();
         this.dateFinish = new Date();
         this.dateFinish.setDate(this.dateFinish.getDate() + 1);
+        this.dateStart.setDate(this.dateStart.getDate() + 1);
 
     }
 
