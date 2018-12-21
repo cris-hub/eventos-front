@@ -33,8 +33,6 @@ padding-bottom: 25px
 
 .divHotel div.showRooms{
     text-align: center;
-    line-height: 190px;
-    height: 148px;
 }
 .divHotel div.showRooms button{
     vertical-align: middle;
@@ -42,6 +40,17 @@ padding-bottom: 25px
     color: #011F5B;
     padding: 10px 30px;
     font-weight: bold;
+}
+.divHotel div.showRooms a{
+    vertical-align: bottom;
+    background: #FEED01 none no-repeat scroll 0 0;
+    color: #011F5B;
+    padding: 10px 30px; 
+    font-weight: bold;
+    right: 10px;
+    bottom: 10px;
+
+
 }
 .divHotel div.infoHotel .direccion{
     font-size: 11px;

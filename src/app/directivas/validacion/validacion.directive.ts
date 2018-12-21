@@ -156,6 +156,9 @@ export class ValidacionDirective implements Validator, OnChanges {
   //----- validaciones -------//
 
   requerido(): string {
+    if (this.textoInput == '0') {
+      return '';
+    }
     if (this.textoInput == '') {
       return 'Este campo es obligatorio';
     }
