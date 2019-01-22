@@ -18,13 +18,15 @@ export class ConfirmationReservationComponent implements OnInit {
   constructor(
     private eventosService: EventosService,
     private router: Router
-  ) { }
-
-  ngOnInit() {
-
+  ) {
     if (!this.eventosService.reservation.company.NIT) {
       this.router.navigate([`/experiencias`])
     }
+   }
+
+  ngOnInit() {
+
+
     this.lounge = this.eventosService.reservation.lounge
      
   }

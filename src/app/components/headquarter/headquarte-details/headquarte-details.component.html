@@ -1,4 +1,4 @@
-<div class="divHotel">
+<div class="divHotel" [attr.id]="'headquerter'+headquarter.id">
     <!-- CARRUSEL DE IMAGENES DE LOS HOTELES -->
     <div class="col-md-3 img-contet">
         <div class="galleryHotel" *ngIf="images.length>0 ;else sinImagenes">
@@ -11,63 +11,69 @@
         </ng-template>
     </div>
     <!-- DESCRIPCION DEL HOTEL -->
-    <div class="col-md-6">
-        <h4>{{headquarter.name}}</h4>
-        <p>{{headquarter.description}}</p>
+    <div class="col-md-6" style="height: 18em;">
+        <h4 [innerHtml]="headquarter.name"></h4>
+        <p [innerHtml]="headquarter.description"></p>
     </div>
     <!-- ENLACE PARA VER HABITACIONES -->
     <div class="accordion" id="tab" role="tablist" aria-multiselectable="true">
-        <div class="col-md-3 showRooms" role="tab" id="headingOne">
-            <button class="btn" type="button" data-toggle="collapse" (click)="searchLounges(headquarter.id)"
-                aria-expanded="false" [attr.data-target]="'#lounge'+headquarter.id" [attr.aria-controls]="'lounge'+headquarter.id">
+        <div class="col-md-6  align-items-end pull-right showRooms" role="tab" id="headingOne">
+            <a class="btn" [attr.id]="'btn'+headquarter.id" type="button" data-toggle="collapse" 
+            
+                (click)="searchLounges(headquarter.id,'btn'+headquarter.id)" aria-expanded="false" [attr.data-target]="'#lounge'+headquarter.id"
+                [attr.aria-controls]="'lounge'+headquarter.id">
                 Ver escenarios
-            </button>
+            </a>
+
         </div>
     </div>
 </div>
-<div *ngIf="eventosService.reservation.headquarte.id == headquarter.id" class="col-md-12 collapse tabHotels padding"
-    aria-labelledby="headingOne" role="tabpanel" [attr.id]="'lounge'+headquarter.id" [attr.data-parent]="'#tab'">
-    <div *ngIf="loungesSlick">
+
+<div id="showTab">
+    <div *ngIf="eventosService.reservation.headquarte.id == headquarter.id" class="col-md-12 collapse tabHotels padding"
+        aria-labelledby="headingOne" role="tabpanel" [attr.id]="'lounge'+headquarter.id" [attr.data-parent]="'#tab'">
+        <div *ngIf="loungesSlick">
+            <hr>
+            <div *ngIf="loungesSlick.length>0 ; else sinSalones" class="col-md-12">
+
+                <h4 class="text-center">Escenarios</h4>
+                <div *ngFor="let room of loungesSlick;let i = index">
+                    <div class="col-md-6 col-sm-6 col-xs-11 margin-boton ">
+
+                        <app-lounge-carousel data-toggle="collapse" [showDesc]=false (click)="selectLounge(room,'btn'+headquarter.id)"
+                            aria-expanded="false" [attr.data-target]="'#room'+room.id+'-'+headquarter.id+'-'+i"
+                            [images]="room.images" [lounge]="room" [attr.aria-controls]="'room'+room.id+'-'+headquarter.id+'-'+i"></app-lounge-carousel>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-12">
+                <div (click)="addElementQueue()" class="col-md-1">
+                    <i class="fa fa-arrow-left"></i>
+                </div>
+                <div class="col-md-1 pull-right">
+                    <i (click)="addElementHead()" class="fa fa-arrow-right"></i>
+                </div>
+            </div>
+        </div>
         <hr>
-        <div *ngIf="loungesSlick.length>0 ; else sinSalones" class="col-md-12">
-
-            <h4 class="text-center">Escenarios</h4>
-            <div *ngFor="let room of loungesSlick;let i = index">
-                <div class="col-md-6 col-sm-6 col-xs-11 margin-boton ">
-                    
-                    <app-lounge-carousel data-toggle="collapse" [showDesc]=false (click)="selectLounge(room)"
-                        aria-expanded="false" [attr.data-target]="'#room'+room.id+'-'+headquarter.id+'-'+i" [images]="room.images"
-                        [lounge]="room" [attr.aria-controls]="'room'+room.id+'-'+headquarter.id+'-'+i"></app-lounge-carousel>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-md-12">
-            <div (click)="addElementQueue()" class="col-md-1">
-                <i class="fa fa-arrow-left"></i>
-            </div>
-            <div class="col-md-1 pull-right">
-                <i (click)="addElementHead()" class="fa fa-arrow-right"></i>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div *ngIf="loungesSlick">
-        <div *ngIf="loungesSlick.length>0">
-            <div *ngFor="let room of loungesSlick;let i = index">
-                <div *ngIf="eventosService.reservation.lounge">
-                    <app-lounge-tab-info *ngIf=" eventosService.reservation.lounge.id == room.id" class="col-md-12 collapse tabHotels"
+        <div *ngIf="loungesSlick">
+            <div *ngIf="loungesSlick.length>0">
+                <div *ngFor="let room of loungesSlick;let i = index">
+                    <div *ngIf="eventosService.reservation.lounge">
+                        <app-lounge-tab-info *ngIf=" eventosService.reservation.lounge.id == room.id" class="col-md-12 collapse tabHotels"
                         role="tabpanel" [attr.data-parent]="'#lounge'+headquarter.id" [attr.id]="'room'+room.id+'-'+headquarter.id+'-'+i"
-                        [lounge]="room">
-                    </app-lounge-tab-info>
+                            [lounge]="room">
+                        </app-lounge-tab-info>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <ng-template #sinSalones>
-        <div *mkLoadingPage="{checkPendingHttp: true}">
-            <mk-three-bounce style="margin:o auto" colorOne="#FBEE32" colorTwo="#3293FB" colorThree="#30005B"></mk-three-bounce>
-        </div>
-    </ng-template>
+        <ng-template #sinSalones>
+            <div *mkLoadingPage="{checkPendingHttp: true}">
+                <mk-three-bounce style="margin:o auto" colorOne="#FBEE32" colorTwo="#3293FB" colorThree="#30005B"></mk-three-bounce>
+            </div>
+        </ng-template>
 
+    </div>
 </div>

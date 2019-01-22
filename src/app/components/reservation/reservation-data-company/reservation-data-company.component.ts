@@ -29,7 +29,9 @@ export class ReservationDataCompanyComponent implements OnInit {
     private breadcrumbsService : BreadcrumbsService,
   ) {
     this.headerService.title = 'Reservar'
-   
+    if (!this.eventosService.reservation.experience.id) {
+      this.router.navigate([`/experiencias`])
+    }
 
    }
 
@@ -55,9 +57,7 @@ export class ReservationDataCompanyComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.eventosService.reservation.experience.id) {
-      this.router.navigate([`/experiencias`])
-    }
+
     this.initFormulario();
     this.lounge  =this.eventosService.reservation.lounge
     this.addMigas()

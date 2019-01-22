@@ -1,11 +1,35 @@
-version: '3.5'
+version: '2'
 services:
-  container_eventos_frontend:
-    container_name: eventos-frontend
-    image: eventos-front
-    ports:
-      - "8090:80"
+ front_service:
+    image:  crishubprojects/eventos-front:latest
+    expose:
+      - "80"
     build:
       context: ./
       dockerfile: ./Dockerfile
-        
+    networks:
+      - network
+    volumes:
+      - front-dist:/usr/share/nginx/html/eventos
+      - front-logs:/var/log
+    restart: always
+ proxy_service:
+    image:  crishubprojects/eventos-front-proxy:latest
+    ports:
+      - "80:80"
+    build:
+     context: ./
+     dockerfile: ./Dockerfile
+    networks:
+      - network
+    volumes:
+      - "proxy-config:/etc/nginx"
+      - proxy-logs:/var/log
+    restart: always
+volumes:
+  front-dist:
+  front-logs:
+  proxy-config:
+  proxy-logs:
+networks:
+  network:

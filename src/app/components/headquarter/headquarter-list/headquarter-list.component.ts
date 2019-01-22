@@ -22,13 +22,13 @@ export class HeadquarterListComponent implements OnInit {
   ) {
     this.headerService.title = 'Nuestras sedes'
     this.headerService.subtitle = ''
-
-  }
-
-  ngOnInit() {
     if (!this.eventosService.reservation.experience.id) {
       this.router.navigate([`/experiencias`])
     }
+  }
+
+  ngOnInit() {
+
     this.getHeadquarterByExperence();
   }
 

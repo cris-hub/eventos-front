@@ -17,7 +17,6 @@ export class ExperiencesListComponent implements OnInit {
   public experiences: ExperienceModel[] = []
 
 
-  private localStorageService;
   constructor(
     private eventosService: EventosService,
     private headerService: HeaderService,
@@ -25,10 +24,12 @@ export class ExperiencesListComponent implements OnInit {
   ) {
     this.headerService.title = 'Experiencias'
     this.headerService.subtitle = ''
+    this.headerService.showButtomBack = false
 
   }
 
   ngOnInit() {
+
     this.eventosService.getExperiencias().pipe(
       retry(3), // reintentar una solicitud fallida hasta 3 veces
     ).subscribe(res => {
