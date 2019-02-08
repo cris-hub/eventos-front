@@ -1,7 +1,7 @@
 version: '2'
 services:
  front_service:
-    image:  crishubprojects/eventos-front:latest
+    image: eventos/eventos-front:latest
     expose:
       - "80"
     build:
@@ -14,7 +14,7 @@ services:
       - front-logs:/var/log
     restart: always
  proxy_service:
-    image:  crishubprojects/eventos-front-proxy:latest
+    image: eventos/eventos-proxy:latest 
     ports:
       - "80:80"
     build:
