@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ExperienceModel } from '../../model/experience-model';
-import { ActivatedRoute, Router, Data } from '@angular/router';
+import { ActivatedRoute, Router, Data, NavigationEnd } from '@angular/router';
 import { EventosService } from '../../services/eventos.service';
 import { EventTypeModel } from '../../model/event-type-model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -47,7 +47,8 @@ export class FiltroSedeComponent implements OnInit {
 
   ngOnInit() {
 
-
+    this.startScrollPage();
+  
     this.consulterTiposEventos();
     this.getallcities();
     this.obtenerParamtrosRuta();
@@ -56,6 +57,13 @@ export class FiltroSedeComponent implements OnInit {
     this.consultarExperienciaSeleccionada(this.eventosService.reservation.experience.id);
     this.initFormulario();
   }
+  private startScrollPage() {
+    this.router.events.subscribe((evt) => {
+   
+      window.scrollTo(0, 0);
+    });
+  }
+
   initFormulario() {
     this.formulario = this.formBuilder.group({
       nameEvent: [this.eventosService.reservation.nameEvent],

@@ -19,17 +19,23 @@ export class ConfirmationReservationComponent implements OnInit {
     private eventosService: EventosService,
     private router: Router
   ) {
-    if (!this.eventosService.reservation.company.NIT) {
-      this.router.navigate([`/experiencias`])
-    }
+  
    }
 
   ngOnInit() {
 
-
+    this.startScrollPage()
     this.lounge = this.eventosService.reservation.lounge
      
   }
+
+  private startScrollPage() {
+    this.router.events.subscribe((evt) => {
+   
+      window.scrollTo(0, 0);
+    });
+  }
+
 
   terminar() {
     this.eventosService.company = new CompanyModel()

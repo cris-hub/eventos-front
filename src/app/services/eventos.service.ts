@@ -15,6 +15,7 @@ import { HeadquarterFilterModel } from '../model/headquarter-filter-model';
 import { CompanyModel } from '../model/company-model';
 import { LoungeModel } from '../model/lounge-model';
 import { AppConfig } from '../app.config';
+import { Person } from '../model/person-model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,8 @@ export class EventosService {
   public company: CompanyModel = new CompanyModel()
   public headquearter: HeadquarteModel = new HeadquarteModel()
   public headquearterFilter: HeadquarterFilterModel = new HeadquarterFilterModel()
+  public person : Person  = new Person()
+  public typeDoc : number = null
 
 
   private header: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');

@@ -12,6 +12,8 @@ import { BreadcrumbsService } from 'ng6-breadcrumbs';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { MailService } from 'src/app/services/mail.service';
 import { MailModel } from 'src/app/model/mail-model';
+import { Person } from '../../../model/person-model';
+import { DOCUMENT_TYPE_ENUM } from '../../../enum/document-type-enum';
 
 @Component({
   selector: 'app-reservation-summary',
@@ -19,14 +21,15 @@ import { MailModel } from 'src/app/model/mail-model';
   styleUrls: ['./reservation-summary.component.css']
 })
 export class ReservationSummaryComponent implements OnInit {
-  public lounge: LoungeModel
+  public lounge: LoungeModel = new LoungeModel()
 
   public formulario: FormGroup;
   private experiencia: ExperienceModel = new ExperienceModel()
   public reservation: ReservationDataModel = new ReservationDataModel();
   public company: CompanyModel = new CompanyModel()
+  public person: Person = new Person()
   public headquearterFilter: HeadquarterFilterModel = new HeadquarterFilterModel()
-
+  public typeDoc: any
 
   constructor(
     private router: Router,
@@ -35,7 +38,7 @@ export class ReservationSummaryComponent implements OnInit {
     private reservaService: ReservationService,
     private breadcrumbsService: BreadcrumbsService,
     private mailService: MailService,
-    private formBuilder :FormBuilder
+    private formBuilder: FormBuilder
   ) {
     if (!this.eventosService.reservation.experience.id) {
       this.router.navigate([`/experiencias`])
@@ -69,15 +72,26 @@ export class ReservationSummaryComponent implements OnInit {
   }
 
   ngOnInit() {
-   
+    this.startScrollPage()
     this.initFormulario()
-    this.lounge = this.eventosService.reservation.lounge
+
+    this.typeDoc = this.eventosService.typeDoc;
+
+    Object.assign(this.lounge, this.eventosService.reservation.lounge);
     Object.assign(this.reservation, this.eventosService.reservation);
     Object.assign(this.company, this.eventosService.company);
+    Object.assign(this.person, this.eventosService.person);
     Object.assign(this.headquearterFilter, this.eventosService.headquearterFilter);
     this.addMigas();
 
   }
+  private startScrollPage() {
+    this.router.events.subscribe((evt) => {
+
+      window.scrollTo(0, 0);
+    });
+  }
+
   goBack() {
     this.location.back();
   }
@@ -86,8 +100,8 @@ export class ReservationSummaryComponent implements OnInit {
     console.log('experiencia/' + this.experiencia.id + '/sede/' + this.lounge.headquarterId + '/' + this.lounge.id);
     let reservaJsonString = JSON.stringify(this.eventosService.reservation)
     let mail: MailModel = new MailModel()
-    mail.content= reservaJsonString;
-    mail.to = this.eventosService.company.mail;
+    mail.content = reservaJsonString;
+    mail.to = this.eventosService.company.mailCompany;
     mail.copyyCC = this.eventosService.reservation.headquarte.emails.split(';');
     debugger
 
@@ -95,10 +109,10 @@ export class ReservationSummaryComponent implements OnInit {
       console.log(response)
       if (response) {
         this.mailService.SentMessage(mail).subscribe(res => {
-          
+
         })
       }
-      this.router.navigate([`/experiencia/${this.experiencia.id}/sede/${this.lounge.headquarterId}/${this.lounge.id}`])
+      this.router.navigate([`/experiencia/${this.eventosService.reservation.experience.id}/sede/${this.lounge.headquarterId}/${this.lounge.id}`])
     });
   }
 
@@ -119,9 +133,9 @@ export class ReservationSummaryComponent implements OnInit {
       hasTransport: [this.eventosService.reservation.hasTransport],
       hasOthers: [this.eventosService.reservation.hasOthers],
       others: [this.eventosService.reservation.others],
-      termsAndConditions : [this.eventosService.reservation.company.termsAndConditions],
+      termsAndConditions: [this.eventosService.reservation.company.termsAndConditions],
 
-      
+
 
     });
     this.formulario.disable()
@@ -131,5 +145,13 @@ export class ReservationSummaryComponent implements OnInit {
       this.formulario.get('others').setValue('');
     })
   }
-
+  validacionesDatosRequeridosPorTipoDocumeto(): number {
+    return this.typeDoc;
+  }
+  isPerson() {
+    return this.validacionesDatosRequeridosPorTipoDocumeto() != DOCUMENT_TYPE_ENUM.NIT ? true : false;
+  }
+  isCompany() {
+    return this.validacionesDatosRequeridosPorTipoDocumeto() == DOCUMENT_TYPE_ENUM.NIT ? true : false;
+  }
 }

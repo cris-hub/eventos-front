@@ -28,10 +28,16 @@ export class HeadquarterListComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.startScrollPage()
     this.getHeadquarterByExperence();
   }
 
+  private startScrollPage() {
+    this.router.events.subscribe((evt) => {
+   
+      window.scrollTo(0, 0);
+    });
+  }
   getHeadquarterByExperence() {
     this.eventosService.getHeadquarterByExperence(
       this.eventosService.reservation.experience.id,

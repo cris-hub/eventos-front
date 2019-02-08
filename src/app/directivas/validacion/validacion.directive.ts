@@ -21,7 +21,7 @@ export class ValidacionDirective implements Validator, OnChanges {
   public strong;
   public text;
   public mensaje: string = '';
-  public textoInput: string;
+  public textoInput: any;
   private _onChange: () => void;
   registerOnValidatorChange(fn: () => void): void { this._onChange = fn; }
   ngOnChanges(changes: SimpleChanges): void {
@@ -103,6 +103,18 @@ export class ValidacionDirective implements Validator, OnChanges {
         }
         case "minimo": {
           this.mensaje = this.minimo(valor);
+          if (this.mensaje == '') { break; }
+          else { return this.mensaje };
+        }
+        case "lengthMinimo": {
+          this.mensaje = this.lengthMinimo(valor);
+
+          if (this.mensaje == '') { break; }
+          else { return this.mensaje };
+        }
+
+        case "lengthMaximo": {
+          this.mensaje = this.lengthMaximo(valor);
 
           if (this.mensaje == '') { break; }
           else { return this.mensaje };
@@ -171,18 +183,35 @@ export class ValidacionDirective implements Validator, OnChanges {
     return '';
   }
 
-
-  minimo(valor: string): string {
-    if (Number(this.textoInput) < Number(valor)) {
-
+  lengthMinimo(valor: string): string {
+    let input = this.textoInput.toString();
+    let lengthMin = Number(valor);
+    let lengthInput = input.length;
+    if (lengthInput < lengthMin && (lengthInput > 0)) {
       return "Este campo requiere minimo " + valor + " digitos";
     }
     return '';
   }
 
-  maximo(valor: string): string {
-    if (this.textoInput.length > Number(valor) && ((this.textoInput.length > 0))) {
+  minimo(valor: string): string {
+    if (Number(this.textoInput) < Number(valor)) {
+      return "Este campo debe ser mayor a " + valor;
+    }
+    return '';
+  }
+
+  lengthMaximo(valor: string): string {
+    let input = this.textoInput.toString();
+    let lengthMax = Number(valor);
+    let lengthInput = input.length;
+    if (lengthInput > lengthMax && (lengthInput > 0)) {
       return "Este campo no debe superar los " + valor + " digitos";
+    }
+    return '';
+  }
+  maximo(valor: string): string {
+    if (Number(this.textoInput) > Number(valor)) {
+      return "Este campo no puede ser mayor a " + valor;
     }
     return '';
   }

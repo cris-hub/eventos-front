@@ -3,11 +3,11 @@ export class CompanyModel {
     NIT: string
     dateStart: Date
     numberVerification: number
-    responsable: string
-    landline: string
-    mobilePhone: string
+    responsableCompany: string
+    landlineCompany: string
+    mobilePhoneCompany: string
     extLandline: string
-    mail: string
+    mailCompany: string
     termsAndConditions: Boolean;
     constructor() {
     }

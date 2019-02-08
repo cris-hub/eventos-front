@@ -53,6 +53,8 @@ export class ReservationComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.startScrollPage()
     if (!this.eventosService.reservation.experience.id) {
       this.router.navigate([`/experiencias`])
     }
@@ -60,6 +62,14 @@ export class ReservationComponent implements OnInit {
 
     this.initFormulario();
     this.lounge = this.eventosService.reservation.lounge
+  }
+
+
+  private startScrollPage() {
+    this.router.events.subscribe((evt) => {
+   
+      window.scrollTo(0, 0);
+    });
   }
   goBack() {
     this.location.back();

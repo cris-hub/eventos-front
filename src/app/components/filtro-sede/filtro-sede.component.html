@@ -52,7 +52,7 @@
                     <label class="control-label" for="">Ciudad</label>
                 </div>
                 <div class="col-md-8">
-                    <select formControlName="cityId" class="form-control">
+                    <select formControlName="cityId"  validacion [validaciones]="['requerido']" class="form-control">
                         <option [value]="null">Seleccione</option>
                         <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
 

@@ -13,70 +13,166 @@
                         </div>
                     </div>
 
-
                     <div class="col-md-12">
+
                         <div class="form-group">
                             <div class="col-md-4">
-                                <label class="control-label" for="">Nombre 
-                                    <span class="text-danger validaciones"> *</span>
-                                </label>
+                                <label class="control-label" for="">Tipo documento</label>
                             </div>
-                            <div class="col-md-8 ">
-                                <input type="text" formControlName="nameCompany" validacion [validaciones]="['requerido']"
-                                    class="form-control">
+                            <div class="col-md-8">
+                                <select validacion [validaciones]="['requerido']"  (change)="updateStructureForm($event.target.value)" formControlName="typeDocument" class="form-control">
+                                    <option [value]="null">Seleccione</option>
+                                    <option [value]="NIT">NIT</option>
+                                    <option [value]="CEDULA">Cedula</option>
+                                    <option [value]="CEDULA_EXTRANJERIA">Cedula de extranjeria</option>
+                                </select>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <div class="col-md-4">
-                                <label class="control-label" for="">NIT
-                                    <span class="text-danger validaciones"> *</span>
-                                </label>
-                            </div>
-                            <div class="col-md-4 ">
-                                <input type="number" min="0" formControlName="NIT" validacion [validaciones]="['requerido','minimo:0']"
-                                    class="form-control">                                                                                                                                                               
-                            </div>
-                            <div class="col-md-1 no-margin-no-padding text-center">-</div>
-                            <div class="col-md-3">
-                                <input type="number" placeholder=""  formControlName="numberVerification" validacion [validaciones]="['minimo:0','requerido']"
-                                class="form-control">
+                    <div class="col-md-12" *ngIf="isCompany()">
+                        <div class="col-md-12" *ngIf="isCompany()">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="control-label" for="NIT">NIT
+                                        <span class="text-danger validaciones"> *</span>
+                                    </label>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <input type="number"  minlength="8" maxlength="15" formControlName="NIT" validacion [validaciones]="[isCompany()?'requerido':'','lengthMinimo:8','lengthMaximo:15','numerico']"
+                                        class="form-control">
+                                </div>
+                                <div class="col-md-1 no-margin-no-padding text-center">-</div>
+                                <div class="col-md-3" *ngIf="isCompany()" [@fadeInOut]>
+                                    <input type="number" placeholder="# verificación" formControlName="numberVerification" validacion [validaciones]="[isCompany()?'requerido':'','minimo:0','numerico']"
+                                        class="form-control">
+                                </div>
                             </div>
                         </div>
+                        <div class="col-md-12" *ngIf="isCompany()">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="control-label" for="nameCompany">Nombre
+                                        <span class="text-danger validaciones"> *</span>
+                                    </label>
+                                </div>
+                                <div class="col-md-8 ">
+                                    <input type="text" formControlName="nameCompany" validacion [validaciones]="[isCompany()?'requerido':'']" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="isCompany()">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="control-label" for="mailCompany">Correo
+                                        <span class="text-danger validaciones"> *</span>
+
+                                    </label>
+                                </div>
+                                <div class="col-md-8 ">
+                                    <input type="email" formControlName="mailCompany" validacion [validaciones]="[isCompany()?'requerido':'','correo']" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" *ngIf="isCompany()">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="control-label" for="responsableCompany">Responsable
+                                        <span class="text-danger validaciones"> *</span>
+
+                                    </label>
+                                </div>
+                                <div class="col-md-8 ">
+                                    <input type="text" formControlName="responsableCompany" validacion [validaciones]="[isCompany()?'requerido':'']" class="form-control">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="isCompany()">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="control-label" for="mobilePhoneCompany">Teléfono movil<span class="text-danger validaciones">*</span></label>
+                                </div>
+                                <div class="col-md-8 ">
+                                    <input type="tel" formControlName="mobilePhoneCompany" validacion [validaciones]="[isCompany()?'requerido':'','lengthMinimo:8','lengthMaximo:15']"
+                                        class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
-
-
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <div class="col-md-4">
-                                <label class="control-label" for="">Correo
-                                    <span class="text-danger validaciones"> *</span>
-
-                                </label>
-                            </div>
-                            <div class="col-md-8 ">
-                                <input type="email" formControlName="mail" validacion [validaciones]="['requerido','correo']"
-                                    class="form-control">
-                            </div>
-                        </div>
-                    </div>
-              
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <div class="col-md-4">
-                                <label class="control-label" for="">Responsable
-                                    <span class="text-danger validaciones"> *</span>
-
-                                </label>
-                            </div>
-                            <div class="col-md-8 ">
-                                <input type="text" formControlName="responsable" validacion [validaciones]="['requerido']"
-                                    class="form-control">
-
+                    <div class="col-md-12" *ngIf="isPerson()">
+                        <div class="col-md-12" *ngIf="isPerson()">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="control-label" for="cedula">Cedula
+                                        <span class="text-danger validaciones"> *</span>
+                                    </label>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <input type="number" minlength="8" maxlength="15" formControlName="cedula" validacion [validaciones]="[isPerson() ? 'requerido' : '','lengthMinimo:8','lengthMaximo:15']"
+                                        class="form-control">
+                                </div>
                             </div>
                         </div>
+
+                        <div class="col-md-12" *ngIf="isPerson()">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="control-label" for="namePerson">Nombre
+                                        <span class="text-danger validaciones"> *</span>
+                                    </label>
+                                </div>
+                                <div class="col-md-8 ">
+                                    <input type="text" formControlName="namePerson" validacion [validaciones]="[isPerson()?'requerido':'']" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="isPerson()">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="control-label" for="mailPerson">Correo
+                                        <span class="text-danger validaciones"> *</span>
+
+                                    </label>
+                                </div>
+                                <div class="col-md-8 ">
+                                    <input type="email" formControlName="mailPerson" validacion [validaciones]="[isPerson()?'requerido':'','correo']" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12" *ngIf="isPerson()">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="control-label" for="responsablePerson">Responsable
+                                        <span class="text-danger validaciones"> *</span>
+
+                                    </label>
+                                </div>
+                                <div class="col-md-8 ">
+                                    <input type="text" formControlName="responsablePerson" validacion [validaciones]="[isPerson()?'requerido':'']" class="form-control">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" *ngIf="isPerson()">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="control-label" for="mobilePhonePerson">Teléfono movil<span class="text-danger validaciones">*</span>
+                                    </label>
+                                </div>
+                                <div class="col-md-8 ">
+                                    <input type="tel" formControlName="mobilePhonePerson" validacion [validaciones]="[isPerson()?'requerido':'','lengthMinimo:8','lengthMaximo:15']"
+                                        class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
@@ -87,31 +183,21 @@
                                 </label>
                             </div>
                             <div class="col-md-8 ">
-                                <div class="col-md-7 no-margin-no-padding">
-                                    <input type="number" formControlName="landline" validacion [validaciones]="['requerido','minimo:0']"
+                                <div class="col-md-7 no-margin-no-padding" *ngIf="isCompany()">
+                                    <input type="tel" formControlName="landlineCompany" validacion [validaciones]="[isCompany()?'requerido':'','lengthMinimo:5','lengthMaximo:15']"
                                         class="form-control">
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-7 no-margin-no-padding" *ngIf="isPerson()">
+                                    <input type="tel" formControlName="landlinePerson" validacion [validaciones]="[isPerson()?'requerido':'','lengthMinimo:5','lengthMaximo:15']"
+                                        class="form-control">
+                                </div>
+                                <div class="col-md-2" *ngIf="isCompany()" [@fadeInOut]>
                                     <label class="control-label" for="">ext</label>
                                 </div>
-                                <div class="col-md-3  no-margin-no-padding">
-                                    <input type="number" min="0" validacion [validaciones]="['requerido','minimo:0']" formControlName="extLandline" class="form-control">
+                                <div class="col-md-3  no-margin-no-padding" *ngIf="isCompany()" [@fadeInOut]>
+                                    <input type="number" min="0" validacion [validaciones]="[isCompany()?'requerido':'','minimo:0']" formControlName="extLandline"
+                                        class="form-control">
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <div class="col-md-4">
-                                <label class="control-label" for="">Teléfono movil
-                                    <span class="text-danger validaciones"> *</span>
-
-                                </label>
-                            </div>
-                            <div class="col-md-8 ">
-                                <input type="number" formControlName="mobilePhone" validacion [validaciones]="['requerido','minimo:0']"
-                                    class="form-control">
-
                             </div>
                         </div>
                     </div>
