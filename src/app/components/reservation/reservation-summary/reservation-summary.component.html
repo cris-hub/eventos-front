@@ -6,7 +6,7 @@
 
         <div class="col-md-8">
             <div class="col-md-12">
-                <div class="col-md-10 col-md-offset-1">
+                <div class="col-md-12">
                     <div class="col-md-12">
                         <div class="col-md-12">
                             <h4>Datos evento</h4>
@@ -43,11 +43,23 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <div class="col-md-5">
-                                <label for="">Numero de asistentes</label>
+                                <label for="">Numero de asistentes adultos</label>
                             </div>
                             <div class="col-md-7 ">
                                 <p class="text-muted">
-                                    {{headquearterFilter.amountAttendingEventChildren+headquearterFilter.amountAttendingEventAdults }}
+                                    {{headquearterFilter.amountAttendingEventAdults }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="col-md-5">
+                                <label for="">Numero de niños</label>
+                            </div>
+                            <div class="col-md-7 ">
+                                <p class="text-muted">
+                                    {{headquearterFilter.amountAttendingEventChildren }}
                                 </p>
                             </div>
                         </div>
@@ -107,7 +119,7 @@
 
 
             <div class="col-md-12">
-                <div class="col-md-10 col-md-offset-1">
+                <div class="col-md-12">
                     <div class="col-md-12">
                         <div class="col-md-12" *ngIf="isPerson()">
                             <h4>Datos persona reserva</h4>

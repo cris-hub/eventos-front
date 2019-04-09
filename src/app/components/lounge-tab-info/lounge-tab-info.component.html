@@ -3,7 +3,7 @@
     <mat-tab-group class="tab-group">
         <mat-tab label="Imágenes">
             <div class="tab-content">
-                <div class="col-md-12">
+                <div class="col-md-9 col-md-offset-2">
                     <ngx-gallery style="width: 100%;" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
                 </div>
             </div>
@@ -17,17 +17,15 @@
 
     </mat-tab-group>
 
-    <div class="row">
 
-        <div class="col-md-12">
-            <button (click)="clearSeleccion()" class="btn btn-default-colsubsidio col-md-offset-4 col-md-2 col-xs-6">
-                Atras
-            </button>
-            <button (click)="reservar(lounge)" class="btn  btn-primary-colsubsidio col-md-2 col-xs-6">
-                Cotizar
-            </button>
+    <div class="col-md-12">
+        <button (click)="clearSeleccion()" class="btn btn-default-colsubsidio col-md-offset-4 col-md-2 col-xs-6">
+            Atras
+        </button>
+        <button (click)="reservar(lounge)" class="btn  btn-primary-colsubsidio col-md-2 col-xs-6">
+            Cotizar
+        </button>
 
-        </div>
     </div>
 </div>
 

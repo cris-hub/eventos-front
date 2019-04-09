@@ -6,39 +6,42 @@
                 <app-lounge-carousel [images]="lounge.images" [lounge]="lounge"></app-lounge-carousel>
             </div>
             <div class="col-md-8">
-                <div class="col-md-10 col-md-offset-1">
+                <div class="col-md-12">
                     <div class="col-md-12">
                         <div class="col-md-12">
-                            <h4>DATOS DE LA EMPRESA O PERSONA NATURAL</h4>
+                            <h4>Datos de la empresa o persona natural</h4>
                         </div>
+                        <hr>
                     </div>
-
                     <div class="col-md-12">
-
-                        <div class="form-group">
-                            <div class="col-md-4">
-                                <label class="control-label" for="">Tipo documento</label>
-                            </div>
-                            <div class="col-md-8">
-                                <select validacion [validaciones]="['requerido']"  (change)="updateStructureForm($event.target.value)" formControlName="typeDocument" class="form-control">
-                                    <option [value]="null">Seleccione</option>
-                                    <option [value]="NIT">NIT</option>
-                                    <option [value]="CEDULA">Cedula</option>
-                                    <option [value]="CEDULA_EXTRANJERIA">Cedula de extranjeria</option>
-                                </select>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="" for="">Tipo documento</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <select validacion [validaciones]="['requerido']" (change)="updateStructureForm($event.target.value)" formControlName="typeDocument"
+                                        class="form-control">
+                                        <option [value]="null">Seleccione</option>
+                                        <option [value]="NIT">NIT</option>
+                                        <option [value]="CEDULA">Cedula</option>
+                                        <option [value]="CEDULA_EXTRANJERIA">Cedula de extranjeria</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-12" *ngIf="isCompany()">
                         <div class="col-md-12" *ngIf="isCompany()">
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <label class="control-label" for="NIT">NIT
+                                    <label class="" for="NIT">NIT
                                         <span class="text-danger validaciones"> *</span>
                                     </label>
                                 </div>
                                 <div class="col-md-4 ">
-                                    <input type="number"  minlength="8" maxlength="15" formControlName="NIT" validacion [validaciones]="[isCompany()?'requerido':'','lengthMinimo:8','lengthMaximo:15','numerico']"
+                                    <input type="number" minlength="8" maxlength="15" formControlName="NIT" validacion [validaciones]="[isCompany()?'requerido':'','lengthMinimo:8','lengthMaximo:15','numerico']"
                                         class="form-control">
                                 </div>
                                 <div class="col-md-1 no-margin-no-padding text-center">-</div>
@@ -51,7 +54,7 @@
                         <div class="col-md-12" *ngIf="isCompany()">
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <label class="control-label" for="nameCompany">Nombre
+                                    <label class="" for="nameCompany">Nombre empresa
                                         <span class="text-danger validaciones"> *</span>
                                     </label>
                                 </div>
@@ -64,7 +67,7 @@
                         <div class="col-md-12" *ngIf="isCompany()">
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <label class="control-label" for="mailCompany">Correo
+                                    <label class="" for="mailCompany">Correo
                                         <span class="text-danger validaciones"> *</span>
 
                                     </label>
@@ -77,7 +80,7 @@
                         <div class="col-md-12" *ngIf="isCompany()">
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <label class="control-label" for="responsableCompany">Responsable
+                                    <label class="" for="responsableCompany">Responsable
                                         <span class="text-danger validaciones"> *</span>
 
                                     </label>
@@ -92,7 +95,9 @@
                         <div class="col-md-12" *ngIf="isCompany()">
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <label class="control-label" for="mobilePhoneCompany">Teléfono movil<span class="text-danger validaciones">*</span></label>
+                                    <label class="" for="mobilePhoneCompany">Teléfono movil
+                                        <span class="text-danger validaciones">*</span>
+                                    </label>
                                 </div>
                                 <div class="col-md-8 ">
                                     <input type="tel" formControlName="mobilePhoneCompany" validacion [validaciones]="[isCompany()?'requerido':'','lengthMinimo:8','lengthMaximo:15']"
@@ -107,7 +112,7 @@
                         <div class="col-md-12" *ngIf="isPerson()">
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <label class="control-label" for="cedula">Cedula
+                                    <label class="" for="cedula">Cedula
                                         <span class="text-danger validaciones"> *</span>
                                     </label>
                                 </div>
@@ -121,7 +126,7 @@
                         <div class="col-md-12" *ngIf="isPerson()">
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <label class="control-label" for="namePerson">Nombre
+                                    <label class="" for="namePerson">Nombre empresa
                                         <span class="text-danger validaciones"> *</span>
                                     </label>
                                 </div>
@@ -134,7 +139,7 @@
                         <div class="col-md-12" *ngIf="isPerson()">
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <label class="control-label" for="mailPerson">Correo
+                                    <label class="" for="mailPerson">Correo
                                         <span class="text-danger validaciones"> *</span>
 
                                     </label>
@@ -149,7 +154,7 @@
                         <div class="col-md-12" *ngIf="isPerson()">
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <label class="control-label" for="responsablePerson">Responsable
+                                    <label class="" for="responsablePerson">Responsable
                                         <span class="text-danger validaciones"> *</span>
 
                                     </label>
@@ -163,7 +168,8 @@
                         <div class="col-md-12" *ngIf="isPerson()">
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <label class="control-label" for="mobilePhonePerson">Teléfono movil<span class="text-danger validaciones">*</span>
+                                    <label class="" for="mobilePhonePerson">Teléfono movil
+                                        <span class="text-danger validaciones">*</span>
                                     </label>
                                 </div>
                                 <div class="col-md-8 ">
@@ -175,33 +181,34 @@
 
                     </div>
                     <div class="col-md-12">
-                        <div class="form-group">
-                            <div class="col-md-4">
-                                <label class="control-label" for="">Teléfono fijo
-                                    <span class="text-danger validaciones"> *</span>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="" for="">Teléfono fijo
+                                        <span class="text-danger validaciones"> *</span>
 
-                                </label>
-                            </div>
-                            <div class="col-md-8 ">
-                                <div class="col-md-7 no-margin-no-padding" *ngIf="isCompany()">
-                                    <input type="tel" formControlName="landlineCompany" validacion [validaciones]="[isCompany()?'requerido':'','lengthMinimo:5','lengthMaximo:15']"
-                                        class="form-control">
+                                    </label>
                                 </div>
-                                <div class="col-md-7 no-margin-no-padding" *ngIf="isPerson()">
-                                    <input type="tel" formControlName="landlinePerson" validacion [validaciones]="[isPerson()?'requerido':'','lengthMinimo:5','lengthMaximo:15']"
-                                        class="form-control">
-                                </div>
-                                <div class="col-md-2" *ngIf="isCompany()" [@fadeInOut]>
-                                    <label class="control-label" for="">ext</label>
-                                </div>
-                                <div class="col-md-3  no-margin-no-padding" *ngIf="isCompany()" [@fadeInOut]>
-                                    <input type="number" min="0" validacion [validaciones]="[isCompany()?'requerido':'','minimo:0']" formControlName="extLandline"
-                                        class="form-control">
+                                <div class="col-md-8 ">
+                                    <div class="col-md-7 no-margin-no-padding" *ngIf="isCompany()">
+                                        <input type="tel" formControlName="landlineCompany" validacion [validaciones]="[isCompany()?'requerido':'','lengthMinimo:5','lengthMaximo:15']"
+                                            class="form-control">
+                                    </div>
+                                    <div class="col-md-7 no-margin-no-padding" *ngIf="isPerson()">
+                                        <input type="tel" formControlName="landlinePerson" validacion [validaciones]="[isPerson()?'requerido':'','lengthMinimo:5','lengthMaximo:15']"
+                                            class="form-control">
+                                    </div>
+                                    <div class="col-md-2" *ngIf="isCompany()" [@fadeInOut]>
+                                        <label class="" for="">ext</label>
+                                    </div>
+                                    <div class="col-md-3  no-margin-no-padding" *ngIf="isCompany()" [@fadeInOut]>
+                                        <input type="number" min="0" validacion [validaciones]="[isCompany()?'requerido':'','minimo:0']" formControlName="extLandline"
+                                            class="form-control">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
 
                 </div>
             </div>

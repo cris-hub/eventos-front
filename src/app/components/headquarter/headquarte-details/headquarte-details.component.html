@@ -1,6 +1,6 @@
 <div class="divHotel" [attr.id]="'headquerter'+headquarter.id">
     <!-- CARRUSEL DE IMAGENES DE LOS HOTELES -->
-    <div class="col-md-3 img-contet">
+    <div class="col-md-6 img-contet">
         <div class="galleryHotel" *ngIf="images.length>0 ;else sinImagenes">
             <carousel-gallery [images]="images"></carousel-gallery>
         </div>
@@ -11,27 +11,25 @@
         </ng-template>
     </div>
     <!-- DESCRIPCION DEL HOTEL -->
-    <div class="col-md-6" style="height: 18em;">
+    <div class="col-md-6" style="height: 22em;">
         <h4 [innerHtml]="headquarter.name"></h4>
         <p [innerHtml]="headquarter.description"></p>
-    </div>
-    <!-- ENLACE PARA VER HABITACIONES -->
-    <div class="accordion" id="tab" role="tablist" aria-multiselectable="true">
-        <div class="col-md-6  align-items-end pull-right showRooms" role="tab" id="headingOne">
-            <a class="btn" [attr.id]="'btn'+headquarter.id" type="button" data-toggle="collapse" 
-            
-                (click)="searchLounges(headquarter.id,'btn'+headquarter.id)" aria-expanded="false" [attr.data-target]="'#lounge'+headquarter.id"
-                [attr.aria-controls]="'lounge'+headquarter.id">
-                Ver escenarios
-            </a>
+        <div class="accordion" id="tab" role="tablist" aria-multiselectable="true">
+            <div class="col-md-6  align-items-end pull-right showRooms" role="tab" id="headingOne">
+                <a class="btn" [attr.id]="'btn'+headquarter.id" type="button" data-toggle="collapse" (click)="searchLounges(headquarter.id,'btn'+headquarter.id)"
+                    aria-expanded="false" [attr.data-target]="'#lounge'+headquarter.id" [attr.aria-controls]="'lounge'+headquarter.id">
+                    Ver escenarios
+                </a>
 
+            </div>
         </div>
     </div>
+    <!-- ENLACE PARA VER HABITACIONES -->
 </div>
 
 <div id="showTab">
-    <div *ngIf="eventosService.reservation.headquarte.id == headquarter.id" class="col-md-12 collapse tabHotels padding"
-        aria-labelledby="headingOne" role="tabpanel" [attr.id]="'lounge'+headquarter.id" [attr.data-parent]="'#tab'">
+    <div *ngIf="eventosService.reservation.headquarte.id == headquarter.id" class="col-md-12 collapse tabHotels padding" aria-labelledby="headingOne"
+        role="tabpanel" [attr.id]="'lounge'+headquarter.id" [attr.data-parent]="'#tab'">
         <div *ngIf="loungesSlick">
             <hr>
             <div *ngIf="loungesSlick.length>0 ; else sinSalones" class="col-md-12">
@@ -40,19 +38,20 @@
                 <div *ngFor="let room of loungesSlick;let i = index">
                     <div class="col-md-6 col-sm-6 col-xs-11 margin-boton ">
 
-                        <app-lounge-carousel data-toggle="collapse" [showDesc]=false (click)="selectLounge(room,'btn'+headquarter.id)"
-                            aria-expanded="false" [attr.data-target]="'#room'+room.id+'-'+headquarter.id+'-'+i"
-                            [images]="room.images" [lounge]="room" [attr.aria-controls]="'room'+room.id+'-'+headquarter.id+'-'+i"></app-lounge-carousel>
+                        <app-lounge-carousel data-toggle="collapse" [showDesc]=false (click)="selectLounge(room,'btn'+headquarter.id)" aria-expanded="false"
+                            [attr.data-target]="'#room'+room.id+'-'+headquarter.id+'-'+i" [images]="room.images" [lounge]="room"
+                            [attr.aria-controls]="'room'+room.id+'-'+headquarter.id+'-'+i"></app-lounge-carousel>
                     </div>
                 </div>
 
             </div>
+            <hr>
             <div class="col-md-12">
-                <div (click)="addElementQueue()" class="col-md-1">
-                    <i class="fa fa-arrow-left"></i>
+                <div (click)="addElementQueue()" id="add" class="col-md-6 col-sm-6 col-xs-6">
+                        <i class="fa fa-arrow-left"></i>
                 </div>
-                <div class="col-md-1 pull-right">
-                    <i (click)="addElementHead()" class="fa fa-arrow-right"></i>
+                <div class="col-md-6 col-sm-6 col-xs-6" id="remove">
+                        <i (click)="addElementHead()" class="fa fa-arrow-right  pull-right"></i>
                 </div>
             </div>
         </div>
@@ -61,8 +60,8 @@
             <div *ngIf="loungesSlick.length>0">
                 <div *ngFor="let room of loungesSlick;let i = index">
                     <div *ngIf="eventosService.reservation.lounge">
-                        <app-lounge-tab-info *ngIf=" eventosService.reservation.lounge.id == room.id" class="col-md-12 collapse tabHotels"
-                        role="tabpanel" [attr.data-parent]="'#lounge'+headquarter.id" [attr.id]="'room'+room.id+'-'+headquarter.id+'-'+i"
+                        <app-lounge-tab-info *ngIf=" eventosService.reservation.lounge.id == room.id" class="col-md-12 collapse tabHotels" role="tabpanel"
+                            [attr.data-parent]="'#lounge'+headquarter.id" [attr.id]="'room'+room.id+'-'+headquarter.id+'-'+i"
                             [lounge]="room">
                         </app-lounge-tab-info>
                     </div>

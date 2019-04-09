@@ -1,4 +1,4 @@
-<div class="col-md-10 col-md-offset-1">
+<div class="col-md-12">
     <form [formGroup]="formulario" (ngSubmit)="submit()" class="form-horizontal">
         <div class="row">
             <div class="col-md-4 border-right">
@@ -53,7 +53,7 @@
                             <div class="col-md-3 col-xs-6">
                                 <label class="" for="hasIllumination">Iluminación</label>
                             </div>
-                         
+
                             <div class="col-md-1 col-xs-6">
                                 <input id="hasPallet" formControlName="hasPallet" type="checkbox">
                             </div>
@@ -81,33 +81,35 @@
                             <div class="col-md-1 col-xs-6">
                                 <input id="hasArtPresentations" formControlName="hasArtPresentations" type="checkbox">
                             </div>
-                      
+
                             <div class="col-md-3 col-xs-6">
                                 <label class="" for="hasTransport">Transporte</label>
                             </div>
                             <div class="col-md-1 col-xs-6">
                                 <input id="hasTransport" formControlName="hasTransport" type="checkbox">
                             </div>
-                            
+
                             <div class="col-md-3 col-xs-6">
                                 <label class="" for="hasArtPresentations">Presentaciones artisticas</label>
                             </div>
-                      
+
                             <div class="col-md-1 col-xs-6">
                                 <input id="hasProfessionalSound" formControlName="hasProfessionalSound" type="checkbox">
                             </div>
                             <div class="col-md-3 col-xs-6">
                                 <label class="" for="hasProfessionalSound">Sonido profesional</label>
                             </div>
-                            <div class="col-md-1 col-xs-6">
-                                <input id="hasOthers" formControlName="hasOthers" type="checkbox">
+                            <hr>
+                            <div class="col-md-12 col-xs-12">
+                                <div class="">
+                                    <input id="hasOthers" formControlName="hasOthers" type="checkbox">
+                                    <label class="col-md-11" for="hasOthers">Anexe aqui sus solicitudes adicionales</label>
+                                </div>
+
                             </div>
                             <div class="col-md-12 col-xs-12">
-                                <label class="" for="hasOthers">ANEXE AQUÍ SUS SOLICITUDES ADICIONALES</label>
-                            </div>
-                            <div class="col-md-12 col-xs-12">
-                                <textarea formControlName="others" *ngIf="formulario.get('hasOthers').value"
-                                    placeholder="Otros servicios adicionales que le gustaria solicitar" class="col-md-12"></textarea>
+                                <textarea formControlName="others" *ngIf="formulario.get('hasOthers').value" placeholder="Otros servicios adicionales que le gustaria solicitar"
+                                    class="col-md-12"></textarea>
                             </div>
                         </div>
                     </div>
@@ -116,7 +118,7 @@
             </div>
         </div>
     </form>
-    <div class="row">
+    <div class="col-md-12">
         <div class="col-md-9 col-md-offset-4">
             <button (click)="goBack()" class="btn btn-default-colsubsidio col-md-offset-1 col-md-5  col-xs-6">
                 Atras
